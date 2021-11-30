@@ -1,6 +1,20 @@
 
 <details>
 	<summary>
+		<strong>Train of Thought</strong>
+	</summary>
+
+> I am trying to build to `resolveDay` and to that end the next piece that I think I need is `Bank`
+> So I am working on that. **BUT** I still don't have a way to solve the global state issue, so I am not creating a `bankSlice`
+> Rather I am defining the object that would be used in `createSlice` that way if I chose I can work it into a `globalSlice` with the other pieces.
+
+- [ ] how do i define selectors
+- [ ] define a selector that produces the point value of a pizza and amount of pizza
+- [ ] bank unit tests
+</details>
+
+<details>
+	<summary>
 		<strong>Create The Project</strong>
 	</summary>
 
