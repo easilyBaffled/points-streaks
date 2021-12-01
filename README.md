@@ -12,9 +12,9 @@
 - [x] define a selector that produces the point value of a pizza and amount of pizza
 - [ ] should I use selectors in my unit tests?
 - [ ] bank unit tests
-- [ ] create redux slice sandbox for experiments
-- [ ] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
-- [ ] https://redux-toolkit.js.org/api/getDefaultMiddleware
+- [x] create redux slice sandbox for experiments [redux/toolkit sandbox](https://codesandbox.io/s/beautiful-merkle-tw0lo?file=/src/store.js)
+- [x] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
+- [x] https://redux-toolkit.js.org/api/getDefaultMiddleware
 </details>
 
 <details>
