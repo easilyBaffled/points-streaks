@@ -8,9 +8,13 @@
 > So I am working on that. **BUT** I still don't have a way to solve the global state issue, so I am not creating a `bankSlice`
 > Rather I am defining the object that would be used in `createSlice` that way if I chose I can work it into a `globalSlice` with the other pieces.
 
-- [ ] how do i define selectors
-- [ ] define a selector that produces the point value of a pizza and amount of pizza
+- [x] how do i define selectors
+- [x] define a selector that produces the point value of a pizza and amount of pizza
+- [ ] should I use selectors in my unit tests?
 - [ ] bank unit tests
+- [ ] create redux slice sandbox for experiments
+- [ ] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
+- [ ] https://redux-toolkit.js.org/api/getDefaultMiddleware
 </details>
 
 <details>
@@ -28,6 +32,8 @@
 - [x] add redux toolkit requirements
 - [x] add Cypress for unit testing
 - [ ] add the fun script to update deps if PRs Pass
+- [ ] add .eslint
+- [ ] configure prettier-eslint
 </details>
 
 <details>

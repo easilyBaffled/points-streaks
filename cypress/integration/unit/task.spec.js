@@ -5,23 +5,17 @@
 	- [ ] reset an active streak
 	- [ ] increment a streaks value
  */
-import { createNextState } from "@reduxjs/toolkit";
 import reducer, {
-  actions,
   a,
-  b,
+  actions,
   initialState,
-  status,
   selectors,
+  status,
   streakMax,
 } from "../../../src/state/tasks";
+import { _modifyEntity } from "./modifyEntity";
 
-function modifyEnity(id, updater, state = initialState) {
-  return createNextState(state, (s) => {
-    updater(s.entities[id]);
-  });
-}
-console.tap = (v, ...rest) => (console.log(v, ...rest), v);
+const modifyEntity = _modifyEntity(initialState);
 
 describe("Task Actions", () => {
   it("should return the initial state", () => {
@@ -30,13 +24,13 @@ describe("Task Actions", () => {
 
   it("should mark an active task as done", () => {
     const actual = reducer(initialState, actions.markTaskDone(a));
-    const expected = modifyEnity(a, (e) => (e.status = status.done));
+    const expected = modifyEntity(a, (e) => (e.status = status.done));
 
     expect(actual).to.eqls(expected);
   });
 
   it("should mark an done task as active", () => {
-    const state = modifyEnity(a, (e) => (e.status = status.done));
+    const state = modifyEntity(a, (e) => (e.status = status.done));
     const actual = reducer(state, actions.markTaskActive(a));
     const expected = initialState;
 
@@ -45,7 +39,7 @@ describe("Task Actions", () => {
 
   it("should increase currentStreakIndex", () => {
     const actual = reducer(initialState, actions.bumpStreak(a));
-    const expected = modifyEnity(a, (e) => {
+    const expected = modifyEntity(a, (e) => {
       e.currentStreakIndex += 1;
     });
 
@@ -53,9 +47,9 @@ describe("Task Actions", () => {
   });
 
   it("should wrap streak", () => {
-    const state = modifyEnity(a, (e) => (e.currentStreakIndex = streakMax));
+    const state = modifyEntity(a, (e) => (e.currentStreakIndex = streakMax));
     const actual = reducer(state, actions.bumpStreak(a));
-    const expected = modifyEnity(a, (e) => {
+    const expected = modifyEntity(a, (e) => {
       e.streakIterations += 1;
       e.currentStreakIndex = 0;
     });

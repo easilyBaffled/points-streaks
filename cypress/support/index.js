@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-
+import "./commands";
+console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

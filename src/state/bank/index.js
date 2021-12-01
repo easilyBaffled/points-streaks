@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 /** @type {Bank} */
 export const initialState = {
@@ -12,7 +12,7 @@ const specialWorthCalculators = {
   pizza: (s) => s.points * 0.05,
 };
 
-const bankSliceDefinition = {
+export const bankSliceDefinition = {
   name: "bank",
   initialState,
   reducers: {
@@ -31,8 +31,28 @@ const bankSliceDefinition = {
     addSpecial(s, { amount, type = "pizza" }) {
       s.special[type] += amount;
     },
-    setSpecial(s, { amount, type = "pizza" }) {
+    setSpecial(s, { payload: { amount, type = "pizza" } }) {
+      console.log(amount, type);
       s.special[type] = amount;
     },
   },
+  selectors: {},
 };
+
+/**
+ * Selectors
+ */
+const getSpecial = (state, type) => (state?.bank ?? state).special[type];
+const getPizza = (state) => (state?.bank ?? state).special.pizza;
+const getPoints = (state) => (state?.bank ?? state).points;
+const getSpecialValue = (state, type) => specialWorthCalculators[type](state);
+export const selectors = {
+  getPizza,
+  getSpecialValue,
+  getPoints,
+  getSpecial,
+};
+
+export const slice = createSlice(bankSliceDefinition);
+export default slice.reducer;
+export const actions = slice.actions;
