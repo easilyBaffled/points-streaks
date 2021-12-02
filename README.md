@@ -34,6 +34,7 @@
 - [ ] add the fun script to update deps if PRs Pass
 - [ ] add .eslint
 - [ ] configure prettier-eslint
+- [ ] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
 </details>
 
 <details>

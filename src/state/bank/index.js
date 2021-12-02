@@ -16,23 +16,22 @@ export const bankSliceDefinition = {
   name: "bank",
   initialState,
   reducers: {
-    spendPoints(s, { amount }) {
+    spendPoints(s, { payload: amount }) {
       if (amount <= s.points) s.points -= amount;
     },
-    addPoints(s, { amount }) {
+    addPoints(s, { payload: amount }) {
       s.points += amount;
     },
-    setPoints(s, { amount }) {
+    setPoints(s, { payload: amount }) {
       s.points = amount;
     },
-    spendSpecial(s, { amount, type = "pizza" }) {
+    spendSpecial(s, { payload: { amount, type = "pizza" } }) {
       if (amount <= s.special[type]) s.special[type] -= amount;
     },
-    addSpecial(s, { amount, type = "pizza" }) {
+    addSpecial(s, { payload: { amount, type = "pizza" } }) {
       s.special[type] += amount;
     },
     setSpecial(s, { payload: { amount, type = "pizza" } }) {
-      console.log(amount, type);
       s.special[type] = amount;
     },
   },

@@ -4,38 +4,58 @@ import reducer, {
   initialState,
   actions,
 } from "../../../src/state/bank";
-import { _modifyEntity } from "./modifyEntity";
-
-const modifyEntity = _modifyEntity(initialState);
 
 describe("actions", () => {
   it("should spendPoints", () => {
-    const actual = reducer(initialState, actions.spendPoints(a));
-    const expected = modifyEntity(a, (e) => (e.status = status.done));
+    const state = createNextState(initialState, (s) => {
+      s.points = 1;
+    });
+    const actual = reducer(state, actions.spendPoints(1));
+    const expected = initialState;
+
+    expect(actual).to.eqls(expected);
+  });
+  it("should not spend points if value is too much", () => {
+    const actual = reducer(initialState, actions.spendPoints(5));
+    const expected = initialState;
 
     expect(actual).to.eqls(expected);
   });
   it("should addPoints", () => {
-    const actual = reducer(initialState, actions.addPoints(a));
-    const expected = modifyEntity(a, (e) => (e.status = status.done));
+    const actual = reducer(initialState, actions.addPoints(1));
+    const expected = createNextState(initialState, (s) => {
+      s.points = 1;
+    });
 
     expect(actual).to.eqls(expected);
   });
   it("should setPoints", () => {
-    const actual = reducer(initialState, actions.setPoints(a));
-    const expected = modifyEntity(a, (e) => (e.status = status.done));
+    const actual = reducer(initialState, actions.setPoints(2));
+    const expected = createNextState(initialState, (s) => {
+      s.points = 2;
+    });
 
     expect(actual).to.eqls(expected);
   });
   it("should spendSpecial", () => {
-    const actual = reducer(initialState, actions.spendSpecial(a));
-    const expected = modifyEntity(a, (e) => (e.status = status.done));
+    const state = createNextState(initialState, (s) => {
+      s.special.test = 1;
+    });
+    const actual = reducer(
+      state,
+      actions.spendSpecial({ amount: 1, type: "test" })
+    );
+    const expected = createNextState(initialState, (s) => {
+      s.special.test = 0;
+    });
 
     expect(actual).to.eqls(expected);
   });
   it("should addSpecial", () => {
-    const actual = reducer(initialState, actions.addSpecial(a));
-    const expected = modifyEntity(a, (e) => (e.status = status.done));
+    const actual = reducer(initialState, actions.addSpecial({ amount: 1 }));
+    const expected = createNextState(initialState, (s) => {
+      s.special.pizza = 1;
+    });
 
     expect(actual).to.eqls(expected);
   });
