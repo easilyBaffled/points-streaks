@@ -10,11 +10,17 @@
 
 - [x] how do i define selectors
 - [x] define a selector that produces the point value of a pizza and amount of pizza
-- [ ] should I use selectors in my unit tests?
-- [ ] bank unit tests
+- [x] should I use selectors in my unit tests?
+- [x] bank unit tests
 - [x] create redux slice sandbox for experiments [redux/toolkit sandbox](https://codesandbox.io/s/beautiful-merkle-tw0lo?file=/src/store.js)
 - [x] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
 - [x] https://redux-toolkit.js.org/api/getDefaultMiddleware
+- [x] can i tell when state has or will change in the middleware?
+- [x] how does the default middleware work?
+- [x] what if I only return the updated action
+- [ ] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
+- [ ] create tests based on the scenarios assuming a full redux store
+- [ ] create store based on the `sandbox`
 </details>
 
 <details>
