@@ -18,7 +18,7 @@
 - [x] can i tell when state has or will change in the middleware?
 - [x] how does the default middleware work?
 - [x] what if I only return the updated action
-- [ ] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
+- [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
 - [ ] create tests based on the scenarios assuming a full redux store
 - [ ] create store based on the `sandbox`
 </details>

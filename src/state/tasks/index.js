@@ -1,4 +1,9 @@
-import { createEntityAdapter, createSlice, nanoid } from "@reduxjs/toolkit";
+import {
+  createEntityAdapter,
+  createSelector,
+  createSlice,
+  nanoid,
+} from "@reduxjs/toolkit";
 
 export const status = {
   active: "active",
@@ -86,6 +91,13 @@ export const selectors = tasksAdapter.getSelectors(
   (state) => state?.tasks ?? state
 );
 
+/**
+ * @type {(state: unknown, id: EntityId) => number}
+ */
+selectors.getTaskStreakIndex = createSelector(
+  selectors.selectById,
+  (task) => task.currentStreakIndex
+);
 // const store = configureStore({
 // 	reducer: {
 // 		tasks: tasksSlice.reducer,
