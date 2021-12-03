@@ -30,17 +30,17 @@
 
 > I don't really want to get too bogged down in the infrastructure, like I would with Bulletproof, this is really to get the thing off the ground. because nothing is more valuable than just using the damn thing. So this is, "just enough to use it" which includes:
 
-- [ ] create repo
+- [x] create repo
 - [ ] pick cloud place to work for now
 - [x] use `vite` to create a project
 - [x] add `readme.md`
 - [ ] add `.gitignore`
 - [x] add redux toolkit requirements
 - [x] add Cypress for unit testing
-- [ ] add the fun script to update deps if PRs Pass
+- [x] add the fun script to update deps if PRs Pass
+- [ ] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
 - [ ] add .eslint
 - [ ] configure prettier-eslint
-- [ ] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
 </details>
 
 <details>
