@@ -1,12 +1,8 @@
-import { createSlice, createAction, configureStore } from "@reduxjs/toolkit";
-import tasks, {
-  actions as taskActions,
-  selectors as taskSelectors,
-} from "./tasks";
-import bank, {
-  actions as bankActions,
-  selectors as bankSelectors,
-} from "./bank";
+import { configureStore } from "@reduxjs/toolkit";
+import tasks, { actions as taskActions } from "./tasks";
+import bank, { actions as bankActions } from "./bank";
+import app, { actions as appActions } from "./app";
+import { reset } from "./reset";
 
 const logger = (store) => (next) => (action) => {
   console.log("dispatching", action, store.getState());
@@ -16,26 +12,23 @@ const logger = (store) => (next) => (action) => {
   return result;
 };
 
-export const appSlice = createSlice({
-  name: "app",
-  reducers: {
-    resolveDay() {},
-    resetApp() {},
-  },
-});
+export const actions = {
+  reset,
+  ...appActions,
+  ...bankActions,
+  ...taskActions,
+};
 
-export const actions = appSlice.actions;
-
-const reducer = {
-  app: appSlice.reducer,
+export const reducer = {
+  app,
   tasks,
   bank,
 };
 
 const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(), //.concat(logger),
+  devTools: true, //process.env.NODE_ENV !== "production",
   // preloadedState,
   // enhancers: [reduxBatch],
 });

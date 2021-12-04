@@ -4,6 +4,8 @@ import {
   createSlice,
   nanoid,
 } from "@reduxjs/toolkit";
+import { reset } from "../reset";
+import { currencies } from "../bank";
 
 export const status = {
   active: "active",
@@ -21,13 +23,13 @@ function createTask(task, optional = {}) {
     id: nanoid(),
     status: status.active,
     task,
-    streakIterations: 0,
-    currentStreakIndex: 0,
+    streakIterations: 1,
+    currentStreakIndex: 1,
     ...optional,
   };
 }
 
-export const streakMax = 5;
+export const streakMax = 6;
 
 const tasksAdapter = createEntityAdapter();
 
@@ -66,11 +68,14 @@ const tasksSlice = createSlice({
     bumpStreakIterations: dynamicChange((t) => ({
       streakIterations: t.streakIterations + 1,
     })),
+    bumpStreakIndex: dynamicChange((t) => ({
+      currentStreakIndex: t.currentStreakIndex + 1,
+    })),
     bumpStreak: dynamicChange((t) => {
       if (t.currentStreakIndex === streakMax) {
         return {
           streakIterations: t.streakIterations + 1,
-          currentStreakIndex: 0,
+          currentStreakIndex: 1,
         };
       }
       return {
@@ -79,9 +84,12 @@ const tasksSlice = createSlice({
     }),
     resetStreak: staticChange({
       status: status.active,
-      streakIterations: 0,
-      currentStreakIndex: 0,
+      streakIterations: 1,
+      currentStreakIndex: 1,
     }),
+  },
+  extraReducers: {
+    [reset]: () => tasksAdapter.getInitialState(initialState),
   },
 });
 
@@ -90,49 +98,40 @@ export const actions = tasksSlice.actions;
 export const selectors = tasksAdapter.getSelectors(
   (state) => state?.tasks ?? state
 );
+selectors.getTask = selectors.selectById;
 
 /**
  * @type {(state: unknown, id: EntityId) => number}
  */
 selectors.getTaskStreakIndex = createSelector(
-  selectors.selectById,
+  selectors.getTask,
   (task) => task.currentStreakIndex
 );
-// const store = configureStore({
-// 	reducer: {
-// 		tasks: tasksSlice.reducer,
-// 	},
-// })
-//
-// // Check the initial state:
-// console.log(store.getState().tasks)
-// // {ids: [], entities: {}, loading: 'idle' }
-//
-// const tasksSelectors = tasksAdapter.getSelectors((state) => state.tasks)
-//
-// store.dispatch(taskAdded({ id: 'a', title: 'First' }))
-// console.log(store.getState().tasks)
-// // {ids: ["a"], entities: {a: {id: "a", title: "First"}}, loading: 'idle' }
-//
-// store.dispatch(taskUpdated({ id: 'a', changes: { title: 'First (altered)' } }))
-// store.dispatch(tasksLoading())
-// console.log(store.getState().tasks)
-// // {ids: ["a"], entities: {a: {id: "a", title: "First (altered)"}}, loading: 'pending' }
-//
-// store.dispatch(
-// 	tasksReceived([
-// 		{ id: 'b', title: 'Task 3' },
-// 		{ id: 'c', title: 'Task 2' },
-// 	])
-// )
-//
-// console.log(tasksSelectors.selectIds(store.getState()))
-// // "a" was removed due to the `setAll()` call
-// // Since they're sorted by title, "Task 2" comes before "Task 3"
-// // ["c", "b"]
-//
-// console.log(tasksSelectors.selectAll(store.getState()))
-// // All task entries in sorted order
-// // [{id: "c", title: "Task 2"}, {id: "b", title: "Task 3"}]
-//
-//
+
+selectors.getTaskStreakIteration = createSelector(
+  selectors.getTask,
+  (task) => task.streakIterations
+);
+
+selectors.getTaskValue = createSelector(selectors.getTask, (task) =>
+  task.status === status.active
+    ? 0
+    : task.currentStreakIndex === streakMax
+    ? currencies.pizza
+    : task.currentStreakIndex * task.streakIterations
+);
+
+selectors.getDaysPoints = createSelector(
+  [selectors.selectIds, (state) => state],
+  (taskIds, state) =>
+    taskIds
+      .map((id) => selectors.getTaskValue(state, id))
+      .reduce(
+        (acc, value) => {
+          if (Number.isInteger(value)) acc.points += value;
+          else acc[currencies[value]] = (acc?.[currencies[value]] ?? 0) + 1;
+          return acc;
+        },
+        { points: 0 }
+      )
+);

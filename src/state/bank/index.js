@@ -1,10 +1,14 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
+export const currencies = {
+  pizza: "pizza",
+};
+
 /** @type {Bank} */
 export const initialState = {
   points: 0,
   special: {
-    pizza: 0,
+    [currencies.pizza]: 0,
   },
 };
 
@@ -35,7 +39,9 @@ export const bankSliceDefinition = {
       s.special[type] = amount;
     },
   },
-  selectors: {},
+  extraReducers: {
+    reset: () => initialState,
+  },
 };
 
 /**

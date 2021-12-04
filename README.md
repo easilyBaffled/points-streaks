@@ -19,8 +19,11 @@
 - [x] how does the default middleware work?
 - [x] what if I only return the updated action
 - [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
-- [ ] create tests based on the scenarios assuming a full redux store
-- [ ] create store based on the `sandbox`
+- [x] create tests based on the scenarios assuming a full redux store
+- [x] create store based on the `sandbox`
+- [ ] create selectors for resolve day
+- [ ] #resolveDaySelectors get value of completed tasks for the bank
+- [ ]
 </details>
 
 <details>

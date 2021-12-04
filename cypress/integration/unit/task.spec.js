@@ -8,12 +8,14 @@
 import reducer, {
   a,
   actions,
+  b,
   initialState,
   selectors,
   status,
   streakMax,
 } from "../../../src/state/tasks";
 import { _modifyEntity } from "./modifyEntity";
+import { currencies } from "../../../src/state/bank";
 
 const modifyEntity = _modifyEntity(initialState);
 
@@ -74,5 +76,86 @@ describe("Task Actions", () => {
     const expected = initialState;
 
     expect(actual).to.eqls(expected);
+  });
+});
+describe("selectors", () => {
+  describe("getTaskValue", () => {
+    const state = reducer(initialState, actions.markTaskDone(a));
+    it("should return 0 because it hasn't been done", () => {
+      const actual = selectors.getTaskValue(initialState, a);
+      const expected = 0;
+
+      expect(actual).to.eqls(expected);
+    });
+    it("should return a point", () => {
+      const actual = selectors.getTaskValue(state, a);
+      const expected = 1;
+
+      expect(actual).to.eqls(expected);
+    });
+    it("should return 2 points", () => {
+      const newState = Array(6)
+        .fill(actions.bumpStreak(a))
+        .reduce(reducer, state);
+
+      const actual = selectors.getTaskValue(newState, a);
+      const expected = 2;
+
+      expect(actual).to.eqls(expected);
+    });
+    it("should return a pizza", () => {
+      const newState = Array(5)
+        .fill(actions.bumpStreak(a))
+        .reduce(reducer, state);
+
+      const actual = selectors.getTaskValue(newState, a);
+      const expected = currencies.pizza;
+
+      expect(actual).to.eqls(expected);
+    });
+  });
+  describe.only("getDaysPoints", () => {
+    it("should collect just points", () => {
+      const state = [actions.markTaskDone(a), actions.markTaskDone(b)].reduce(
+        reducer,
+        initialState
+      );
+
+      const actual = selectors.getDaysPoints(state);
+      const expected = {
+        points: 2,
+      };
+
+      expect(actual).to.eqls(expected);
+    });
+    it("should collect pizza", () => {
+      const state = Array(5)
+        .fill(actions.bumpStreak(a))
+        .concat(Array(5).fill(actions.bumpStreak(b)))
+        .concat([actions.markTaskDone(a), actions.markTaskDone(b)])
+        .reduce(reducer, initialState);
+
+      const actual = selectors.getDaysPoints(state);
+      const expected = {
+        points: 0,
+        pizza: 2,
+      };
+
+      expect(actual).to.eqls(expected);
+    });
+    it("should collect all together", () => {
+      const state = Array(5)
+        .fill(actions.bumpStreak(a))
+        .concat([actions.markTaskDone(a), actions.markTaskDone(b)])
+        .reduce(reducer, initialState);
+
+      const actual = selectors.getDaysPoints(console.tap(state));
+      const expected = {
+        points: 1,
+        pizza: 1,
+      };
+
+      expect(actual).to.eqls(expected);
+    });
   });
 });
