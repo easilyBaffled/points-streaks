@@ -21,9 +21,10 @@
 - [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
 - [x] create tests based on the scenarios assuming a full redux store
 - [x] create store based on the `sandbox`
-- [ ] create selectors for resolve day
-- [ ] #resolveDaySelectors get value of completed tasks for the bank
-- [ ]
+- [x] create selectors for resolve day
+- [x] #resolveDaySelectors get value of completed tasks for the bank
+- [ ] #resolveDaySelectors create action detailer
+- [ ] test `resolveDay` with the bank and `getDaysPoints`
 </details>
 
 <details>
@@ -100,6 +101,7 @@
 - [ ] ...
 
 </details>
+
 ---
 /**
 * bank: 0

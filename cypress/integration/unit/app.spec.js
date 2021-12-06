@@ -5,9 +5,14 @@ import {
   selectors as tasks,
 } from "../../../src/state/tasks";
 import { selectors as bank } from "../../../src/state/bank";
+import { getDaysState } from "../../../src/state/resolveDaySelector";
 
 const dispatchPipe = (...actions) => {
-  actions.reduce((s, action) => store.dispatch(action), {});
+  actions.reduce((s, action) => {
+    if (typeof action === "function") {
+      store.dispatch(action(store.getState()));
+    } else store.dispatch(action);
+  }, {});
   return store.getState();
 };
 
@@ -15,8 +20,8 @@ describe("resolve day", () => {
   describe("with done tasks", () => {
     beforeEach(() => {
       store.dispatch(actions.reset());
+      store.dispatch(actions.setDate("5/11/90"));
     });
-
     [
       [
         `
@@ -24,9 +29,8 @@ describe("resolve day", () => {
  			- [x] task: [ 1, 2, 3, 4, 5, 🍕]	| - [ ] task: [ x, 2, 3, 4, 5, 🍕]
 		`,
         () => {
-          const nextState = dispatchPipe(
-            taskActions.markTaskDone(a),
-            actions.resolveDay()
+          const nextState = dispatchPipe(taskActions.markTaskDone(a), (s) =>
+            actions.resolveDay(getDaysState(s))
           );
 
           const actual = {
@@ -35,7 +39,7 @@ describe("resolve day", () => {
           };
           const expected = {
             points: 1,
-            a: 1,
+            a: 2,
           };
 
           expect(actual).to.eqls(expected);
@@ -50,7 +54,7 @@ describe("resolve day", () => {
           const nextState = dispatchPipe(
             taskActions.bumpStreakIndex(a),
             taskActions.markTaskDone(a),
-            actions.resolveDay()
+            (s) => actions.resolveDay(getDaysState(s))
           );
 
           const actual = {
@@ -59,7 +63,7 @@ describe("resolve day", () => {
           };
           const expected = {
             points: 2,
-            a: 2,
+            a: 3,
           };
 
           expect(actual).to.eqls(expected);
@@ -78,7 +82,7 @@ describe("resolve day", () => {
             taskActions.bumpStreakIndex(a),
             taskActions.bumpStreakIndex(a),
             taskActions.markTaskDone(a),
-            actions.resolveDay()
+            (s) => actions.resolveDay(getDaysState(s))
           );
 
           const actual = {
@@ -91,10 +95,10 @@ describe("resolve day", () => {
           };
           const expected = {
             points: 0,
-            pizza: 0,
+            pizza: 1,
             a: {
-              streakIterations: 1,
-              currentStreakIndex: 0,
+              streakIterations: 2,
+              currentStreakIndex: 1,
             },
           };
 
@@ -108,6 +112,7 @@ describe("resolve day", () => {
   describe("with no tasks completed", () => {
     beforeEach(() => {
       store.dispatch(actions.reset());
+      store.dispatch(actions.setDate("5/11/90"));
     });
 
     [
@@ -117,7 +122,7 @@ describe("resolve day", () => {
  			- [ ] task: [ 1, 2, 3, 4, 5, 🍕 ]	| - [ ] task: [ 1, 2, 3, 4, 5, 🍕 ]
 		`,
         () => {
-          store.dispatch(actions.resolveDay());
+          store.dispatch(actions.resolveDay(getDaysState(store.getState())));
           const nextState = store.getState();
           const actual = {
             points: bank.getPoints(nextState),
@@ -125,7 +130,7 @@ describe("resolve day", () => {
           };
           const expected = {
             points: 0,
-            a: 0,
+            a: 1,
           };
 
           expect(actual).to.eqls(expected);
@@ -137,9 +142,8 @@ describe("resolve day", () => {
  			- [ ] task: [ x, 2, 3, 4, 5, 🍕]	| - [ ] task: [ 1, 2, 3, 4, 5, 🍕]
 		`,
         () => {
-          const nextState = dispatchPipe(
-            taskActions.bumpStreakIndex(a),
-            actions.resolveDay()
+          const nextState = dispatchPipe(taskActions.bumpStreakIndex(a), (s) =>
+            actions.resolveDay(getDaysState(s), s)
           );
 
           const actual = {
@@ -148,7 +152,7 @@ describe("resolve day", () => {
           };
           const expected = {
             points: 0,
-            a: 0,
+            a: 1,
           };
 
           expect(actual).to.eqls(expected);

@@ -1,10 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getToday } from "../resolveDaySelector";
+import { reset } from "../reset";
 
 export const appSlice = createSlice({
   name: "app",
-  initialState: {},
+  initialState: {
+    date: getToday(),
+  },
   reducers: {
-    resolveDay() {},
+    setDate: (state, { payload }) => {
+      state.date = getToday(payload);
+    },
+    resolveDay(state, { payload }) {
+      state.date = payload?.app?.date ?? state.date;
+    },
+  },
+  extraReducers: {
+    [reset]: () => ({ date: getToday() }),
   },
 });
 

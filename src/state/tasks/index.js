@@ -4,6 +4,7 @@ import {
   createSlice,
   nanoid,
 } from "@reduxjs/toolkit";
+import { actions as appActions } from "../app";
 import { reset } from "../reset";
 import { currencies } from "../bank";
 
@@ -57,6 +58,18 @@ const dynamicChange =
       changes: updater(state.entities[payload]),
     });
 
+function bumpStreakChange(t) {
+  if (t.currentStreakIndex === streakMax) {
+    return {
+      streakIterations: t.streakIterations + 1,
+      currentStreakIndex: 1,
+    };
+  }
+  return {
+    currentStreakIndex: t.currentStreakIndex + 1,
+  };
+}
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: tasksAdapter.getInitialState(initialState),
@@ -71,17 +84,7 @@ const tasksSlice = createSlice({
     bumpStreakIndex: dynamicChange((t) => ({
       currentStreakIndex: t.currentStreakIndex + 1,
     })),
-    bumpStreak: dynamicChange((t) => {
-      if (t.currentStreakIndex === streakMax) {
-        return {
-          streakIterations: t.streakIterations + 1,
-          currentStreakIndex: 1,
-        };
-      }
-      return {
-        currentStreakIndex: t.currentStreakIndex + 1,
-      };
-    }),
+    bumpStreak: dynamicChange(bumpStreakChange),
     resetStreak: staticChange({
       status: status.active,
       streakIterations: 1,
@@ -90,6 +93,19 @@ const tasksSlice = createSlice({
   },
   extraReducers: {
     [reset]: () => tasksAdapter.getInitialState(initialState),
+    [appActions.resolveDay]: (state, { payload }) => {
+      if (payload.tasks) {
+        Object.values(state.entities).forEach((task) => {
+          if (task.status === status.active) {
+            task.streakIterations = 1;
+            task.currentStreakIndex = 1;
+          } else {
+            task.status = status.active;
+            dynamicChange(bumpStreakChange)(state, { payload: task.id });
+          }
+        });
+      }
+    },
   },
 });
 
@@ -100,9 +116,9 @@ export const selectors = tasksAdapter.getSelectors(
 );
 selectors.getTask = selectors.selectById;
 
-/**
- * @type {(state: unknown, id: EntityId) => number}
- */
+// /**
+//  * @type {(state: unknown, id: EntityId) => number}
+//  */
 selectors.getTaskStreakIndex = createSelector(
   selectors.getTask,
   (task) => task.currentStreakIndex
