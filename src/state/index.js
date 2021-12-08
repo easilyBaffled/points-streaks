@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tasks, {
+import {
+  reducer as tasks,
   actions as taskActions,
   selectors as taskSelectors,
 } from "../features/task/store";

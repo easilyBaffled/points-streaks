@@ -129,7 +129,7 @@ const tasksSlice = createSlice({
   },
 });
 
-export default tasksSlice.reducer;
+export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
 export const selectors = tasksAdapter.getSelectors(
   (state) => state?.tasks ?? state

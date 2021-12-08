@@ -1,11 +1,5 @@
-/**
- * For a Task I need a way to
-	- [ ] increment the streak
-	- [ ] mark a task as active
-	- [ ] reset an active streak
-	- [ ] increment a streaks value
- */
-import reducer, {
+import {
+  reducer,
   a,
   actions,
   b,
