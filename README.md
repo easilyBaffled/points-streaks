@@ -1,7 +1,29 @@
 
 <details>
 	<summary>
-		<strong>Train of Thought</strong>
+		<strong>Train of Thought: UI</strong>
+	</summary>
+
+> ok so that last "Train of Thought" probably went on for long enoug, so this is where the new one starts.
+> Once again I am going to try and stay away from all of that good foundational scaffolding that I'm working on in bulletproof
+> in exchange for speed of getting things done here
+> I can feel my motivation waning a bit so I really need to be good about laying out small chunks and reminding myself
+> how much faster this will make my mornings, and just think once streaks are done I can start with regular tasking and automating the backlog
+
+- [ ] create component for Task
+- [ ] port over component for streak [sandbox](https://codesandbox.io/s/epic-lalande-87qkj?file=/src/App.js)
+- [ ] set my defaults for layout
+- [ ] wire up toggle tasks
+- [ ] wire up resolve day
+- [ ] persist state
+- [ ] how to do persistence with state migration
+- [ ] wire up firebase/supabase to persistence
+</details>
+
+
+<details>
+	<summary>
+		<strong>Train of Thought: State</strong>
 	</summary>
 
 > I am trying to build to `resolveDay` and to that end the next piece that I think I need is `Bank`
@@ -15,7 +37,7 @@
 - [x] create redux slice sandbox for experiments [redux/toolkit sandbox](https://codesandbox.io/s/beautiful-merkle-tw0lo?file=/src/store.js)
 - [x] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
 - [x] https://redux-toolkit.js.org/api/getDefaultMiddleware
-- [x] can i tell when state has or will change in the middleware?
+- [x] can I tell when state has or will change in the middleware?
 - [x] how does the default middleware work?
 - [x] what if I only return the updated action
 - [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
@@ -23,8 +45,10 @@
 - [x] create store based on the `sandbox`
 - [x] create selectors for resolve day
 - [x] #resolveDaySelectors get value of completed tasks for the bank
-- [ ] #resolveDaySelectors create action detailer
-- [ ] test `resolveDay` with the bank and `getDaysPoints`
+- [x] #resolveDaySelectors create action detailer
+- [x] test `resolveDay` with the bank and `getDaysPoints`
+- [x] load `initialState` for tests
+- [x] create _actual_ initialState
 </details>
 
 <details>
