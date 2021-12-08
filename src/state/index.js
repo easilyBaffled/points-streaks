@@ -1,22 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tasks, { actions as taskActions } from "./tasks";
-import bank, { actions as bankActions } from "./bank";
-import app, { actions as appActions } from "./app";
+import tasks, {
+  actions as taskActions,
+  selectors as taskSelectors,
+} from "../features/task/store";
+import bank, {
+  actions as bankActions,
+  selectors as bankSelectors,
+} from "./bank";
+import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./reset";
-
-const logger = (store) => (next) => (action) => {
-  console.log("dispatching", action, store.getState());
-  action.state = store.getState();
-  let result = next(action);
-  console.log("next state", store.getState());
-  return result;
-};
 
 export const actions = {
   reset,
   ...appActions,
   ...bankActions,
   ...taskActions,
+};
+
+export const selectors = {
+  tasks: taskSelectors,
+  app: appSelectors,
+  bank: bankSelectors,
 };
 
 export const reducer = {

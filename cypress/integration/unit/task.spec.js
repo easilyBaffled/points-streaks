@@ -9,23 +9,23 @@ import reducer, {
   a,
   actions,
   b,
-  initialState,
+  testState,
   selectors,
   status,
   streakMax,
-} from "../../../src/state/tasks";
+} from "../../../src/features/task";
 import { _modifyEntity } from "./modifyEntity";
 import { currencies } from "../../../src/state/bank";
 
-const modifyEntity = _modifyEntity(initialState);
+const modifyEntity = _modifyEntity(testState);
 
 describe("Task Actions", () => {
   it("should return the initial state", () => {
-    expect(reducer(undefined, {})).to.eqls(initialState);
+    expect(reducer(undefined, {})).to.eqls(testState);
   });
 
   it("should mark an active task as done", () => {
-    const actual = reducer(initialState, actions.markTaskDone(a));
+    const actual = reducer(testState, actions.markTaskDone(a));
     const expected = modifyEntity(a, (e) => (e.status = status.done));
 
     expect(actual).to.eqls(expected);
@@ -34,13 +34,13 @@ describe("Task Actions", () => {
   it("should mark an done task as active", () => {
     const state = modifyEntity(a, (e) => (e.status = status.done));
     const actual = reducer(state, actions.markTaskActive(a));
-    const expected = initialState;
+    const expected = testState;
 
     expect(actual).to.eqls(expected);
   });
 
   it("should increase currentStreakIndex", () => {
-    const actual = reducer(initialState, actions.bumpStreak(a));
+    const actual = reducer(testState, actions.bumpStreak(a));
     const expected = modifyEntity(a, (e) => {
       e.currentStreakIndex += 1;
     });
@@ -60,29 +60,29 @@ describe("Task Actions", () => {
   });
 
   it("should get entity by id", () => {
-    const actual = selectors.selectById(initialState, a);
-    const expected = initialState.entities[a];
+    const actual = selectors.selectById(testState, a);
+    const expected = testState.entities[a];
 
     expect(actual).to.eqls(expected);
   });
 
   it("should reset modifiable stats", () => {
     const state = reducer(
-      reducer(initialState, actions.bumpStreakIterations(a)),
+      reducer(testState, actions.bumpStreakIterations(a)),
       actions.markTaskDone(a)
     );
 
     const actual = reducer(state, actions.resetStreak(a));
-    const expected = initialState;
+    const expected = testState;
 
     expect(actual).to.eqls(expected);
   });
 });
 describe("selectors", () => {
   describe("getTaskValue", () => {
-    const state = reducer(initialState, actions.markTaskDone(a));
+    const state = reducer(testState, actions.markTaskDone(a));
     it("should return 0 because it hasn't been done", () => {
-      const actual = selectors.getTaskValue(initialState, a);
+      const actual = selectors.getTaskValue(testState, a);
       const expected = 0;
 
       expect(actual).to.eqls(expected);
@@ -118,7 +118,7 @@ describe("selectors", () => {
     it("should collect just points", () => {
       const state = [actions.markTaskDone(a), actions.markTaskDone(b)].reduce(
         reducer,
-        initialState
+        testState
       );
 
       const actual = selectors.getDaysPoints(state);
@@ -133,7 +133,7 @@ describe("selectors", () => {
         .fill(actions.bumpStreak(a))
         .concat(Array(5).fill(actions.bumpStreak(b)))
         .concat([actions.markTaskDone(a), actions.markTaskDone(b)])
-        .reduce(reducer, initialState);
+        .reduce(reducer, testState);
 
       const actual = selectors.getDaysPoints(state);
       const expected = {
@@ -147,9 +147,9 @@ describe("selectors", () => {
       const state = Array(5)
         .fill(actions.bumpStreak(a))
         .concat([actions.markTaskDone(a), actions.markTaskDone(b)])
-        .reduce(reducer, initialState);
+        .reduce(reducer, testState);
 
-      const actual = selectors.getDaysPoints(console.tap(state));
+      const actual = selectors.getDaysPoints(state);
       const expected = {
         points: 1,
         pizza: 1,

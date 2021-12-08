@@ -3,7 +3,8 @@ import {
   a,
   actions as taskActions,
   selectors as tasks,
-} from "../../../src/state/tasks";
+  testState,
+} from "../../../src/features/task/store";
 import { selectors as bank } from "../../../src/state/bank";
 import { getDaysState } from "../../../src/state/resolveDaySelector";
 
@@ -17,11 +18,11 @@ const dispatchPipe = (...actions) => {
 };
 
 describe("resolve day", () => {
+  beforeEach(() => {
+    store.dispatch(actions.reset(testState));
+    store.dispatch(actions.setDate("5/11/90"));
+  });
   describe("with done tasks", () => {
-    beforeEach(() => {
-      store.dispatch(actions.reset());
-      store.dispatch(actions.setDate("5/11/90"));
-    });
     [
       [
         `
@@ -110,11 +111,6 @@ describe("resolve day", () => {
     });
   });
   describe("with no tasks completed", () => {
-    beforeEach(() => {
-      store.dispatch(actions.reset());
-      store.dispatch(actions.setDate("5/11/90"));
-    });
-
     [
       [
         `

@@ -22,3 +22,4 @@ export const appSlice = createSlice({
 
 export default appSlice.reducer;
 export const actions = appSlice.actions;
+export const selectors = {};

@@ -1,4 +1,4 @@
-import { selectors } from "./tasks";
+import { selectors } from "../features/task";
 
 export function getToday(date = new Date()) {
   return new Date(date).setHours(0, 0, 0, 0);

@@ -4,9 +4,10 @@ import {
   createSlice,
   nanoid,
 } from "@reduxjs/toolkit";
-import { actions as appActions } from "../app";
-import { reset } from "../reset";
-import { currencies } from "../bank";
+import { actions as appActions } from "../../../state/app";
+import { reset } from "../../../state/reset";
+import { currencies } from "../../../state/bank";
+import { listToEntity } from "../../../utils";
 
 export const status = {
   active: "active",
@@ -37,7 +38,7 @@ const tasksAdapter = createEntityAdapter();
 export const a = "a";
 export const b = "b";
 
-export const initialState = {
+export const testState = {
   ids: [a, b],
   entities: {
     [a]: createTask(a, { id: a }),
@@ -45,6 +46,24 @@ export const initialState = {
   },
 };
 
+export const initialState = listToEntity(
+  [
+    "email",
+    "meditate",
+    "teeth",
+    "clean 5%",
+    "quirk",
+    "walk",
+    "dev tea",
+    "luminosity",
+    "🔊📚 (20)",
+    "read(20)",
+    "track 🥪",
+    "track 🥤",
+    "fiber 🧻",
+    "#points",
+  ].map((s) => createTask(s, { id: s }))
+);
 const staticChange =
   (changes) =>
   (state, { payload }) =>
@@ -92,8 +111,9 @@ const tasksSlice = createSlice({
     }),
   },
   extraReducers: {
-    [reset]: () => tasksAdapter.getInitialState(initialState),
-    [appActions.resolveDay]: (state, { payload }) => {
+    [reset]: (state, { payload }) =>
+      tasksAdapter.getInitialState(payload ?? initialState),
+    [appActions?.resolveDay]: (state, { payload }) => {
       if (payload.tasks) {
         Object.values(state.entities).forEach((task) => {
           if (task.status === status.active) {
