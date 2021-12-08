@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+	"test": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'"
   },
   "dependencies": {
     "@cypress/vite-dev-server": "2.2.1",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "1.1.0",
+    "react-redux": "^7.2.6",
     "vite": "2.7.1",
     "vite-plugin-istanbul": "2.3.0"
   }
