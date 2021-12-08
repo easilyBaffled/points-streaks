@@ -1,12 +1,16 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { connect } from "react-redux";
+import { selectors } from "./state";
+function App({ tasks }) {
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
+      <pre>
+        <code>{JSON.stringify(tasks, null, 4)}</code>
+      </pre>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
@@ -27,7 +31,7 @@ function App() {
           >
             Learn React
           </a>
-          {' | '}
+          {" | "}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
@@ -39,7 +43,11 @@ function App() {
         </p>
       </header>
     </div>
-  )
+  );
 }
+//const mapStateToProps = (state) => ({ todos: state.todos })
+export default connect((state) => ({
+  tasks: selectors.tasks.selectAll(state),
+}))(App);
 
-export default App
+// export default App;
