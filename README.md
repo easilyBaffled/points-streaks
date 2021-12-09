@@ -15,7 +15,7 @@
 - [x] create component for Task
 - [x] port over component for streak [sandbox](https://codesandbox.io/s/epic-lalande-87qkj?file=/src/App.js)
 - [ ] set my defaults for layout
-- [ ] add the React Error Overlay
+- [x] add the React Error Overlay
 - [ ] wire up toggle tasks
 - [ ] wire up resolve day
 - [ ] persist state

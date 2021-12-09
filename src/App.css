@@ -9,6 +9,11 @@
 	background: tomato;
 }
 
+.task {
+	display: grid;
+	grid-template-columns: max-content 1fr max-content;
+}
+
 .task .done {
 	text-decoration: line-through;
 	font-weight: normal;
@@ -37,11 +42,7 @@
 	font-weight: lighter;
 }
 .point.dist-4 {
-	font-size: .6rem;
-	font-weight: lighter;
-}
-.point.dist-5 {
-	font-size: .4rem;
+	font-size: .7rem;
 	font-weight: lighter;
 }
 .point.dist-0,
@@ -52,7 +53,6 @@
 }
 
 #task-streaks {
-	flex-direction: column;
-	align-items: flex-start;
+	display: grid;
 }
 
