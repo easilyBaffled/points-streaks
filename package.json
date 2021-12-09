@@ -5,11 +5,12 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-	"test:spec": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'"
+    "test:spec": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'"
   },
   "dependencies": {
     "@cypress/vite-dev-server": "2.2.1",
     "@reduxjs/toolkit": "1.6.2",
+    "clsx": "^1.1.1",
     "cypress": "9.1.0",
     "prettier": "2.5.0",
     "react": "17.0.2",

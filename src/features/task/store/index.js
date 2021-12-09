@@ -62,7 +62,7 @@ export const initialState = listToEntity(
     "track 🥤",
     "fiber 🧻",
     "#points",
-  ].map((s) => createTask(s, { id: s }))
+  ].map((s) => createTask(s, { id: s.replace(/ /g, "-") }))
 );
 const staticChange =
   (changes) =>
@@ -95,6 +95,9 @@ const tasksSlice = createSlice({
   reducers: {
     // Can pass adapter functions directly as case reducers.  Because we're passing this
     // as a value, `createSlice` will auto-generate the `taskAdded` action type / creator
+    toggleTaskStatus: dynamicChange((t) => ({
+      status: t.status === status.active ? status.done : status.active,
+    })),
     markTaskActive: staticChange({ status: status.active }),
     markTaskDone: staticChange({ status: status.done }),
     bumpStreakIterations: dynamicChange((t) => ({

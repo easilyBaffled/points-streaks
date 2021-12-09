@@ -10,9 +10,12 @@
 > I can feel my motivation waning a bit so I really need to be good about laying out small chunks and reminding myself
 > how much faster this will make my mornings, and just think once streaks are done I can start with regular tasking and automating the backlog
 
-- [ ] create component for Task
-- [ ] port over component for streak [sandbox](https://codesandbox.io/s/epic-lalande-87qkj?file=/src/App.js)
+- [x] create Task Feature
+- [x] move task store to feature
+- [x] create component for Task
+- [x] port over component for streak [sandbox](https://codesandbox.io/s/epic-lalande-87qkj?file=/src/App.js)
 - [ ] set my defaults for layout
+- [ ] add the React Error Overlay
 - [ ] wire up toggle tasks
 - [ ] wire up resolve day
 - [ ] persist state

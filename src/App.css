@@ -1,42 +1,58 @@
 .App {
-  /*text-align: center;*/
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	overflow: scroll;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App.debug {
+	background: tomato;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.task .done {
+	text-decoration: line-through;
+	font-weight: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.streak {
+  gap: .5rem;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.point {
+	color: lightblue;
+	font-size: .7rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.point.dist-1 {
+	font-size: 1rem;
+}
+.point.dist-2 {
+	font-size: .9rem;
+	font-weight: lighter;
+}
+.point.dist-3 {
+	font-size: .8rem;
+	font-weight: lighter;
+}
+.point.dist-4 {
+	font-size: .6rem;
+	font-weight: lighter;
+}
+.point.dist-5 {
+	font-size: .4rem;
+	font-weight: lighter;
+}
+.point.dist-0,
+.point.active{
+	color: #333;
+	font-size: 1.1rem;
+	font-weight: bolder;
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+#task-streaks {
+	flex-direction: column;
+	align-items: flex-start;
 }
+
