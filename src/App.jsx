@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { selectors } from "./state";
 import clsx from "clsx";
 import { Task } from "./features/task";
+import {
+  startReportingRuntimeErrors,
+  stopReportingRuntimeErrors,
+} from "react-error-overlay";
+import { useEffect } from "react";
 
 function shouldDebugUI() {
   let params = new URL(document.location).searchParams;
@@ -10,6 +15,11 @@ function shouldDebugUI() {
 }
 
 function App({ tasks }) {
+  useEffect(() => {
+    startReportingRuntimeErrors({ onError: () => {} });
+    return () => stopReportingRuntimeErrors();
+  }, []);
+
   return (
     <div className={clsx("App", { debug: shouldDebugUI() })}>
       <div id="task-streaks">
