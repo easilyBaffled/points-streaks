@@ -14,10 +14,12 @@
 - [x] move task store to feature
 - [x] create component for Task
 - [x] port over component for streak [sandbox](https://codesandbox.io/s/epic-lalande-87qkj?file=/src/App.js)
-- [ ] set my defaults for layout
+- [x] set my defaults for layout
+- [x] use [Custom CSS Reset](https://www.joshwcomeau.com/css/custom-css-reset/)
 - [x] add the React Error Overlay
-- [ ] wire up toggle tasks
-- [ ] wire up resolve day
+- [x] wire up toggle tasks
+- [x] wire up resolve day
+- [ ] why does resolve day break?
 - [ ] persist state
 - [ ] how to do persistence with state migration
 - [ ] wire up firebase/supabase to persistence
