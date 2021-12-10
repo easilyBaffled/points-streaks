@@ -2,8 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import store from "./state";
+import store, { persistor } from "./state";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+export const Redux = ({ children }) => (
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            {children}
+        </PersistGate>
+    </Provider>
+);
 
 console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 
@@ -16,10 +25,10 @@ console.tap = (v, ...rest) => (console.log(v, ...rest), v);
  */
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <Redux>
+            <App />
+        </Redux>
+    </React.StrictMode>,
+    document.getElementById("root")
 );

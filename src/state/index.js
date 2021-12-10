@@ -1,46 +1,83 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
-  reducer as tasks,
-  actions as taskActions,
-  selectors as taskSelectors,
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+import {
+    reducer as tasks,
+    actions as taskActions,
+    selectors as taskSelectors
 } from "../features/task/store";
 import bank, {
-  actions as bankActions,
-  selectors as bankSelectors,
+    actions as bankActions,
+    selectors as bankSelectors
 } from "./bank";
 import app, { actions as appActions, selectors as appSelectors } from "./app";
-import { reset } from "./reset";
+import { reset } from "./actions/reset";
+
+/**
+ * Redux Persist
+ */
+const persistConfig = {
+    key: "root",
+    version: 1,
+    storage
+};
 
 export const actions = {
-  reset,
-  ...appActions,
-  ...bankActions,
-  ...taskActions,
+    reset,
+    ...appActions,
+    ...bankActions,
+    ...taskActions
 };
 
 export const selectors = {
-  tasks: taskSelectors,
-  app: appSelectors,
-  bank: bankSelectors,
+    tasks: taskSelectors,
+    app: appSelectors,
+    bank: bankSelectors
 };
 
-export const reducer = {
-  app,
-  tasks,
-  bank,
-};
-
-const store = configureStore({
-  reducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(), //.concat(logger),
-  devTools: true, //process.env.NODE_ENV !== "production",
-  // preloadedState,
-  // enhancers: [reduxBatch],
+export const reducer = combineReducers({
+    app,
+    tasks,
+    bank
 });
 
-export const initialState = store.getState();
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const store = configureStore({
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER
+                ]
+            }
+        }),
+    devTools: true //process.env.NODE_ENV !== "production",
+    // preloadedState,
+    // enhancers: [reduxBatch],
+});
+
+export let persistor = persistStore(store);
 
 export default store;
+
+export const initialState = store.getState();
 
 //
 // store.dispatch(counter.actions.increment());

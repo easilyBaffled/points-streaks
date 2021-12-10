@@ -20,11 +20,11 @@
 - [x] wire up toggle tasks
 - [x] wire up resolve day
 - [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
-- [ ] persist state
+- [ ] persist state [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
   - [ ] localStorage
   - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
   - [ ] indexdb?
-  - [ ] wire up firebase/supabase to persistence
+  - [ ] wire up firebase/supabase to persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
   - [ ] RTK-Query?
 </details>
 
