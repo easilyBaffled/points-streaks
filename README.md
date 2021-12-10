@@ -19,10 +19,13 @@
 - [x] add the React Error Overlay
 - [x] wire up toggle tasks
 - [x] wire up resolve day
-- [ ] why does resolve day break?
+- [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
 - [ ] persist state
-- [ ] how to do persistence with state migration
-- [ ] wire up firebase/supabase to persistence
+  - [ ] localStorage
+  - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
+  - [ ] indexdb?
+  - [ ] wire up firebase/supabase to persistence
+  - [ ] RTK-Query?
 </details>
 
 
