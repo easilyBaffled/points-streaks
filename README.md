@@ -1,6 +1,43 @@
 
 <details>
 	<summary>
+		<strong>Cloud/DB</strong>
+	</summary>
+
+> OK I have finally hit the wall that I feel I always run into and then drop
+> Cloud Storage. At savepoint I need a database.
+> I wish to high hell that I could just save my entire redux store on every change but that doesn't seem to be possible.
+> My wish would be something like [immer-to-firestore](https://github.com/tdawes/immer-to-firestore)
+> where I could perform JS actions on an object and that would be translated to firestore/supabase/what-ever.
+> It's possible my answer still lies with GraphQL, but that's going to require a lot of reading and learning.
+> I may end up splitting my time between learning that and forward progress on streaks. So I am going to need to do some thinking
+> For the time being I think I need to do some quick and dirty work on streaks to keep it going,
+> namely use my `redux-persist` hack where I write the whole string of my state to firebase through `redux-persist`.
+> I presume it's "gross" but it also let's me maintian my forward progress on this app, while I figure out what I am looking for
+
+> my number one concern is not having to work in two projects, so no client/server situation.
+> Even if they both live in the same project, I really don't want to have to maintain a front and backend
+
+- [ ] FireStore Persist
+  - [ ] locate my persist code in the previous points
+  - [ ] port over persist
+  - [ ] persist state to/through firebase
+- [ ] Magic Wand DB
+  - [ ] draft what the "magic wand" option would be
+  - [ ] why don't I think Apollo is that option
+  - [ ] draft what I think existing tools I could use for that would be
+  - [ ] draft how I could abstract all of my work with RTK to that
+- [ ] Apollo Odyssey
+  - [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
+  - [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
+  - [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
+  - [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
+
+</details>
+
+
+<details>
+	<summary>
 		<strong>Train of Thought: UI</strong>
 	</summary>
 
