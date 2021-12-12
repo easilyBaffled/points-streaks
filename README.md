@@ -20,11 +20,13 @@
 - [x] wire up toggle tasks
 - [x] wire up resolve day
 - [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
-- [ ] persist state [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+- [ ] persist state
   - [x] localStorage
+  - [ ] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
+  - [ ] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
   - [ ] read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
   - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
-  - [ ] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
+  - [ ] just add basic read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
   - [ ] wire up firebase/supabase to persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
   - [ ] RTK-Query?
 - [ ] Testing
