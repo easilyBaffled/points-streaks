@@ -19,19 +19,19 @@
 > Even if they both live in the same project, I really don't want to have to maintain a front and backend
 
 - [ ] FireStore Persist
-  - [ ] locate my persist code in the previous points
-  - [ ] port over persist
-  - [ ] persist state to/through firebase
+	- [ ] locate my persist code in the previous points
+	- [ ] port over persist
+	- [ ] persist state to/through firebase
 - [ ] Magic Wand DB
-  - [ ] draft what the "magic wand" option would be
-  - [ ] why don't I think Apollo is that option
-  - [ ] draft what I think existing tools I could use for that would be
-  - [ ] draft how I could abstract all of my work with RTK to that
+	- [ ] draft what the "magic wand" option would be
+	- [ ] why don't I think Apollo is that option
+	- [ ] draft what I think existing tools I could use for that would be
+	- [ ] draft how I could abstract all of my work with RTK to that
 - [ ] Apollo Odyssey
-  - [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
-  - [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
-  - [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
-  - [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
+	- [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
+	- [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
+	- [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
+	- [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
 
 </details>
 
@@ -58,24 +58,24 @@
 - [x] wire up resolve day
 - [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
 - [ ] persist state
-  - [x] localStorage
-  - [x] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
-    - [x] add emulation https://firebase.google.com/docs/emulator-suite & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
-    - [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
-  - [ ] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
-  - [ ] read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
-  - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
-  - [ ] just add basic read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-  - [ ] wire up firebase/supabase to persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-  - [ ] RTK-Query?
+	- [x] localStorage
+	- [x] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
+		- [x] add emulation https://firebase.google.com/docs/emulator-suite & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
+		- [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
+	- [ ] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
+	- [ ] read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
+	- [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
+	- [ ] just add basic read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+	- [ ] wire up firebase/supabase to persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+	- [ ] RTK-Query?
 - [ ] Testing
-  - [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
-  - [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
-  - [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
-  - [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
+	- [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
+	- [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
+	- [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
+	- [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
 
 - [ ] Styling
-  - [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
+	- [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
 </details>
 
 
