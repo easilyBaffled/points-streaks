@@ -22,9 +22,9 @@
 - [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
 - [ ] persist state
   - [x] localStorage
-  - [ ] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
-    - [ ] add emulation https://firebase.google.com/docs/emulator-suite & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
-    - [ ] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
+  - [x] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
+    - [x] add emulation https://firebase.google.com/docs/emulator-suite & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
+    - [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
   - [ ] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
   - [ ] read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
   - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
@@ -33,9 +33,10 @@
   - [ ] RTK-Query?
 - [ ] Testing
   - [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
-  - [ ] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
-  - [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
   - [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
+  - [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
+  - [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
+
 - [ ] Styling
   - [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
 </details>
