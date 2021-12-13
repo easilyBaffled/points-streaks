@@ -20,9 +20,9 @@ export const createFireBaseRealTimePersistConfig = (
             }),
         getItem: dbStorage.getItem,
         setItem: ( key, value ) =>
-            storage.setItem( key, value ).then( () => {
-                dbStorage.setItem( deserializePersist( value ) );
-            })
+            storage.setItem( key, value ).then( () =>
+                dbStorage.setItem( deserializePersist( value ) )
+            )
     };
 
     return createDefaultPersistConfig({ storage: mergedStorage });

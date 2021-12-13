@@ -1,17 +1,22 @@
 import pThrottle from "p-throttle";
-import { setDoc } from "firebase/firestore"
+import { setDoc } from "firebase/firestore";
 
-export const createFBStorageAPI = ( stateDocReference, interval = 2000 ) => {
+/**
+ *
+ * @param {Promise<import("firebase/firestore").DocumentSnapshot>} stateDoc
+ * @param {number} interval
+ * @return {{deleteItem: ThrottledFunction<[], Promise<void>>, getItem: (function(): *), setItem: ThrottledFunction<[], Promise<void>>}}
+ */
+export function createFBStorageAPI(stateDoc, interval = 2000) {
+    stateDoc.then(console.log);
     const setFBValue = pThrottle({
         interval,
         limit: 1
-    })( ( val ) =>
-		setDoc(stateDocReference, val )
-	);
+    })((val) => stateDoc.then((doc) => setDoc(doc, val)));
 
     return {
         deleteItem: setFBValue,
-        getItem:    () => stateDocReference.data(),
-        setItem:    setFBValue
+        getItem: () => stateDoc.then((doc) => doc.data()).then(console.tap),
+        setItem: setFBValue
     };
-};
+}

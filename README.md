@@ -46,6 +46,9 @@
     - [ ] why don't I think Apollo is that option
     - [ ] draft what I think existing tools I could use for that would be
     - [ ] draft how I could abstract all of my work with RTK to that
+    - [ ] could [redux-deep-diff](https://www.npmjs.com/package/redux-deep-diff) help?
+    - [ ] could [redux-undo](https://github.com/omnidan/redux-undo) help
+    - [ ] could [microdiff](https://github.com/AsyncBanana/microdiff?ck_subscriber_id=478727104) help
 - [ ] Apollo Odyssey
     - [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
     - [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)

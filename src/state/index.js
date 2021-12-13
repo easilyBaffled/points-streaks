@@ -23,14 +23,18 @@ import bank, {
 import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./actions/reset";
 import { createFireBaseRealTimePersistConfig } from "../libs";
-import firebaseConfig from '../config/firebase'
+import firebaseConfig from "../config/firebase";
+
+const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
+
 /**
  * Redux Persist
  */
 const persistConfig = {
     key: "root",
     version: 1,
-    storage: createFireBaseRealTimePersistConfig(firebaseConfig)
+    // storage
+    ...fbStorage
 };
 
 export const actions = {
