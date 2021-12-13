@@ -19,19 +19,38 @@
 > Even if they both live in the same project, I really don't want to have to maintain a front and backend
 
 - [ ] FireStore Persist
-	- [ ] locate my persist code in the previous points
-	- [ ] port over persist
-	- [ ] persist state to/through firebase
+    - [x] locate my persist code in the previous points
+    - [x] port over persist
+    - [ ] read the new docs
+      - [x] [collection](https://firebase.google.com/docs/reference/js/firestore_.md#collection)
+        > Gets a CollectionReference
+        Not too much I can do with it, so I need to use getDoc(s)
+      - [x] [getDoc](https://firebase.google.com/docs/reference/js/firestore_.md#getdoc)
+        > Reads the document referred to by this DocumentReference.
+        `getDocs` lets you specify a query and get an array, but if I'm only playing by myself
+        then I don't need to query.
+        But really I care about `DocumentReference`
+        > A DocumentSnapshot contains data read from a document in your Firestore database.
+        The data can be extracted with .data() or .get(<field>) to get a specific field.
+      - [x] [setDoc](https://firebase.google.com/docs/reference/js/firestore_.md#setdoc)
+        > Writes to the document referred to by this DocumentReference. If the document does not yet exist, it will be created.
+        > If you provide `merge` or `mergeFields`, the provided data can be merged into an existing document.
+        Perhaps I can in the future send just the chunk of state that has been updated, rather than sending the whole thing
+
+    - [ ] set up persist as a string
+    - [ ] get string persist working
+    - [ ] set up persisting an object
+    - [ ] get object persist working
 - [ ] Magic Wand DB
-	- [ ] draft what the "magic wand" option would be
-	- [ ] why don't I think Apollo is that option
-	- [ ] draft what I think existing tools I could use for that would be
-	- [ ] draft how I could abstract all of my work with RTK to that
+    - [ ] draft what the "magic wand" option would be
+    - [ ] why don't I think Apollo is that option
+    - [ ] draft what I think existing tools I could use for that would be
+    - [ ] draft how I could abstract all of my work with RTK to that
 - [ ] Apollo Odyssey
-	- [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
-	- [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
-	- [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
-	- [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
+    - [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
+    - [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
+    - [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
+    - [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
 
 </details>
 
