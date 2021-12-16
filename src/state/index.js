@@ -22,7 +22,7 @@ import bank, {
 } from "./bank";
 import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./actions/reset";
-import { createFireBaseRealTimePersistConfig } from "../libs";
+import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
 import firebaseConfig from "../config/firebase";
 
 const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
