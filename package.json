@@ -8,7 +8,7 @@
     "test:spec": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "1.6.2",
+    "@reduxjs/toolkit": "1.7.1",
     "clsx": "^1.1.1",
     "cypress": "9.1.0",
     "firebase": "^9.6.1",
