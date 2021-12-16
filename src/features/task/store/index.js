@@ -18,7 +18,7 @@ export const status = {
  *
  * @param {string} task
  * @param {TaskParts} optional
- * @return Task
+ * @return TaskStreak
  */
 function createTask(task, optional = {}) {
     return {

@@ -1,29 +1,36 @@
 export interface Bank {
-	points: number;
-	special: {
-		pizza: number;
-	};
+    points: number;
+    special: {
+        pizza: number;
+    };
 }
 
-export interface Task {
-	id: string;
-	status: "active" | "done";
-	task: string;
-	streakIterations: number;
-	currentStreakIndex: number;
+export interface TaskBase {
+    id: string;
+    status: "active" | "done";
+    task: string;
 }
 
-export type TaskParts = Partial<Task>
+export interface Task extends TaskBase {
+    value: number;
+}
+
+export interface TaskStreak extends TaskBase {
+    streakIterations: number;
+    currentStreakIndex: number;
+}
+
+export type TaskParts = Partial<TaskBase>;
 
 export interface TaskDict {
-	[id: string]: Task;
+    [id: string]: TaskStreak;
 }
 
 export interface App {
-	bank: Bank;
-	date: Date;
-	tasks: {
-		ids: [id: string];
-		entities: TaskDict;
-	};
+    bank: Bank;
+    date: Date;
+    tasks: {
+        ids: [id: string];
+        entities: TaskDict;
+    };
 }

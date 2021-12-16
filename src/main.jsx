@@ -18,7 +18,7 @@ console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 
 //https://goulet.dev/posts/how-to-write-ts-interfaces-in-jsdoc/
 /**
- * @typedef { import("./index").Task } Task
+ * @typedef { import("./index").TaskStreak } TaskStreak
  * @typedef { import("./index").Bank } Bank
  * @typedef { import("./index").Task } TaskDict
  * @typedef { import("./index").TaskParts } TaskParts

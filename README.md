@@ -1,6 +1,29 @@
 
 <details>
 	<summary>
+		<strong>Stream Of Thought: Standard Tasks</strong>
+	</summary>
+
+> So I have finally hit a major refactoring point. I want to add standard tasks, ones that I can create, complete, move to history, and move back if necessary.
+> I am going to have to recover from shooting myself in the foot first, because I named all the streak stuff "task" so the first thing is to refactor that to be just streaks
+> And in looking forward I am going to have to be a little careful because I am also going to want daily tasks, that are like teh standard task but it doesn't get moved to history.
+> I can think about how that gets implemented later, but it's more that I need to keep things open, so I can easily adapt it later.
+
+- [ ] how can I read that I am in a test env to disable firebase?
+- [ ] create cypress watch so I can make my changes and get live updates
+- [ ] refactor `/task` to be `/streaks`
+- [ ] move `Task` component to a shared `/component` location
+- [ ] update `Task` component so that it can be composed with other type of tasks
+- [ ] create tests for task CRUD
+- [ ] create tests for the app with standard tasks
+- [ ] create entities for "tasks" and "history",
+- [ ] create updaters to move tasks between the two lists
+- [ ] add handler to bank to move task's value
+
+</details>
+
+<details>
+	<summary>
 		<strong>Stream Of Thought: Firestore Persist</strong>
 	</summary>
 
