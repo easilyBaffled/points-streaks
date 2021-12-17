@@ -8,7 +8,8 @@
     "serve": "vite preview",
     "test": "npx cypress run-ct",
     "test:open": "npx cypress open-ct",
-    "test:spec": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'"
+    "test:spec": "npx cypress run --spec='**/unit/$npm_config_spec.spec.js'",
+    "validate:circ": "npx madge --circular ./src"
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.7.1",

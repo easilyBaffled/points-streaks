@@ -7,6 +7,7 @@ import {
 } from "../features/task/store";
 import { selectors as bank } from "../state/bank";
 import { getDaysState } from "../state/resolveDaySelector";
+import { resolveDay } from "../state/actions";
 
 const dispatchPipe = (...actions) => {
     actions.reduce((s, action) => {
@@ -32,7 +33,7 @@ describe("resolve day", () => {
                 () => {
                     const nextState = dispatchPipe(
                         taskActions.markTaskDone(a),
-                        (s) => actions.resolveDay(getDaysState(s))
+                        (s) => resolveDay(getDaysState(s))
                     );
 
                     const actual = {
@@ -56,7 +57,7 @@ describe("resolve day", () => {
                     const nextState = dispatchPipe(
                         taskActions.bumpStreakIndex(a),
                         taskActions.markTaskDone(a),
-                        (s) => actions.resolveDay(getDaysState(s))
+                        (s) => resolveDay(getDaysState(s))
                     );
 
                     const actual = {
@@ -84,7 +85,7 @@ describe("resolve day", () => {
                         taskActions.bumpStreakIndex(a),
                         taskActions.bumpStreakIndex(a),
                         taskActions.markTaskDone(a),
-                        (s) => actions.resolveDay(getDaysState(s))
+                        (s) => resolveDay(getDaysState(s))
                     );
 
                     const actual = {
@@ -125,9 +126,7 @@ describe("resolve day", () => {
  			- [ ] task: [ 1, 2, 3, 4, 5, 🍕 ]	| - [ ] task: [ 1, 2, 3, 4, 5, 🍕 ]
 		`,
                 () => {
-                    store.dispatch(
-                        actions.resolveDay(getDaysState(store.getState()))
-                    );
+                    store.dispatch(resolveDay(getDaysState(store.getState())));
                     const nextState = store.getState();
                     const actual = {
                         points: bank.getPoints(nextState),
@@ -149,7 +148,7 @@ describe("resolve day", () => {
                 () => {
                     const nextState = dispatchPipe(
                         taskActions.bumpStreakIndex(a),
-                        (s) => actions.resolveDay(getDaysState(s), s)
+                        (s) => resolveDay(getDaysState(s), s)
                     );
 
                     const actual = {
