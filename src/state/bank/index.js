@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as app from "../app";
 import { reset } from "../actions/reset";
+import { resolveDay } from "../actions";
 
 export const currencies = {
     pizza: "pizza"
@@ -43,7 +44,7 @@ export const bankSliceDefinition = {
     },
     extraReducers: {
         [reset]: () => initialState,
-        [app.actions.resolveDay]: (s, { payload: { bank } }) => {
+        [resolveDay]: (s, { payload: { bank } }) => {
             Object.entries(bank).forEach(([k, v]) => {
                 if (k === "points") s.points += v;
                 else s.special[k] = (s.special[k] ?? 0) + v;

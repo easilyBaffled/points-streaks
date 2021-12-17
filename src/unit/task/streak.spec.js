@@ -7,9 +7,9 @@ import {
     selectors,
     status,
     streakMax
-} from "../../../../src/features/task";
+} from "../../features/task";
 import { _modifyEntity } from "../modifyEntity";
-import { currencies } from "../../../../src/state/bank";
+import { currencies } from "../../state/bank";
 
 const modifyEntity = _modifyEntity(testState);
 

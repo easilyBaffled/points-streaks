@@ -19,12 +19,15 @@
 const path = require("path");
 const { startDevServer } = require("@cypress/vite-dev-server");
 
+const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+
 module.exports = (on, config) => {
     on("dev-server:start", (options) => {
         try {
             return startDevServer({
                 options,
                 viteConfig: {
+                    mode: "test",
                     configFile: path.resolve(
                         __dirname,
                         "..",

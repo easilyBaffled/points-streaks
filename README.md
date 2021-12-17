@@ -9,7 +9,7 @@
 > And in looking forward I am going to have to be a little careful because I am also going to want daily tasks, that are like teh standard task but it doesn't get moved to history.
 > I can think about how that gets implemented later, but it's more that I need to keep things open, so I can easily adapt it later.
 
-- [ ] how can I read that I am in a test env to disable firebase?
+- [x] how can I read that I am in a test env to disable firebase?
 - [ ] create cypress watch so I can make my changes and get live updates
 - [ ] refactor `/task` to be `/streaks`
 - [ ] move `Task` component to a shared `/component` location

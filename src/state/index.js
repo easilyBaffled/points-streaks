@@ -25,16 +25,18 @@ import { reset } from "./actions/reset";
 import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
 import firebaseConfig from "../config/firebase";
 
-const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
+// const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
+console.log(import.meta.env);
 
+const testStorage = { storage };
 /**
  * Redux Persist
  */
 const persistConfig = {
     key: "root",
     version: 1,
-    // storage
-    ...fbStorage
+    storage
+    //...(import.meta.env.MODE === "test" ? testStorage : fbStorage)
 };
 
 export const actions = {

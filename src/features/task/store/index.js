@@ -4,10 +4,10 @@ import {
     createSlice,
     nanoid
 } from "@reduxjs/toolkit";
-import { actions as appActions } from "../../../state/app";
 import { reset } from "../../../state/actions/reset";
 import { currencies } from "../../../state/bank";
 import { listToEntity } from "../../../utils";
+import { resolveDay } from "../../../state/actions";
 
 export const status = {
     active: "active",
@@ -116,7 +116,7 @@ const tasksSlice = createSlice({
     extraReducers: {
         [reset]: (state, { payload }) =>
             tasksAdapter.getInitialState(payload ?? initialState),
-        [appActions?.resolveDay]: (state, { payload }) => {
+        [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {
                     if (task.status === status.active) {
