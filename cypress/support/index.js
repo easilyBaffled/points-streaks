@@ -26,3 +26,5 @@ Cypress.on("uncaught:exception", (err) => {
     console.error(err);
     return false;
 });
+
+cy.clean = ([name]) => name.replace(/^(\s+)/gm, "");

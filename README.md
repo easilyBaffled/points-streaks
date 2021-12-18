@@ -10,7 +10,7 @@
 > I can think about how that gets implemented later, but it's more that I need to keep things open, so I can easily adapt it later.
 
 - [x] how can I read that I am in a test env to disable firebase?
-- [ ] create cypress watch so I can make my changes and get live updates
+- [x] create cypress watch so I can make my changes and get live updates
 - [ ] refactor `/task` to be `/streaks`
 - [ ] move `Task` component to a shared `/component` location
 - [ ] update `Task` component so that it can be composed with other type of tasks

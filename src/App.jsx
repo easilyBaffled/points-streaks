@@ -2,7 +2,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import { selectors, actions } from "./state";
 import clsx from "clsx";
-import { Task } from "./features/task";
+import { StreakTask } from "./features/streak";
 import {
     startReportingRuntimeErrors,
     stopReportingRuntimeErrors
@@ -26,7 +26,7 @@ function App({ tasks, lastRunDate, resolveDay }) {
         <div className={clsx("App", { debug: shouldDebugUI() })}>
             <div id="task-streaks">
                 {tasks.map((t) => (
-                    <Task key={t.id} {...t} />
+                    <StreakTask key={t.id} {...t} />
                 ))}
             </div>
             <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
@@ -51,7 +51,7 @@ export default connect(
     (state) => ({
         state,
         lastRunDate: prettyDateFormat(state.app.date),
-        tasks: selectors.tasks.selectAll(state)
+        tasks: selectors.streaks.selectAll(state)
     }),
     (dispatch) => ({
         resolveDay: (state) => () => dispatch(resolveDay(getDaysState(state)))

@@ -4,7 +4,7 @@ and the day resolves
 ```
 bank: 0						| bank: 0
 history: {}					| history: {}
-tasks: { - [ ] task: 1 }	| tasks: { - [ ] task: 1 }
+streakSelectors: { - [ ] task: 1 }	| streakSelectors: { - [ ] task: 1 }
 ```
 
 when a task has been completed
@@ -12,7 +12,7 @@ and the day resolves
 ```
 bank: 0						| bank: 1
 history: {}					| history: { - [ ] task: 1 }
-tasks: { - [x] task: 1 }	| tasks: {}
+streakSelectors: { - [x] task: 1 }	| streakSelectors: {}
 ```
 
 when a task is in history
@@ -20,7 +20,7 @@ and it has been redeemed
 ```
 bank: 1						| bank: 0
 history: { - [ ] task: 1 }	| history: {}
-tasks: {}					| tasks: { - [ ] task: 1 }
+streakSelectors: {}					| streakSelectors: { - [ ] task: 1 }
 ```
 
 when a task is in history
@@ -29,6 +29,6 @@ and there are not enough points in the bank
 ```
 bank: 0						| bank: 0
 history: { - [ ] task: 1 }	| history: {}
-tasks: {}					| tasks: { - [ ] task: 0 }
+streakSelectors: {}					| streakSelectors: { - [ ] task: 0 }
 ```
 */

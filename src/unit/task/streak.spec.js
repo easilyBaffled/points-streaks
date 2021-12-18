@@ -7,7 +7,7 @@ import {
     selectors,
     status,
     streakMax
-} from "../../features/task";
+} from "../../features/streak";
 import { _modifyEntity } from "../modifyEntity";
 import { currencies } from "../../state/bank";
 
@@ -79,13 +79,13 @@ describe("selectors", () => {
     describe("getTaskValue", () => {
         const state = reducer(testState, actions.markTaskDone(a));
         it("should return 0 because it hasn't been done", () => {
-            const actual = selectors.getTaskValue(testState, a);
+            const actual = selectors.getStreakValue(testState, a);
             const expected = 0;
 
             expect(actual).to.eqls(expected);
         });
         it("should return a point", () => {
-            const actual = selectors.getTaskValue(state, a);
+            const actual = selectors.getStreakValue(state, a);
             const expected = 1;
 
             expect(actual).to.eqls(expected);
@@ -95,7 +95,7 @@ describe("selectors", () => {
                 .fill(actions.bumpStreak(a))
                 .reduce(reducer, state);
 
-            const actual = selectors.getTaskValue(newState, a);
+            const actual = selectors.getStreakValue(newState, a);
             const expected = 2;
 
             expect(actual).to.eqls(expected);
@@ -105,7 +105,7 @@ describe("selectors", () => {
                 .fill(actions.bumpStreak(a))
                 .reduce(reducer, state);
 
-            const actual = selectors.getTaskValue(newState, a);
+            const actual = selectors.getStreakValue(newState, a);
             const expected = currencies.pizza;
 
             expect(actual).to.eqls(expected);

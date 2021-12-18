@@ -14,14 +14,28 @@ export const Redux = ({ children }) => (
     </Provider>
 );
 
-console.tap = (v, ...rest) => (console.log(v, ...rest), v);
-
+console.tap = (v, ...rest) => (
+    console.log(
+        "%c" +
+            new Error().stack
+                .split("\n")[2]
+                .replace(
+                    /    at ([^(]+).*src([^?]+)\?t=\d+:(\d+)/,
+                    "$1- $2:$3"
+                ),
+        "background: tomato;color: #eee;padding: 5px;border-radius: 10px;margin: 5px",
+        v,
+        ...rest
+    ),
+    v
+);
 //https://goulet.dev/posts/how-to-write-ts-interfaces-in-jsdoc/
 /**
- * @typedef { import("./index").TaskStreak } TaskStreak
  * @typedef { import("./index").Bank } Bank
  * @typedef { import("./index").Task } TaskDict
+ * * @typedef { import("./index").TaskBase } TaskBase
  * @typedef { import("./index").TaskParts } TaskParts
+ * @typedef { import("./index").TaskStreak } TaskStreak
  */
 
 ReactDOM.render(

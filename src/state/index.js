@@ -12,10 +12,10 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import {
-    reducer as tasks,
-    actions as taskActions,
-    selectors as taskSelectors
-} from "../features/task/store";
+    reducer as streaks,
+    actions as streakActions,
+    selectors as streakSelectors
+} from "../features/streak/store";
 import bank, {
     actions as bankActions,
     selectors as bankSelectors
@@ -26,7 +26,6 @@ import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
 import firebaseConfig from "../config/firebase";
 
 // const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
-console.log(import.meta.env);
 
 const testStorage = { storage };
 /**
@@ -43,18 +42,18 @@ export const actions = {
     reset,
     ...appActions,
     ...bankActions,
-    ...taskActions
+    ...streakActions
 };
 
 export const selectors = {
-    tasks: taskSelectors,
+    streaks: streakSelectors,
     app: appSelectors,
     bank: bankSelectors
 };
 
 export const reducer = combineReducers({
     app,
-    tasks,
+    streaks,
     bank
 });
 

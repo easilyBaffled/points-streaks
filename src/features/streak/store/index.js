@@ -117,7 +117,7 @@ const tasksSlice = createSlice({
         [reset]: (state, { payload }) =>
             tasksAdapter.getInitialState(payload ?? initialState),
         [resolveDay]: (state, { payload }) => {
-            if (payload.tasks) {
+            if (payload.streaks) {
                 Object.values(state.entities).forEach((task) => {
                     if (task.status === status.active) {
                         task.streakIterations = 1;
@@ -137,24 +137,24 @@ const tasksSlice = createSlice({
 export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
 export const selectors = tasksAdapter.getSelectors(
-    (state) => state?.tasks ?? state
+    (state) => state?.streaks ?? state
 );
-selectors.getTask = selectors.selectById;
+selectors.getStreak = selectors.selectById;
 
 // /**
 //  * @type {(state: unknown, id: EntityId) => number}
 //  */
-selectors.getTaskStreakIndex = createSelector(
-    selectors.getTask,
+selectors.getStreakIndex = createSelector(
+    selectors.getStreak,
     (task) => task.currentStreakIndex
 );
 
-selectors.getTaskStreakIteration = createSelector(
-    selectors.getTask,
+selectors.getStreakIteration = createSelector(
+    selectors.getStreak,
     (task) => task.streakIterations
 );
 
-selectors.getTaskValue = createSelector(selectors.getTask, (task) =>
+selectors.getStreakValue = createSelector(selectors.getStreak, (task) =>
     task.status === status.active
         ? 0
         : task.currentStreakIndex === streakMax
@@ -166,7 +166,7 @@ selectors.getDaysPoints = createSelector(
     [selectors.selectIds, (state) => state],
     (taskIds, state) =>
         taskIds
-            .map((id) => selectors.getTaskValue(state, id))
+            .map((id) => selectors.getStreakValue(state, id))
             .reduce(
                 (acc, value) => {
                     if (Number.isInteger(value)) acc.points += value;

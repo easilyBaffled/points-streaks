@@ -29,7 +29,7 @@ export function createFBStorageAPI(stateDoc, interval = 2000) {
 		app: {
 			date: 1639371600000
 		},
-		tasks: {
+		streakSelectors: {
 			ids: [
 				"email",
 				"meditate",
