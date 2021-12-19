@@ -34,3 +34,5 @@ export interface App {
         entities: TaskDict;
     };
 }
+export { dynamicChange } from "./utils";
+export { staticChange } from "./utils";

@@ -16,6 +16,11 @@ import {
     actions as streakActions,
     selectors as streakSelectors
 } from "../features/streak/store";
+import {
+    reducer as tasks,
+    actions as taskActions,
+    selectors as taskSelectors
+} from "../features/task/store";
 import bank, {
     actions as bankActions,
     selectors as bankSelectors
@@ -25,7 +30,7 @@ import { reset } from "./actions/reset";
 import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
 import firebaseConfig from "../config/firebase";
 
-// const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
+const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
 
 const testStorage = { storage };
 /**
@@ -34,18 +39,20 @@ const testStorage = { storage };
 const persistConfig = {
     key: "root",
     version: 1,
-    storage
-    //...(import.meta.env.MODE === "test" ? testStorage : fbStorage)
+    // storage
+    ...(import.meta.env.MODE === "test" ? testStorage : fbStorage)
 };
 
 export const actions = {
     reset,
+    ...taskActions,
     ...appActions,
     ...bankActions,
     ...streakActions
 };
 
 export const selectors = {
+    tasks: taskSelectors,
     streaks: streakSelectors,
     app: appSelectors,
     bank: bankSelectors
@@ -54,7 +61,8 @@ export const selectors = {
 export const reducer = combineReducers({
     app,
     streaks,
-    bank
+    bank,
+    tasks
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

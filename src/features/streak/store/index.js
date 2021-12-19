@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { reset } from "../../../state/actions/reset";
 import { currencies } from "../../../state/bank";
-import { listToEntity } from "../../../utils";
+import { listToEntity, _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
 
 export const status = {
@@ -64,18 +64,10 @@ export const initialState = listToEntity(
         "#points"
     ].map((s) => createTask(s, { id: s.replace(/ /g, "-") }))
 );
-const staticChange =
-    (changes) =>
-    (state, { payload }) =>
-        tasksAdapter.updateOne(state, { id: payload, changes });
 
-const dynamicChange =
-    (updater) =>
-    (state, { payload }) =>
-        tasksAdapter.updateOne(state, {
-            id: payload,
-            changes: updater(state.entities[payload])
-        });
+const staticChange = _staticChange(tasksAdapter);
+
+const dynamicChange = _dynamicChange(tasksAdapter);
 
 function bumpStreakChange(t) {
     if (t.currentStreakIndex === streakMax) {
@@ -117,7 +109,7 @@ const tasksSlice = createSlice({
         [reset]: (state, { payload }) =>
             tasksAdapter.getInitialState(payload ?? initialState),
         [resolveDay]: (state, { payload }) => {
-            if (payload.streaks) {
+            if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {
                     if (task.status === status.active) {
                         task.streakIterations = 1;

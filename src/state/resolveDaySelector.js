@@ -9,7 +9,7 @@ export function getDaysState(state) {
         return { bank: {}, streaks: false, app: {} };
     return {
         bank: selectors.getDaysPoints(state),
-        streaks: true,
+        tasks: true,
         app: {
             date: getToday()
         }

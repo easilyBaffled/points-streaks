@@ -12,7 +12,7 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-
+import { current } from "@reduxjs/toolkit";
 // Import commands.js using ES2015 syntax:
 import "./commands";
 console.tap = (v, ...rest) => (console.log(v, ...rest), v);
@@ -28,3 +28,4 @@ Cypress.on("uncaught:exception", (err) => {
 });
 
 cy.clean = ([name]) => name.replace(/^(\s+)/gm, "");
+cy.current = current;

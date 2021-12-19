@@ -25,7 +25,7 @@ describe("resolve day", () => {
     });
 
     describe("with done streakSelectors", () => {
-        it(
+        it.only(
             cy.clean`
  			bank: 0								| bank: 1
  			- [x] streak: [ 1, 2, 3, 4, 5, 🍕]	| - [ ] streak: [ x, 2, 3, 4, 5, 🍕]
@@ -37,7 +37,7 @@ describe("resolve day", () => {
                 );
 
                 const actual = {
-                    points: bank.getPoints(console.tap(nextState)),
+                    points: bank.getPoints(nextState),
                     a: streakSelectors.getStreakIndex(nextState, a)
                 };
                 const expected = {
