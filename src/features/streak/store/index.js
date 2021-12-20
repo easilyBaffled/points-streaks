@@ -107,7 +107,7 @@ const tasksSlice = createSlice({
     },
     extraReducers: {
         [reset]: (state, { payload }) =>
-            tasksAdapter.getInitialState(payload ?? initialState),
+            tasksAdapter.getInitialState(payload?.streaks ?? initialState),
         [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {

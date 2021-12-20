@@ -13,7 +13,8 @@
 - [x] create cypress watch so I can make my changes and get live updates
 - [x] refactor `/task` to be `/streaks`
 - [x] move `Task` component to a shared `/component` location
-- [ ] update `Task` component so that it can be composed with other type of tasks
+- [x] update `Task` component so that it can be composed with other type of tasks
+- [ ] create exports necessary for tests
 - [ ] create tests for task CRUD
 - [ ] create tests for the app with standard tasks
 - [ ] create entities for "tasks" and "history",

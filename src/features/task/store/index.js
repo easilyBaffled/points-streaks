@@ -1,29 +1,16 @@
 import {
     createEntityAdapter,
     createSelector,
-    createSlice,
-    nanoid
+    createSlice
 } from "@reduxjs/toolkit";
 import { reset } from "../../../state/actions/reset";
 import { _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
-
-/**
- *
- * @param {string} task
- * @param {TaskParts} optional
- * @return Task
- */
-function createTask(task, optional = {}) {
-    return {
-        id: nanoid(),
-        status: status.active,
-        task,
-        value: 1,
-        ...optional
-    };
-}
-
+export { a, b, testState } from "./testItems";
+export const status = {
+    active: "active",
+    done: "done"
+};
 const tasksAdapter = createEntityAdapter();
 const staticChange = _staticChange(tasksAdapter);
 
@@ -45,8 +32,7 @@ const tasksSlice = createSlice({
         }
     },
     extraReducers: {
-        [reset]: (state, { payload }) =>
-            tasksAdapter.getInitialState({ history: {} }),
+        [reset]: () => tasksAdapter.getInitialState({ history: {} }),
         [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {

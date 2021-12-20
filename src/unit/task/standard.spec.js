@@ -1,3 +1,19 @@
+// template test
+
+import { a, actions, reducer, status, testState } from "../../features/task";
+
+import { _modifyEntity } from "../modifyEntity";
+const modifyEntity = _modifyEntity(testState);
+
+describe("Task CRUD", () => {
+    it("should __", () => {
+        const actual = reducer(testState, actions.markTaskDone(a));
+        const expected = modifyEntity(a, (e) => (e.status = status.done));
+
+        expect(actual).to.eqls(expected);
+    });
+});
+
 /*
 when nothing has changed
 and the day resolves

@@ -22,7 +22,7 @@ const dispatchPipe = (...actions) => {
 
 describe("resolve day", () => {
     beforeEach(() => {
-        store.dispatch(actions.reset(testState));
+        store.dispatch(actions.reset({ streaks: testState }));
         store.dispatch(actions.setDate("5/11/90"));
     });
 
