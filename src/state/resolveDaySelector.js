@@ -6,10 +6,11 @@ export function getToday(date = new Date()) {
 
 export function getDaysState(state) {
     if (state.app.date === getToday())
-        return { bank: {}, streaks: false, app: {} };
+        return { bank: {}, streaks: false, tasks: false, app: {} };
     return {
         bank: selectors.getDaysPoints(state),
         tasks: true,
+        streaks: true,
         app: {
             date: getToday()
         }

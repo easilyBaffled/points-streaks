@@ -39,7 +39,6 @@ const testStorage = { storage };
 const persistConfig = {
     key: "root",
     version: 1,
-    // storage
     ...(import.meta.env.MODE === "test" ? testStorage : fbStorage)
 };
 

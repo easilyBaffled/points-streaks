@@ -1,7 +1,7 @@
 import store, { actions } from "../state";
 import {
     a,
-    actions as taskActions,
+    actions as streakActions,
     selectors as streakSelectors,
     testState
 } from "../features/streak/store";
@@ -12,7 +12,9 @@ import { resolveDay } from "../state/actions";
 const dispatchPipe = (...actions) => {
     actions.reduce((s, action) => {
         if (typeof action === "function") {
-            store.dispatch(action(store.getState()));
+            if (action.name === "tap" || action.name === "log")
+                action(store.getState());
+            else store.dispatch(action(store.getState()));
         } else store.dispatch(action);
     }, {});
     return store.getState();
@@ -25,14 +27,14 @@ describe("resolve day", () => {
     });
 
     describe("with done streakSelectors", () => {
-        it.only(
+        it(
             cy.clean`
  			bank: 0								| bank: 1
  			- [x] streak: [ 1, 2, 3, 4, 5, 🍕]	| - [ ] streak: [ x, 2, 3, 4, 5, 🍕]
 		`,
             () => {
                 const nextState = dispatchPipe(
-                    taskActions.markTaskDone(a),
+                    streakActions.markTaskDone(a),
                     (s) => resolveDay(getDaysState(s))
                 );
 
@@ -55,8 +57,8 @@ describe("resolve day", () => {
 		`,
             () => {
                 const nextState = dispatchPipe(
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.markTaskDone(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.markTaskDone(a),
                     (s) => resolveDay(getDaysState(s))
                 );
 
@@ -79,12 +81,12 @@ describe("resolve day", () => {
 		`,
             () => {
                 const nextState = dispatchPipe(
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.bumpStreakIndex(a),
-                    taskActions.markTaskDone(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.bumpStreakIndex(a),
+                    streakActions.markTaskDone(a),
                     (s) => resolveDay(getDaysState(s))
                 );
 
@@ -116,52 +118,48 @@ describe("resolve day", () => {
         );
     });
     describe("with no streakSelectors completed", () => {
-        [
-            [
-                `
+        it(
+            cy.clean`
  			bank: 0								| bank: 0
  			- [ ] streak: [ 1, 2, 3, 4, 5, 🍕 ]	| - [ ] streak: [ 1, 2, 3, 4, 5, 🍕 ]
 		`,
-                () => {
-                    store.dispatch(resolveDay(getDaysState(store.getState())));
-                    const nextState = store.getState();
-                    const actual = {
-                        points: bank.getPoints(nextState),
-                        a: streakSelectors.getStreakIndex(nextState, a)
-                    };
-                    const expected = {
-                        points: 0,
-                        a: 1
-                    };
+            () => {
+                store.dispatch(resolveDay(getDaysState(store.getState())));
+                const nextState = store.getState();
+                const actual = {
+                    points: bank.getPoints(nextState),
+                    a: streakSelectors.getStreakIndex(nextState, a)
+                };
+                const expected = {
+                    points: 0,
+                    a: 1
+                };
 
-                    expect(actual).to.eqls(expected);
-                }
-            ],
-            [
-                `
+                expect(actual).to.eqls(expected);
+            }
+        );
+        it(
+            cy.clean`
  			bank: 0								| bank: 0
  			- [ ] streak: [ x, 2, 3, 4, 5, 🍕]	| - [ ] streak: [ 1, 2, 3, 4, 5, 🍕]
 		`,
-                () => {
-                    const nextState = dispatchPipe(
-                        taskActions.bumpStreakIndex(a),
-                        (s) => resolveDay(getDaysState(s), s)
-                    );
+            () => {
+                const nextState = dispatchPipe(
+                    streakActions.bumpStreakIndex(a),
+                    (s) => resolveDay(getDaysState(s), s)
+                );
 
-                    const actual = {
-                        points: bank.getPoints(nextState),
-                        a: streakSelectors.getStreakIndex(nextState, a)
-                    };
-                    const expected = {
-                        points: 0,
-                        a: 1
-                    };
+                const actual = {
+                    points: bank.getPoints(nextState),
+                    a: streakSelectors.getStreakIndex(nextState, a)
+                };
+                const expected = {
+                    points: 0,
+                    a: 1
+                };
 
-                    expect(actual).to.eqls(expected);
-                }
-            ]
-        ].forEach(([name, test]) => {
-            it(name.replace(/^(\s+)/gm, ""), test);
-        });
+                expect(actual).to.eqls(expected);
+            }
+        );
     });
 });

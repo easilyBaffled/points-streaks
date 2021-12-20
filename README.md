@@ -11,8 +11,8 @@
 
 - [x] how can I read that I am in a test env to disable firebase?
 - [x] create cypress watch so I can make my changes and get live updates
-- [ ] refactor `/task` to be `/streaks`
-- [ ] move `Task` component to a shared `/component` location
+- [x] refactor `/task` to be `/streaks`
+- [x] move `Task` component to a shared `/component` location
 - [ ] update `Task` component so that it can be composed with other type of tasks
 - [ ] create tests for task CRUD
 - [ ] create tests for the app with standard tasks

@@ -45,7 +45,8 @@ const tasksSlice = createSlice({
         }
     },
     extraReducers: {
-        [reset]: (state, { payload }) => tasksAdapter.getInitialState(payload),
+        [reset]: (state, { payload }) =>
+            tasksAdapter.getInitialState({ history: {} }),
         [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {

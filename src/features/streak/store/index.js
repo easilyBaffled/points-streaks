@@ -82,7 +82,7 @@ function bumpStreakChange(t) {
 }
 
 const tasksSlice = createSlice({
-    name: "tasks",
+    name: "streaks",
     initialState: tasksAdapter.getInitialState(initialState),
     reducers: {
         // Can pass adapter functions directly as case reducers.  Because we're passing this

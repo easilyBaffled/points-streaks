@@ -13,7 +13,10 @@ export const _staticChange =
     (adapter) =>
     (changes) =>
     (state, { payload }) =>
-        adapter.updateOne(state, { id: payload, changes });
+        adapter.updateOne(state, {
+            id: payload,
+            changes
+        });
 
 export const _dynamicChange =
     (adapter) =>
