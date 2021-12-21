@@ -14,12 +14,14 @@
 - [x] refactor `/task` to be `/streaks`
 - [x] move `Task` component to a shared `/component` location
 - [x] update `Task` component so that it can be composed with other type of tasks
-- [ ] create exports necessary for tests
-- [ ] create tests for task CRUD
-- [ ] create tests for the app with standard tasks
-- [ ] create entities for "tasks" and "history",
-- [ ] create updaters to move tasks between the two lists
+- [x] create exports necessary for tests
+- [x] create tests for task CRUD
+- [x] create entities for "tasks" and "history",
 - [ ] add handler to bank to move task's value
+- [ ] add task list to UI
+- [ ] add create task input
+- [ ] add history view
+- [ ] add restore task button
 
 </details>
 
