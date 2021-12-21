@@ -22,6 +22,7 @@
 - [ ] add create task input
 - [ ] add history view
 - [ ] add restore task button
+- [ ] https://firebase.google.com/docs/auth/web/firebaseui
 
 </details>
 
@@ -75,16 +76,18 @@
 > my number one concern is not having to work in two projects, so no client/server situation.
 > Even if they both live in the same project, I really don't want to have to maintain a front and backend
 - [ ] Firebase Security
-	- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
-		- [ ] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
-		- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
-		- [ ] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
-		- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
-		- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
-		- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
-		- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
-		- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's api
-		- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
+    - [ ] auth based security
+    - [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
+        - [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
+        - [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
+        - [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
+        - [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
+        - [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
+        - [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
+        - [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
+        - [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's api
+        - [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
+    - [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
 - [ ] Magic Wand DB
     - [ ] draft what the "magic wand" option would be
     - [ ] why don't I think Apollo is that option

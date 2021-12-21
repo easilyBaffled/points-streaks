@@ -5,6 +5,11 @@ import { DefaultValue } from "./DefaultValue";
 
 export const Name = DefaultName;
 export const Value = DefaultValue;
+
+function test() {
+    console.log("test");
+}
+
 /**
  *
  * @param {JSX.Element[]} children
@@ -37,7 +42,7 @@ export const Value = DefaultValue;
  *     <AltValue />
  * </Task>
  */
-export const Task = ({ children, ...task }) => {
+export const Task = ({ children, toggleTaskStatus, ...task }) => {
     let elArr = React.Children.toArray(children);
 
     if (!elArr.length) {
@@ -45,7 +50,8 @@ export const Task = ({ children, ...task }) => {
     } else if (elArr.length === 1) elArr.unshift(DefaultName); // assume that I am going to use a custom Value more often than a custom name
 
     return (
-        <div className="task">
+        <div className="task" onClick={toggleTaskStatus(task.id)}>
+            <input type="checkbox" readOnly checked={task.isDone} />
             {elArr.map((elOrCmp) => {
                 const key = task.id + "_" + elOrCmp?.type?.name ?? elOrCmp.type;
                 return React.isValidElement(elOrCmp)
