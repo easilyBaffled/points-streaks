@@ -6,6 +6,7 @@ import {
 import { reset } from "../../../state/actions/reset";
 import { _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
+import { createTask } from "./createTask";
 export { a, b, testState } from "./testItems";
 export const status = {
     active: "active",
@@ -17,8 +18,10 @@ const staticChange = _staticChange(tasksAdapter);
 const dynamicChange = _dynamicChange(tasksAdapter);
 const tasksSlice = createSlice({
     name: "tasks",
-    initialState: tasksAdapter.getInitialState({ history: {} }),
+    initialState: tasksAdapter.getInitialState({ completed: {} }),
     reducers: {
+        createTask: (state, { payload }) =>
+            tasksAdapter.addOne(state, createTask(payload)),
         // Can pass adapter functions directly as case reducers.  Because we're passing this
         // as a value, `createSlice` will auto-generate the `taskAdded` action type / creator
         toggleTaskStatus: dynamicChange((t) => ({
@@ -28,7 +31,10 @@ const tasksSlice = createSlice({
         markTaskDone: staticChange({ status: status.done }),
         restoreTask: (state, { payload: id }) => {
             state.history[id] = false;
-            tasksAdapter.updateOne(state, { id, changes: status.active });
+            tasksAdapter.updateOne(state, {
+                id,
+                changes: { status: status.active }
+            });
         }
     },
     extraReducers: {
@@ -36,13 +42,15 @@ const tasksSlice = createSlice({
         [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {
-                    state.history[task.id] = true;
+                    if (task.status === status.done)
+                        state.history[task.id] = true;
                 });
             }
         }
     }
 });
 
+export const initialState = tasksSlice.getInitialState();
 export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
 export const selectors = tasksAdapter.getSelectors(
