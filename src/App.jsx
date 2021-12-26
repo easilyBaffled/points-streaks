@@ -10,7 +10,7 @@ import {
 import { useEffect } from "react";
 import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
-import { CreateTaskInput } from "./features/task";
+import { BaseTask, CreateTaskInput } from "./features/task";
 
 function shouldDebugUI() {
     let params = new URL(document.location).searchParams;
@@ -26,15 +26,23 @@ function App({ streaks, tasks, lastRunDate, resolveDay }) {
     return (
         <div className={clsx("App", { debug: shouldDebugUI() })}>
             <CreateTaskInput />
-            <div id="task-streaks">
-                {streaks.map((t) => (
-                    <StreakTask key={t.id} {...t} />
-                ))}
-            </div>
             <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
-            <pre>
-                <code>{JSON.stringify(tasks, null, 4)}</code>
-            </pre>
+            <div id="task-section">
+                <div id="task-streaks">
+                    {streaks.map((t) => (
+                        <StreakTask key={t.id} {...t} />
+                    ))}
+                </div>
+                <div id="tasks">
+                    {tasks.map((t) => (
+                        <BaseTask key={t.id} {...t} />
+                    ))}
+                </div>
+
+                <pre>
+                    <code>{JSON.stringify(tasks, null, 4)}</code>
+                </pre>
+            </div>
         </div>
     );
 }

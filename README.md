@@ -17,7 +17,7 @@
 - [x] create exports necessary for tests
 - [x] create tests for task CRUD
 - [x] create entities for "tasks" and "history",
-- [ ] add create task input
+- [x] add create task input
 - [ ] add task list to UI
 - [ ] add history view
 - [ ] add restore task button

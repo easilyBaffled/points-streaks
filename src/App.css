@@ -53,7 +53,20 @@
 	font-weight: bolder;
 }
 
+#task-section {
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#task-section > * {
+	min-width: 50vw;
+}
+
 #task-streaks {
+	display: grid;
+}
+
+#tasks {
 	display: grid;
 }
 

@@ -6,10 +6,6 @@ import { DefaultValue } from "./DefaultValue";
 export const Name = DefaultName;
 export const Value = DefaultValue;
 
-function test() {
-    console.log("test");
-}
-
 /**
  *
  * @param {JSX.Element[]} children
@@ -52,8 +48,11 @@ export const Task = ({ children, toggleTaskStatus, ...task }) => {
     return (
         <div className="task" onClick={toggleTaskStatus(task.id)}>
             <input type="checkbox" readOnly checked={task.isDone} />
-            {elArr.map((elOrCmp) => {
-                const key = task.id + "_" + elOrCmp?.type?.name ?? elOrCmp.type;
+            {elArr.map((elOrCmp, i) => {
+                const key = `${task.id}_${
+                    elOrCmp?.type?.name ?? elOrCmp.type
+                }_${i}`;
+
                 return React.isValidElement(elOrCmp)
                     ? React.cloneElement(elOrCmp, {
                           ...task,
