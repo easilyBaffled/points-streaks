@@ -20,6 +20,11 @@ const tasksSlice = createSlice({
     name: "tasks",
     initialState: tasksAdapter.getInitialState({ completed: {} }),
     reducers: {
+        createTasks: (state, { payload: tasks }) =>
+            tasksAdapter.addMany(
+                state,
+                tasks.map((t) => createTask(t))
+            ),
         createTask: (state, { payload }) =>
             tasksAdapter.addOne(state, createTask(payload)),
         // Can pass adapter functions directly as case reducers.  Because we're passing this

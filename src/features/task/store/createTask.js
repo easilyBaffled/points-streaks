@@ -1,5 +1,8 @@
 import { nanoid } from "@reduxjs/toolkit";
-
+const status = {
+    active: "active",
+    done: "done"
+};
 /**
  *
  * @param {string|TaskParts} task

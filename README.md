@@ -17,11 +17,11 @@
 - [x] create exports necessary for tests
 - [x] create tests for task CRUD
 - [x] create entities for "tasks" and "history",
-- [ ] add handler to bank to move task's value
-- [ ] add task list to UI
 - [ ] add create task input
+- [ ] add task list to UI
 - [ ] add history view
 - [ ] add restore task button
+- [ ] add handler to bank to move task's value
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
 
 </details>

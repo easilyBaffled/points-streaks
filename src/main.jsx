@@ -16,14 +16,8 @@ export const Redux = ({ children }) => (
 
 console.tap = (v, ...rest) => (
     console.log(
-        "%c" +
-            new Error().stack
-                .split("\n")[2]
-                .replace(
-                    /    at ([^(]+).*src([^?]+)\?t=\d+:(\d+)/,
-                    "$1- $2:$3"
-                ),
-        "background: tomato;color: #eee;padding: 5px;border-radius: 10px;margin: 5px",
+        // "%c" + new Error().stack.split("\n"),
+        // "background: tomato;color: #eee;padding: 5px;border-radius: 10px;margin: 5px",
         v,
         ...rest
     ),

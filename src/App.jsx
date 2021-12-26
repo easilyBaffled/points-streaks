@@ -10,13 +10,14 @@ import {
 import { useEffect } from "react";
 import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
+import { CreateTaskInput } from "./features/task";
 
 function shouldDebugUI() {
     let params = new URL(document.location).searchParams;
     return params.get("debug") === "ui";
 }
 
-function App({ tasks, lastRunDate, resolveDay }) {
+function App({ streaks, tasks, lastRunDate, resolveDay }) {
     useEffect(() => {
         startReportingRuntimeErrors({ onError: () => {} });
         return () => stopReportingRuntimeErrors();
@@ -24,8 +25,9 @@ function App({ tasks, lastRunDate, resolveDay }) {
 
     return (
         <div className={clsx("App", { debug: shouldDebugUI() })}>
+            <CreateTaskInput />
             <div id="task-streaks">
-                {tasks.map((t) => (
+                {streaks.map((t) => (
                     <StreakTask key={t.id} {...t} />
                 ))}
             </div>
@@ -51,7 +53,8 @@ export default connect(
     (state) => ({
         state,
         lastRunDate: prettyDateFormat(state.app.date),
-        tasks: selectors.streaks.selectAll(state)
+        streaks: selectors.streaks.selectAll(state),
+        tasks: selectors.tasks.selectAll(state)
     }),
     (dispatch) => ({
         resolveDay: (state) => () => dispatch(resolveDay(getDaysState(state)))
