@@ -1,6 +1,8 @@
 import "./App.css";
 import { connect } from "react-redux";
-import { selectors, actions } from "./state";
+import { Route, Routes, Link, NavLink } from "react-router-dom";
+import "@reach/tabs/styles.css";
+import { selectors } from "./state";
 import clsx from "clsx";
 import { StreakTask } from "./features/streak";
 import {
@@ -15,6 +17,10 @@ import { BaseTask, CreateTaskInput } from "./features/task";
 function shouldDebugUI() {
     let params = new URL(document.location).searchParams;
     return params.get("debug") === "ui";
+}
+
+function Test() {
+    return <h1>test</h1>;
 }
 
 function App({
@@ -40,22 +46,46 @@ function App({
                         <StreakTask key={t.id} {...t} />
                     ))}
                 </div>
-                <div className="task-list">
-                    <h3>Active</h3>
-                    {activeTasks.map((t) => (
-                        <BaseTask key={t.id} {...t} />
-                    ))}
-                </div>
-                <div className="task-list">
-                    <h3>History</h3>
-                    {historicalTasks.map((t) => (
-                        <BaseTask key={t.id} {...t} />
-                    ))}
-                </div>
-
-                <pre>
-                    <code>{JSON.stringify(tasks, null, 4)}</code>
-                </pre>
+                <span>
+                    <NavLink
+                        to="active"
+                        activeClassName="active"
+                        className="task-list-link"
+                    >
+                        Active
+                    </NavLink>
+                    <NavLink
+                        to="history"
+                        activeClassName="active"
+                        className="task-list-link"
+                    >
+                        History
+                    </NavLink>
+                </span>
+                <Routes>
+                    <Route
+                        path={`/active`}
+                        element={
+                            <div className="task-list">
+                                <h3>Active</h3>
+                                {activeTasks.map((t) => (
+                                    <BaseTask key={t.id} {...t} />
+                                ))}
+                            </div>
+                        }
+                    />
+                    <Route
+                        path={`/history`}
+                        element={
+                            <div className="task-list">
+                                <h3>History</h3>
+                                {historicalTasks.map((t) => (
+                                    <BaseTask key={t.id} {...t} />
+                                ))}
+                            </div>
+                        }
+                    />
+                </Routes>
             </div>
         </div>
     );

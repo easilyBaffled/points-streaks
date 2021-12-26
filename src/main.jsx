@@ -5,6 +5,7 @@ import App from "./App";
 import store, { persistor } from "./state";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { BrowserRouter } from "react-router-dom";
 
 export const Redux = ({ children }) => (
     <Provider store={store}>
@@ -34,9 +35,11 @@ console.tap = (v, ...rest) => (
 
 ReactDOM.render(
     <React.StrictMode>
-        <Redux>
-            <App />
-        </Redux>
+        <BrowserRouter>
+            <Redux>
+                <App />
+            </Redux>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")
 );

@@ -74,3 +74,16 @@
 	display: grid;
 }
 
+.task-list-link {
+	color: darkgray;
+	text-decoration: none;
+	padding: 1rem;
+}
+
+.task-list-link.active {
+	background: lightgray;
+	color: black;
+}
+.task-list-link.inactive {
+	/*color: lightgray;*/
+}

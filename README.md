@@ -19,7 +19,8 @@
 - [x] create entities for "tasks" and "history",
 - [x] add create task input
 - [x] add task list to UI
-- [ ] add history view
+- [x] add history list
+- [x] add tabbed view for active/history
 - [ ] add restore task button
 - [ ] add handler to bank to move task's value
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
