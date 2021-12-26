@@ -18,7 +18,7 @@ const staticChange = _staticChange(tasksAdapter);
 const dynamicChange = _dynamicChange(tasksAdapter);
 const tasksSlice = createSlice({
     name: "tasks",
-    initialState: tasksAdapter.getInitialState({ completed: {} }),
+    initialState: tasksAdapter.getInitialState({ history: {} }),
     reducers: {
         createTasks: (state, { payload: tasks }) =>
             tasksAdapter.addMany(
@@ -67,4 +67,19 @@ selectors.getDaysPoints = createSelector(
     [selectors.selectIds, (state) => state],
     (taskIds, state) =>
         taskIds.reduce((sum, id) => sum + selectors.getValue(state, id), 0)
+);
+
+selectors.getHistory = createSelector(
+    (s) => s.tasks,
+    (s) => s.history
+);
+selectors.getHistoricalTasks = createSelector(
+    selectors.selectAll,
+    selectors.getHistory,
+    (entities, history) => entities.filter((task) => history[task.id])
+);
+selectors.getActiveTasks = createSelector(
+    selectors.selectAll,
+    selectors.getHistory,
+    (entities, history) => entities.filter((task) => !history[task.id])
 );

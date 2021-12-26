@@ -17,7 +17,14 @@ function shouldDebugUI() {
     return params.get("debug") === "ui";
 }
 
-function App({ streaks, tasks, lastRunDate, resolveDay }) {
+function App({
+    streaks,
+    tasks,
+    lastRunDate,
+    resolveDay,
+    historicalTasks,
+    activeTasks
+}) {
     useEffect(() => {
         startReportingRuntimeErrors({ onError: () => {} });
         return () => stopReportingRuntimeErrors();
@@ -28,13 +35,20 @@ function App({ streaks, tasks, lastRunDate, resolveDay }) {
             <CreateTaskInput />
             <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
             <div id="task-section">
-                <div id="task-streaks">
+                <div className="task-list">
                     {streaks.map((t) => (
                         <StreakTask key={t.id} {...t} />
                     ))}
                 </div>
-                <div id="tasks">
-                    {tasks.map((t) => (
+                <div className="task-list">
+                    <h3>Active</h3>
+                    {activeTasks.map((t) => (
+                        <BaseTask key={t.id} {...t} />
+                    ))}
+                </div>
+                <div className="task-list">
+                    <h3>History</h3>
+                    {historicalTasks.map((t) => (
                         <BaseTask key={t.id} {...t} />
                     ))}
                 </div>
@@ -62,7 +76,9 @@ export default connect(
         state,
         lastRunDate: prettyDateFormat(state.app.date),
         streaks: selectors.streaks.selectAll(state),
-        tasks: selectors.tasks.selectAll(state)
+        tasks: selectors.tasks.selectAll(state),
+        activeTasks: selectors.tasks.getActiveTasks(state),
+        historicalTasks: selectors.tasks.getHistoricalTasks(state)
     }),
     (dispatch) => ({
         resolveDay: (state) => () => dispatch(resolveDay(getDaysState(state)))

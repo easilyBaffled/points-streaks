@@ -18,7 +18,7 @@
 - [x] create tests for task CRUD
 - [x] create entities for "tasks" and "history",
 - [x] add create task input
-- [ ] add task list to UI
+- [x] add task list to UI
 - [ ] add history view
 - [ ] add restore task button
 - [ ] add handler to bank to move task's value
