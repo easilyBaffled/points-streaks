@@ -8,7 +8,7 @@ export const BaseTask = connect(
     (_, { status }) => ({
         isDone: status === taskStatus.done
     }),
-    (dispatch) => ({
-        toggleTaskStatus: (id) => () => dispatch(actions.toggleTaskStatus(id))
+    (dispatch, { id }) => ({
+        toggleTaskStatus: () => dispatch(actions.toggleTaskStatus(id))
     })
 )(_BaseTask);

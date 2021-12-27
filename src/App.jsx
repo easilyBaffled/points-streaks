@@ -12,7 +12,7 @@ import {
 import { useEffect } from "react";
 import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
-import { BaseTask, CreateTaskInput } from "./features/task";
+import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
 
 function shouldDebugUI() {
     let params = new URL(document.location).searchParams;
@@ -80,7 +80,7 @@ function App({
                             <div className="task-list">
                                 <h3>History</h3>
                                 {historicalTasks.map((t) => (
-                                    <BaseTask key={t.id} {...t} />
+                                    <HistoryTask key={t.id} {...t} />
                                 ))}
                             </div>
                         }

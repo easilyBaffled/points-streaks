@@ -46,7 +46,7 @@ export const Task = ({ children, toggleTaskStatus, ...task }) => {
     } else if (elArr.length === 1) elArr.unshift(DefaultName); // assume that I am going to use a custom Value more often than a custom name
 
     return (
-        <div className="task" onClick={toggleTaskStatus(task.id)}>
+        <div className="task" onClick={toggleTaskStatus}>
             <input type="checkbox" readOnly checked={task.isDone} />
             {elArr.map((elOrCmp, i) => {
                 const key = `${task.id}_${

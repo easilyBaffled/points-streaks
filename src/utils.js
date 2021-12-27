@@ -26,3 +26,6 @@ export const _dynamicChange =
             id: payload,
             changes: updater(state.entities[payload])
         });
+
+export const getDaysAgo = (amount = 1) =>
+    Date.now() - 1000 * 60 * 60 * 24 * amount;
