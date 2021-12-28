@@ -1,3 +1,3 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const reset = createAction("reset");
+export const reset = createAction( "reset" );

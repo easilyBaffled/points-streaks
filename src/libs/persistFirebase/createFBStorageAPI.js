@@ -7,19 +7,19 @@ import { setDoc, getDoc } from "firebase/firestore";
  * @param {number} interval
  * @return {{deleteItem: ThrottledFunction<[], Promise<void>>, getItem: (function(): *), setItem: ThrottledFunction<[], Promise<void>>}}
  */
-export function createFBStorageAPI(stateDoc, interval = 2000) {
+export function createFBStorageAPI( stateDoc, interval = 2000 ) {
     const setFBValue = pThrottle({
         interval,
         limit: 1
-    })((val) => setDoc(stateDoc, val).catch(console.error));
+    })( ( val ) => setDoc( stateDoc, val ).catch( console.error ) );
 
     return {
         deleteItem: setFBValue,
-        getItem: () =>
-            getDoc(stateDoc)
-                .then((doc) => doc.data())
-                .then(console.tap)
-                .catch(console.error),
+        getItem:    () =>
+            getDoc( stateDoc )
+                .then( ( doc ) => doc.data() )
+                .then( console.tap )
+                .catch( console.error ),
         setItem: setFBValue
     };
 }

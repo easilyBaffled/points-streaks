@@ -16,18 +16,18 @@ import { current } from "@reduxjs/toolkit";
 // Import commands.js using ES2015 syntax:
 import "./commands";
 
-const tap = (v, ...rest) => (console.log(v, ...rest), v);
+const tap = ( v, ...rest ) => ( console.log( v, ...rest ), v );
 console.tap = tap;
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 // beforeEach((...args) => {});
-Cypress.on("uncaught:exception", (err) => {
+Cypress.on( "uncaught:exception", ( err ) => {
     // returning false here prevents Cypress from
     // failing the test
-    console.error(err);
+    console.error( err );
     return false;
 });
 
-cy.clean = ([name]) => name.replace(/^(\s+)/gm, "");
+cy.clean = ([ name ]) => name.replace( /^(\s+)/gm, "" );
 cy.current = current;

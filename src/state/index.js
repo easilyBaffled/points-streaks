@@ -21,25 +21,25 @@ import {
     actions as taskActions,
     selectors as taskSelectors
 } from "../features/task/store";
+import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
+import firebaseConfig from "../config/firebase";
 import bank, {
     actions as bankActions,
     selectors as bankSelectors
 } from "./bank";
 import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./actions/reset";
-import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
-import firebaseConfig from "../config/firebase";
 
-const fbStorage = createFireBaseRealTimePersistConfig(firebaseConfig);
+const fbStorage = createFireBaseRealTimePersistConfig( firebaseConfig );
 
 const testStorage = { storage };
 /**
  * Redux Persist
  */
 const persistConfig = {
-    key: "root",
+    key:     "root",
     version: 1,
-    ...(import.meta.env.MODE === "test" ? testStorage : fbStorage)
+    ...( import.meta.env.MODE === "test" ? testStorage : fbStorage )
 };
 
 export const actions = {
@@ -51,24 +51,24 @@ export const actions = {
 };
 
 export const selectors = {
-    tasks: taskSelectors,
+    app:     appSelectors,
+    bank:    bankSelectors,
     streaks: streakSelectors,
-    app: appSelectors,
-    bank: bankSelectors
+    tasks:   taskSelectors
 };
 
 export const reducer = combineReducers({
     app,
-    streaks,
     bank,
+    streaks,
     tasks
 });
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer( persistConfig, reducer );
 
 const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
+    devTools:   true,
+    middleware: ( getDefaultMiddleware ) =>
         getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [
@@ -81,12 +81,12 @@ const store = configureStore({
                 ]
             }
         }),
-    devTools: true //process.env.NODE_ENV !== "production",
+    reducer:  persistedReducer // process.env.NODE_ENV !== "production",
     // preloadedState,
     // enhancers: [reduxBatch],
 });
 
-export let persistor = persistStore(store);
+export let persistor = persistStore( store );
 
 export default store;
 

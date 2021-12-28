@@ -26,6 +26,7 @@
 - [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
 - [ ] https://rebassjs.org/ or Tailwind
+- [ ] keep a history of actions on each task
 </details>
 
 <details>

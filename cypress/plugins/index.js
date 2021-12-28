@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+// / <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -16,28 +16,28 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-const path = require("path");
-const { startDevServer } = require("@cypress/vite-dev-server");
+const path = require( "path" );
+const { startDevServer } = require( "@cypress/vite-dev-server" );
 
-const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+const createBundler = require( "@bahmutov/cypress-esbuild-preprocessor" );
 
-module.exports = (on, config) => {
-    on("dev-server:start", (options) => {
+module.exports = ( on, config ) => {
+    on( "dev-server:start", ( options ) => {
         try {
             return startDevServer({
                 options,
                 viteConfig: {
-                    mode: "test",
                     configFile: path.resolve(
                         __dirname,
                         "..",
                         "..",
                         "vite.config.js"
-                    )
+                    ),
+                    mode: "test"
                 }
             });
-        } catch (e) {
-            console.error(e);
+        } catch ( e ) {
+            console.error( e );
         }
     });
 };

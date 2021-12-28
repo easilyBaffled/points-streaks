@@ -11,14 +11,14 @@ import { getFirestore, doc } from "firebase/firestore";
 
 import { createFBStorageAPI } from "./createFBStorageAPI";
 
-export function setupFirebaseConnection(firebaseConfig) {
-    const firebaseApp = initializeApp(firebaseConfig);
+export function setupFirebaseConnection( firebaseConfig ) {
+    const firebaseApp = initializeApp( firebaseConfig );
     const db = getFirestore();
 
-    return doc(db, "state", "state");
+    return doc( db, "state", "state" );
 }
 
-export const initRealtimeFirebaseDB = (firebaseConfig, throttleTime) => {
-    const dbRef = setupFirebaseConnection(firebaseConfig);
-    return createFBStorageAPI(dbRef, throttleTime);
+export const initRealtimeFirebaseDB = ( firebaseConfig, throttleTime ) => {
+    const dbRef = setupFirebaseConnection( firebaseConfig );
+    return createFBStorageAPI( dbRef, throttleTime );
 };

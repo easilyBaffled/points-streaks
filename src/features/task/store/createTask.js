@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 const status = {
     active: "active",
-    done: "done"
+    done:   "done"
 };
 /**
  *
@@ -9,13 +9,13 @@ const status = {
  * @param {TaskParts} optional
  * @return Task
  */
-export function createTask(task, optional = {}) {
-    if (typeof task === "object") optional = task;
+export function createTask( task, optional = {}) {
+    if ( typeof task === "object" ) optional = task;
     return {
-        id: nanoid(),
+        id:     nanoid(),
         status: status.active,
         task,
-        value: 1,
+        value:  1,
         ...optional
     };
 }

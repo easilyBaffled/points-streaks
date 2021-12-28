@@ -11,7 +11,7 @@ import { resolveDay } from "../../../state/actions";
 
 export const status = {
     active: "active",
-    done: "done"
+    done:   "done"
 };
 
 /**
@@ -20,13 +20,13 @@ export const status = {
  * @param {TaskParts} optional
  * @return TaskStreak
  */
-function createTask(task, optional = {}) {
+function createTask( task, optional = {}) {
     return {
-        id: nanoid(),
-        status: status.active,
-        task,
-        streakIterations: 1,
         currentStreakIndex: 1,
+        id:                 nanoid(),
+        status:             status.active,
+        streakIterations:   1,
+        task,
         ...optional
     };
 }
@@ -39,11 +39,11 @@ export const a = "a";
 export const b = "b";
 
 export const testState = {
-    ids: [a, b],
     entities: {
-        [a]: createTask(a, { id: a }),
-        [b]: createTask(b, { id: b })
-    }
+        [ a ]: createTask( a, { id: a }),
+        [ b ]: createTask( b, { id: b })
+    },
+    ids: [ a, b ]
 };
 
 export const initialState = listToEntity(
@@ -62,18 +62,18 @@ export const initialState = listToEntity(
         "track 🥤",
         "fiber 🧻",
         "#points"
-    ].map((s) => createTask(s, { id: s.replace(/ /g, "-") }))
+    ].map( ( s ) => createTask( s, { id: s.replace( / /g, "-" ) }) )
 );
 
-const staticChange = _staticChange(tasksAdapter);
+const staticChange = _staticChange( tasksAdapter );
 
-const dynamicChange = _dynamicChange(tasksAdapter);
+const dynamicChange = _dynamicChange( tasksAdapter );
 
-function bumpStreakChange(t) {
-    if (t.currentStreakIndex === streakMax) {
+function bumpStreakChange( t ) {
+    if ( t.currentStreakIndex === streakMax ) {
         return {
-            streakIterations: t.streakIterations + 1,
-            currentStreakIndex: 1
+            currentStreakIndex: 1,
+            streakIterations:   t.streakIterations + 1
         };
     }
     return {
@@ -82,54 +82,66 @@ function bumpStreakChange(t) {
 }
 
 const tasksSlice = createSlice({
-    name: "streaks",
-    initialState: tasksAdapter.getInitialState(initialState),
-    reducers: {
-        // Can pass adapter functions directly as case reducers.  Because we're passing this
-        // as a value, `createSlice` will auto-generate the `taskAdded` action type / creator
-        toggleTaskStatus: dynamicChange((t) => ({
-            status: t.status === status.active ? status.done : status.active
-        })),
-        markTaskActive: staticChange({ status: status.active }),
-        markTaskDone: staticChange({ status: status.done }),
-        bumpStreakIterations: dynamicChange((t) => ({
-            streakIterations: t.streakIterations + 1
-        })),
-        bumpStreakIndex: dynamicChange((t) => ({
-            currentStreakIndex: t.currentStreakIndex + 1
-        })),
-        bumpStreak: dynamicChange(bumpStreakChange),
-        resetStreak: staticChange({
-            status: status.active,
-            streakIterations: 1,
-            currentStreakIndex: 1
-        })
-    },
     extraReducers: {
-        [reset]: (state, { payload }) =>
-            tasksAdapter.getInitialState(payload?.streaks ?? initialState),
-        [resolveDay]: (state, { payload }) => {
-            if (payload.tasks) {
-                Object.values(state.entities).forEach((task) => {
-                    if (task.status === status.active) {
+        [ reset ]: ( state, { payload }) =>
+            tasksAdapter.getInitialState( payload?.streaks ?? initialState ),
+        [ resolveDay ]: ( state, { payload }) => {
+            if ( payload.tasks ) {
+                Object.values( state.entities ).forEach( ( task ) => {
+                    if ( task.status === status.active ) {
                         task.streakIterations = 1;
                         task.currentStreakIndex = 1;
                     } else {
                         task.status = status.active;
-                        dynamicChange(bumpStreakChange)(state, {
+                        dynamicChange( bumpStreakChange )( state, {
                             payload: task.id
                         });
                     }
                 });
             }
         }
+    },
+    initialState:  tasksAdapter.getInitialState( initialState ),
+    name:         "streaks",
+    reducers:     {
+        
+        
+        bumpStreak:       dynamicChange( bumpStreakChange ),
+        
+
+        bumpStreakIndex: dynamicChange( ( t ) => ({
+            currentStreakIndex: t.currentStreakIndex + 1
+        }) ),
+        
+
+        bumpStreakIterations: dynamicChange( ( t ) => ({
+            streakIterations: t.streakIterations + 1
+        }) ),
+        
+
+        markTaskActive:   staticChange({ status: status.active }),
+        
+
+        markTaskDone:     staticChange({ status: status.done }),
+        
+
+        resetStreak:  staticChange({
+            currentStreakIndex: 1,
+            status:             status.active,
+            streakIterations:   1
+        }),
+        // Can pass adapter functions directly as case reducers.  Because we're passing this
+        // as a value, `createSlice` will auto-generate the `taskAdded` action type / creator
+        toggleTaskStatus: dynamicChange( ( t ) => ({
+            status: t.status === status.active ? status.done : status.active
+        }) )
     }
 });
 
 export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
 export const selectors = tasksAdapter.getSelectors(
-    (state) => state?.streaks ?? state
+    ( state ) => state?.streaks ?? state
 );
 selectors.getStreak = selectors.selectById;
 
@@ -138,33 +150,33 @@ selectors.getStreak = selectors.selectById;
 //  */
 selectors.getStreakIndex = createSelector(
     selectors.getStreak,
-    (task) => task.currentStreakIndex
+    ( task ) => task.currentStreakIndex
 );
 
 selectors.getStreakIteration = createSelector(
     selectors.getStreak,
-    (task) => task.streakIterations
+    ( task ) => task.streakIterations
 );
 
-selectors.getStreakValue = createSelector(selectors.getStreak, (task) =>
+selectors.getStreakValue = createSelector( selectors.getStreak, ( task ) =>
     task.status === status.active
         ? 0
         : task.currentStreakIndex === streakMax
-        ? currencies.pizza
-        : task.currentStreakIndex * task.streakIterations
+            ? currencies.pizza
+            : task.currentStreakIndex * task.streakIterations
 );
 
 selectors.getDaysPoints = createSelector(
-    [selectors.selectIds, (state) => state],
-    (taskIds, state) =>
+    [ selectors.selectIds, ( state ) => state ],
+    ( taskIds, state ) =>
         taskIds
-            .map((id) => selectors.getStreakValue(state, id))
+            .map( ( id ) => selectors.getStreakValue( state, id ) )
             .reduce(
-                (acc, value) => {
-                    if (Number.isInteger(value)) acc.points += value;
+                ( acc, value ) => {
+                    if ( Number.isInteger( value ) ) acc.points += value;
                     else
-                        acc[currencies[value]] =
-                            (acc?.[currencies[value]] ?? 0) + 1;
+                    { acc[ currencies[ value ] ] =
+                            ( acc?.[ currencies[ value ] ] ?? 0 ) + 1; }
                     return acc;
                 },
                 { points: 0 }

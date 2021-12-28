@@ -1,5 +1,7 @@
 // template test
 
+import { createNextState } from "@reduxjs/toolkit";
+import { flow } from "lodash";
 import {
     a,
     actions,
@@ -11,71 +13,72 @@ import {
 } from "../../features/task";
 
 import { _modifyEntity } from "../modifyEntity";
-import { createNextState } from "@reduxjs/toolkit";
 import { resolveDay } from "../../state/actions";
-import { flow } from "lodash";
-const modifyEntity = _modifyEntity(testState);
+const modifyEntity = _modifyEntity( testState );
 
 const baseState = {
-    // The unique IDs of each item. Must be strings or numbers
-    ids: [],
+    
     // A lookup table mapping entity IDs to the corresponding entity objects
     entities: {},
-    history: {}
+    
+    
+    history:  {},
+    // The unique IDs of each item. Must be strings or numbers
+    ids:     []
 };
 
-const nextState = (fn) => createNextState(baseState, fn);
+const nextState = ( fn ) => createNextState( baseState, fn );
 
-describe("Task CRUD", () => {
-    it("should create a new task", () => {
+describe( "Task CRUD", () => {
+    it( "should create a new task", () => {
         const actual = reducer(
             initialState,
-            actions.createTask({ task: a, id: a })
+            actions.createTask({ id: a, task: a })
         );
-        const expected = nextState((s) => {
-            s.ids.push(a);
-            s.entities[a] = createTask(a, { id: a });
+        const expected = nextState( ( s ) => {
+            s.ids.push( a );
+            s.entities[ a ] = createTask( a, { id: a });
         });
 
-        expect(actual).to.eqls(expected);
+        expect( actual ).to.eqls( expected );
     });
-    it("should mark a task as done", () => {
-        const actual = reducer(testState, actions.markTaskDone(a));
-        const expected = modifyEntity(a, (e) => (e.status = status.done));
+    it( "should mark a task as done", () => {
+        const actual = reducer( testState, actions.markTaskDone( a ) );
+        const expected = modifyEntity( a, ( e ) => ( e.status = status.done ) );
 
-        expect(actual).to.eqls(expected);
+        expect( actual ).to.eqls( expected );
     });
-    it("should mark a task as active", () => {
-        const actual = reducer(testState, actions.markTaskDone(a));
-        const expected = modifyEntity(a, (e) => (e.status = status.done));
+    it( "should mark a task as active", () => {
+        const actual = reducer( testState, actions.markTaskDone( a ) );
+        const expected = modifyEntity( a, ( e ) => ( e.status = status.done ) );
 
-        expect(actual).to.eqls(expected);
+        expect( actual ).to.eqls( expected );
     });
-    it("should move a done task to history", () => {
-        const nextState = reducer(testState, actions.markTaskDone(a));
+    it( "should move a done task to history", () => {
+        const nextState = reducer( testState, actions.markTaskDone( a ) );
 
-        const actual = reducer(nextState, resolveDay({ tasks: true }));
-        const expected = createNextState(nextState, (s) => {
-            s.history[a] = true;
-            s.entities[a].value = 0;
+        const actual = reducer( nextState, resolveDay({ tasks: true }) );
+        const expected = createNextState( nextState, ( s ) => {
+            s.history[ a ] = true;
+            s.entities[ a ].value = 0;
         });
 
-        expect(actual).to.eqls(expected);
+        expect( actual ).to.eqls( expected );
     });
-    it("should move a task out of history and mark as active", () => {
+    it( "should move a task out of history and mark as active", () => {
         const actual = flow(
-            (s) => reducer(s, actions.markTaskDone(a)),
-            (s) => reducer(s, resolveDay({ tasks: true })),
-            (s) => reducer(s, actions.restoreTask(a))
-        )(testState);
+            ( s ) => reducer( s, actions.markTaskDone( a ) ),
+            ( s ) => reducer( s, resolveDay({ tasks: true }) ),
+            ( s ) => reducer( s, actions.restoreTask( a ) )
+        )( testState );
 
-        const expected = createNextState(actual, (s) => {
-            s.entities[a].status = status.active;
-            s.entities[a].value = 0;
-            s.history[a] = false;
+        const expected = createNextState( actual, ( s ) => {
+            s.entities[ a ].status = status.active;
+            s.entities[ a ].value = 0;
+            s.history[ a ] = false;
         });
 
-        expect(actual).to.eqls(expected);
+        expect( actual ).to.eqls( expected );
     });
 });
 
