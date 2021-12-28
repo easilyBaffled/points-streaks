@@ -1,8 +1,10 @@
 import { nanoid } from "@reduxjs/toolkit";
+
 const status = {
     active: "active",
     done:   "done"
 };
+
 /**
  *
  * @param {string|TaskParts} task
@@ -12,10 +14,11 @@ const status = {
 export function createTask( task, optional = {}) {
     if ( typeof task === "object" ) optional = task;
     return {
-        id:     nanoid(),
-        status: status.active,
+        history: [],
+        id:      nanoid(),
+        status:  status.active,
         task,
-        value:  1,
+        value:   1,
         ...optional
     };
 }

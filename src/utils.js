@@ -21,10 +21,14 @@ export const _staticChange =
 export const _dynamicChange =
     ( adapter ) =>
         ( updater ) =>
-            ( state, { payload }) =>
+            ( state, action, ...rest ) =>
                 adapter.updateOne( state, {
-                    changes: updater( state.entities[ payload ]),
-                    id:      payload
+                    changes: updater(
+                        state.entities[ action.payload?.id ?? action.payload ],
+                        action,
+                        rest
+                    ),
+                    id: action.payload
                 });
 
 export const getDaysAgo = ( amount = 1 ) =>

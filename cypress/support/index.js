@@ -31,3 +31,7 @@ Cypress.on( "uncaught:exception", ( err ) => {
 
 cy.clean = ([ name ]) => name.replace( /^(\s+)/gm, "" );
 cy.current = current;
+
+beforeEach( () => {
+    cy.clock();
+});

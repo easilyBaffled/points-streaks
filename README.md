@@ -27,6 +27,8 @@
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
 - [ ] https://rebassjs.org/ or Tailwind
 - [ ] keep a history of actions on each task
+- [ ] how can I compose specialized tasks like streaks using the baseTask reducer so that I'm not duplicating work like
+  internal history?
 
 </details>
 

@@ -23,43 +23,57 @@ const baseState = {
     ids:      []
 };
 
+function withHistory( entity, action ) {
+    entity.history.push({ action, date: Date.now() });
+    return entity;
+}
+
 const nextState = ( fn ) => createNextState( baseState, fn );
 
 describe( "Task CRUD", () => {
     it( "should create a new task", () => {
-        const actual = reducer(
-            initialState,
-            actions.createTask({ id: a, task: a })
-        );
+        const action = actions.createTask({ id: a, task: a });
+        const actual = reducer( initialState, action );
         const expected = nextState( ( s ) => {
             s.ids.push( a );
             s.entities[ a ] = createTask( a, { id: a });
+            withHistory( s.entities[ a ], action );
         });
 
         expect( actual ).to.eqls( expected );
     });
     it( "should mark a task as done", () => {
-        const actual = reducer( testState, actions.markTaskDone( a ) );
-        const expected = modifyEntity( a, ( e ) => ( e.status = status.done ) );
+        const action = actions.markTaskDone( a );
+        const actual = reducer( testState, action );
+        const expected = modifyEntity( a, ( e ) => {
+            e.status = status.done;
+            withHistory( e, action );
+        });
 
         expect( actual ).to.eqls( expected );
     });
     it( "should mark a task as active", () => {
-        const actual = reducer( testState, actions.markTaskDone( a ) );
-        const expected = modifyEntity( a, ( e ) => ( e.status = status.done ) );
+        const action = actions.markTaskActive( a );
+        const actual = reducer( testState, action );
+        const expected = modifyEntity( a, ( e ) => {
+            e.status = status.active;
+            withHistory( e, action );
+        });
 
         expect( actual ).to.eqls( expected );
     });
     it( "should move a done task to history", () => {
         const nextState = reducer( testState, actions.markTaskDone( a ) );
-
+        console.tap( nextState, resolveDay({ tasks: true }) );
         const actual = reducer( nextState, resolveDay({ tasks: true }) );
-        const expected = createNextState( nextState, ( s ) => {
-            s.history[ a ] = true;
-            s.entities[ a ].value = 0;
-        });
+        // const expected = createNextState( nextState, ( s ) => {
+        //     s.history[ a ] = true;
+        //     s.entities[ a ].value = 0;
+        //     withHistory( s.entities[ a ], actions.markTaskDone( a ) );
+        //     withHistory( s.entities[ a ], resolveDay({ tasks: true }) );
+        // });
 
-        expect( actual ).to.eqls( expected );
+        // expect( actual ).to.eqls( expected );
     });
     it( "should move a task out of history and mark as active", () => {
         const actual = flow(

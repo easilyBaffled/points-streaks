@@ -2,21 +2,21 @@ import "./App.css";
 import { connect } from "react-redux";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
 import "@reach/tabs/styles.css";
-import { selectors } from "./state";
 import clsx from "clsx";
-import { StreakTask } from "./features/streak";
 import {
     startReportingRuntimeErrors,
     stopReportingRuntimeErrors
 } from "react-error-overlay";
 import { useEffect } from "react";
+import { StreakTask } from "./features/streak";
+import { selectors } from "./state";
 import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
 import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
 
 function shouldDebugUI() {
-    let params = new URL(document.location).searchParams;
-    return params.get("debug") === "ui";
+    let params = new URL( document.location ).searchParams;
+    return params.get( "debug" ) === "ui";
 }
 
 function Test() {
@@ -31,33 +31,37 @@ function App({
     historicalTasks,
     activeTasks
 }) {
-    useEffect(() => {
-        startReportingRuntimeErrors({ onError: () => {} });
+    useEffect( () => {
+        startReportingRuntimeErrors({
+            onError: () => {}
+        });
         return () => stopReportingRuntimeErrors();
     }, []);
 
     return (
-        <div className={clsx("App", { debug: shouldDebugUI() })}>
+        <div className={clsx( "App", { debug: shouldDebugUI() })}>
             <CreateTaskInput />
             <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
             <div id="task-section">
                 <div className="task-list">
-                    {streaks.map((t) => (
+                    {streaks.map( ( t ) => (
                         <StreakTask key={t.id} {...t} />
-                    ))}
+                    ) )}
                 </div>
                 <span>
                     <NavLink
                         to="active"
-                        activeClassName="active"
-                        className="task-list-link"
+                        className={({ isActive }) =>
+                            `task-list-link ${isActive ? "active" : ""}`
+                        }
                     >
                         Active
                     </NavLink>
                     <NavLink
                         to="history"
-                        activeClassName="active"
-                        className="task-list-link"
+                        className={({ isActive }) =>
+                            `task-list-link ${isActive ? "active" : ""}`
+                        }
                     >
                         History
                     </NavLink>
@@ -68,9 +72,9 @@ function App({
                         element={
                             <div className="task-list">
                                 <h3>Active</h3>
-                                {activeTasks.map((t) => (
+                                {activeTasks.map( ( t ) => (
                                     <BaseTask key={t.id} {...t} />
-                                ))}
+                                ) )}
                             </div>
                         }
                     />
@@ -79,9 +83,9 @@ function App({
                         element={
                             <div className="task-list">
                                 <h3>History</h3>
-                                {historicalTasks.map((t) => (
+                                {historicalTasks.map( ( t ) => (
                                     <HistoryTask key={t.id} {...t} />
-                                ))}
+                                ) )}
                             </div>
                         }
                     />
@@ -91,32 +95,32 @@ function App({
     );
 }
 
-function prettyDateFormat(date) {
+function prettyDateFormat( date ) {
     var options = {
-        weekday: "long",
-        month: "long",
-        day: "numeric"
+        day:     "numeric",
+        month:   "long",
+        weekday: "long"
     };
 
-    return new Intl.DateTimeFormat("en-US", options).format(new Date(date));
+    return new Intl.DateTimeFormat( "en-US", options ).format( new Date( date ) );
 }
 
 export default connect(
-    (state) => ({
+    ( state ) => ({
+        activeTasks:     selectors.tasks.getActiveTasks( state ),
+        historicalTasks: selectors.tasks.getHistoricalTasks( state ),
+        lastRunDate:     prettyDateFormat( state.app.date ),
         state,
-        lastRunDate: prettyDateFormat(state.app.date),
-        streaks: selectors.streaks.selectAll(state),
-        tasks: selectors.tasks.selectAll(state),
-        activeTasks: selectors.tasks.getActiveTasks(state),
-        historicalTasks: selectors.tasks.getHistoricalTasks(state)
+        streaks:         selectors.streaks.selectAll( state ),
+        tasks:           selectors.tasks.selectAll( state )
     }),
-    (dispatch) => ({
-        resolveDay: (state) => () => dispatch(resolveDay(getDaysState(state)))
+    ( dispatch ) => ({
+        resolveDay: ( state ) => () => dispatch( resolveDay( getDaysState( state ) ) )
     }),
-    ({ state, ...stateProps }, { resolveDay, ...dispatchProps }, ownProps) => ({
+    ({ state, ...stateProps }, { resolveDay, ...dispatchProps }, ownProps ) => ({
         ...ownProps,
         ...dispatchProps,
         ...stateProps,
-        resolveDay: resolveDay(state)
+        resolveDay: resolveDay( state )
     })
-)(App);
+)( App );
