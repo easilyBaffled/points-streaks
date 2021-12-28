@@ -14,17 +14,13 @@ import {
 
 import { _modifyEntity } from "../modifyEntity";
 import { resolveDay } from "../../state/actions";
+
 const modifyEntity = _modifyEntity( testState );
 
 const baseState = {
-    
-    // A lookup table mapping entity IDs to the corresponding entity objects
     entities: {},
-    
-    
     history:  {},
-    // The unique IDs of each item. Must be strings or numbers
-    ids:     []
+    ids:      []
 };
 
 const nextState = ( fn ) => createNextState( baseState, fn );

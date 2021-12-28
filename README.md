@@ -1,4 +1,3 @@
-
 <details>
 	<summary>
 		<strong>Stream Of Thought: Standard Tasks</strong>
@@ -23,10 +22,12 @@
 - [x] add tabbed view for active/history
 - [x] add restore task button
 - [x] add handler to bank to move task's value
+- [ ] fix eslint issues
 - [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
 - [ ] https://rebassjs.org/ or Tailwind
 - [ ] keep a history of actions on each task
+
 </details>
 
 <details>
@@ -43,21 +44,17 @@
 	- [x] port over persist
 	- [x] read the new docs
 		- [x] [collection](https://firebase.google.com/docs/reference/js/firestore_.md#collection)
-		  > Gets a CollectionReference
-		  Not too much I can do with it, so I need to use getDoc(s)
+		  > Gets a CollectionReference Not too much I can do with it, so I need to use getDoc(s)
 		- [x] [getDoc](https://firebase.google.com/docs/reference/js/firestore_.md#getdoc)
 		  > Reads the document referred to by this DocumentReference.
-		  `getDocs` lets you specify a query and get an array, but if I'm only playing by myself
-		  then I don't need to query.
-		  But really I care about `DocumentReference`
-		  > A DocumentSnapshot contains data read from a document in your Firestore database.
-		  The data can be extracted with .data() or .get(<field>) to get a specific field.
+		  `getDocs` lets you specify a query and get an array, but if I'm only playing by myself then I don't need to query. But really I care about `DocumentReference`
+		  > A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with .data() or .get(<field>) to get a specific field.
 		- [x] [setDoc](https://firebase.google.com/docs/reference/js/firestore_.md#setdoc)
 		  > Writes to the document referred to by this DocumentReference. If the document does not yet exist, it will be created.
-		  > If you provide `merge` or `mergeFields`, the provided data can be merged into an existing document.
-		  Perhaps I can in the future send just the chunk of state that has been updated, rather than sending the whole thing
+		  > If you provide `merge` or `mergeFields`, the provided data can be merged into an existing document. Perhaps I can in the future send just the chunk of state that has been updated, rather than sending the whole thing
 	- [x] set up persisting an object
 	- [x] get object persist working
+
 </details>
 
 <details>
@@ -78,33 +75,36 @@
 
 > my number one concern is not having to work in two projects, so no client/server situation.
 > Even if they both live in the same project, I really don't want to have to maintain a front and backend
+
 - [ ] Firebase Security
-    - [ ] auth based security
-    - [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
-        - [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
-        - [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
-        - [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
-        - [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
-        - [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
-        - [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
-        - [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
-        - [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's api
-        - [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
-    - [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
+	- [ ] auth based security
+	- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
+		- [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
+		- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
+		- [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
+		- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
+		- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
+		- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
+		- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
+		- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's
+		  api
+		- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
+	- [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
 - [ ] Magic Wand DB
-    - [ ] draft what the "magic wand" option would be
-    - [ ] why don't I think Apollo is that option
-    - [ ] draft what I think existing tools I could use for that would be
-    - [ ] draft how I could abstract all of my work with RTK to that
-    - [ ] could [redux-deep-diff](https://www.npmjs.com/package/redux-deep-diff) help?
-    - [ ] could [redux-undo](https://github.com/omnidan/redux-undo) help
-    - [ ] could [microdiff](https://github.com/AsyncBanana/microdiff?ck_subscriber_id=478727104) help
-    - [ ] can I get the patch notes from immer to use with [immer-to-firestore](https://github.com/tdawes/immer-to-firestore)
+	- [ ] draft what the "magic wand" option would be
+	- [ ] why don't I think Apollo is that option
+	- [ ] draft what I think existing tools I could use for that would be
+	- [ ] draft how I could abstract all of my work with RTK to that
+	- [ ] could [redux-deep-diff](https://www.npmjs.com/package/redux-deep-diff) help?
+	- [ ] could [redux-undo](https://github.com/omnidan/redux-undo) help
+	- [ ] could [microdiff](https://github.com/AsyncBanana/microdiff?ck_subscriber_id=478727104) help
+	- [ ] can I get the patch notes from immer to use
+	  with [immer-to-firestore](https://github.com/tdawes/immer-to-firestore)
 - [ ] Apollo Odyssey
-    - [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
-    - [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
-    - [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
-    - [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
+	- [ ] [LIFT-OFF I: BASICS](https://odyssey.apollographql.com/lift-off-part1/feature-overview-and-setup)
+	- [ ] [Lift-off II: Resolvers](https://odyssey.apollographql.com/lift-off-part2)
+	- [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
+	- [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
 
 </details>
 
@@ -128,31 +128,39 @@
 - [x] add the React Error Overlay
 - [x] wire up toggle tasks
 - [x] wire up resolve day
-- [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good messaging for destructuring errors)
+- [x] why does resolve day break? (I was doing `{ payload: { bank } }` destructuring on `{}`, and there's no good
+  messaging for destructuring errors)
 - [x] persist state
-    - [x] localStorage
-    - [x] add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
-        - [x] add emulation https://firebase.google.com/docs/emulator-suite & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
-        - [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
-    - [x] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
-    - [x] read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
-    - [x] just add basic read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-    - [x] wire up firebase/supabase to persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-    - [x] RTK-Query?
+	- [x] localStorage
+	- [x]
+	  add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
+		- [x] add emulation https://firebase.google.com/docs/emulator-suite
+		  & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
+		- [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
+	- [x] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
+	- [x]
+	  read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
+	- [x] just add basic
+	  read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+	- [x] wire up firebase/supabase to
+	  persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+	- [x] RTK-Query?
 - [ ] Deploy
-  - [ ] convert all firebase config to env
-  - [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
-  - [ ] how to tie vercel's new with github actions
+	- [ ] convert all firebase config to env
+	- [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
+	- [ ] how to tie vercel's new with github actions
 - [ ] Persist v2
-  - [ ] how to do persistence with state migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
+	- [ ] how to do persistence with state
+	  migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
 - [ ] Testing
-    - [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
-    - [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
-    - [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
-    - [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
+	- [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
+	- [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
+	- [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
+	- [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
 
 - [ ] Styling
-    - [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
+	- [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
+
 </details>
 
 
@@ -169,21 +177,24 @@
 - [x] define a selector that produces the point value of a pizza and amount of pizza
 - [x] should I use selectors in my unit tests?
 - [x] bank unit tests
-- [x] create redux slice sandbox for experiments [redux/toolkit sandbox](https://codesandbox.io/s/beautiful-merkle-tw0lo?file=/src/store.js)
+- [x] create redux slice sandbox for
+  experiments [redux/toolkit sandbox](https://codesandbox.io/s/beautiful-merkle-tw0lo?file=/src/store.js)
 - [x] https://redux.js.org/understanding/history-and-design/middleware#the-final-approach
 - [x] https://redux-toolkit.js.org/api/getDefaultMiddleware
 - [x] can I tell when state has or will change in the middleware?
 - [x] how does the default middleware work?
 - [x] what if I only return the updated action
-- [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each reducer what it will need to do
+- [x] sketch out `resolveDay` as a middleware that will serve as the director reading state, and dictating to each
+  reducer what it will need to do
 - [x] create tests based on the scenarios assuming a full redux store
 - [x] create store based on the `sandbox`
 - [x] create selectors for resolve day
-- [x] #resolveDaySelectors get value of completed tasks for the bank
-- [x] #resolveDaySelectors create action detailer
+- [x] # resolveDaySelectors get value of completed tasks for the bank
+- [x] # resolveDaySelectors create action detailer
 - [x] test `resolveDay` with the bank and `getDaysPoints`
 - [x] load `initialState` for tests
 - [x] create _actual_ initialState
+
 </details>
 
 <details>
@@ -202,9 +213,10 @@
 - [x] add Cypress for unit testing
 - [x] add the fun script to update deps if PRs Pass
 - [ ] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
-- [ ] add .eslint
-- [ ] configure prettier-eslint
+- [x] add .eslint
+- [x] configure prettier-eslint
 - [ ] try https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md
+
 </details>
 
 <details>
@@ -213,11 +225,13 @@
 	</summary>
 
 > This is going to be real TDD. which means I don't write code until there is absolutely no other option. That starts with the "definitions" changes I created in [[problem statement]]. For each entry I will:
+
 - [ ] name the situation
 - [ ] define the necessary types
 - [ ] give a 1 line description that includes, in, out, why and possible variations.
 - [ ] create unit test to exercise the situation.
 - [ ] all tests will fail
+
 </details>
 
 <details>
@@ -235,6 +249,7 @@
 - [ ] pass initial state
 - [ ] pass toggle
 - [ ] ...
+
 </details>
 
 <details>
@@ -250,6 +265,7 @@
 - [ ] persist changes to supabase
 - [ ] read state from supabase on start
 - [ ] update from supabase when there's a change
+
 </details>
 
 <details>
@@ -258,91 +274,88 @@
 	</summary>
 
 > This is going to be everything that I would like to do
+
 - [ ] ...
 
 </details>
 
 ---
 /**
+
 * bank: 0
-* - [x] task: [ 1, 2, 3, 4, 5, 🍕]
+*
+	- [x] task: [ 1, 2, 3, 4, 5, 🍕]
 *
 * resolve
 *
 * bank: 1
-* - [ ] task: [ x, 2, 3, 4, 5, 🍕]
 *
-* when a day resolves
-  if a task was marked complete
-  then the tasks streak is incremented
-  and the task is marked active
+	- [ ] task: [ x, 2, 3, 4, 5, 🍕]
+*
+* when a day resolves if a task was marked complete then the tasks streak is incremented and the task is marked active
   and points are added to the bank
-  */
-  // I need a way to check if a task was complete
-  // I need a way to increment the streak
-  // I need a way to mark a task as active
-  // I need a way to add a certain amount of points to the bank
+  */ // I need a way to check if a task was complete // I need a way to increment the streak // I need a way to mark a
+  task as active // I need a way to add a certain amount of points to the bank
 
 /**
+
 * bank: 0
-* - [x] task: [ x, 2, 3, 4, 5 🍕]
+*
+	- [x] task: [ x, 2, 3, 4, 5 🍕]
 *
 * resolve
 *
 * bank: 2
-* - [ ] task: [ x, x, 3, 4, 5 🍕]
 *
-* when a day resolves
-  if a task was marked complete
-  and the task had an active streak
-  then the tasks streak is incremented
-  and the task is marked active
-  and points are added to the bank
+	- [ ] task: [ x, x, 3, 4, 5 🍕]
+*
+* when a day resolves if a task was marked complete and the task had an active streak then the tasks streak is
+  incremented and the task is marked active and points are added to the bank
   */
 
 /**
+
 * bank: 0
-* - [x] task: [ x, x, x, x, x 🍕]
+*
+	- [x] task: [ x, x, x, x, x 🍕]
 *
 * resolve
 *
 * bank: 0 | 🍕
-* - [ ] task: [ 2, 3, 4, 5, 6 🍕]
 *
-* when a day resolves
-  if a task was marked complete
-  and the task was at the last entry in the iteration
-  then the active streak is reset
-  and a special value is added to the bank
-  and the entire streaks value is incremented
+	- [ ] task: [ 2, 3, 4, 5, 6 🍕]
+*
+* when a day resolves if a task was marked complete and the task was at the last entry in the iteration then the active
+  streak is reset and a special value is added to the bank and the entire streaks value is incremented
   */
 
 /**
+
 * bank: 0
-* - [ ] task: [ 1, 2, 3, 4, 5, 🍕]
+*
+	- [ ] task: [ 1, 2, 3, 4, 5, 🍕]
 *
 * resolve
 *
 * bank: 0
-* - [ ] task: [ 1, 2, 3, 4, 5, 🍕]
+*
+	- [ ] task: [ 1, 2, 3, 4, 5, 🍕]
 *
 * When the day resolves
-* 	if no tasks were marked complete
-	 then no tasks are toggled
-	 and no points are added to the bank
-	 */
+* if no tasks were marked complete then no tasks are toggled and no points are added to the bank
+  */
 
 /**
+
 * bank: 0
-* - [ ] task: [ x, 3, 4, 5, 6 🍕]
+*
+	- [ ] task: [ x, 3, 4, 5, 6 🍕]
 *
 * resolve
 *
 * bank: 0
-* - [ ] task: [ 1, 2, 3, 4, 5 🍕]
 *
-* When the day resolves
-  if no tasks were marked complete
-  and a task had an active streak
-  then the active streak is reset
+	- [ ] task: [ 1, 2, 3, 4, 5 🍕]
+*
+* When the day resolves if no tasks were marked complete and a task had an active streak then the active streak is reset
   **/

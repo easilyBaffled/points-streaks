@@ -12,7 +12,7 @@ import { getFirestore, doc } from "firebase/firestore";
 import { createFBStorageAPI } from "./createFBStorageAPI";
 
 export function setupFirebaseConnection( firebaseConfig ) {
-    const firebaseApp = initializeApp( firebaseConfig );
+    initializeApp( firebaseConfig );
     const db = getFirestore();
 
     return doc( db, "state", "state" );

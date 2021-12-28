@@ -111,7 +111,7 @@ describe( "selectors", () => {
             expect( actual ).to.eqls( expected );
         });
     });
-    describe.only( "getDaysPoints", () => {
+    describe( "getDaysPoints", () => {
         it( "should collect just points", () => {
             const state = [
                 actions.markTaskDone( a ),

@@ -7,6 +7,7 @@ import { reset } from "../../../state/actions/reset";
 import { _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
 import { createTask } from "./createTask";
+
 export { a, b, testState } from "./testItems";
 export const status = {
     active: "active",
@@ -30,7 +31,7 @@ const tasksSlice = createSlice({
             }
         }
     },
-    initialState:  tasksAdapter.getInitialState({ history: {} }),
+    initialState: tasksAdapter.getInitialState({ history: {} }),
     name:         "tasks",
     reducers:     {
         createTask: ( state, { payload }) =>
@@ -40,14 +41,8 @@ const tasksSlice = createSlice({
                 state,
                 tasks.map( ( t ) => createTask( t ) )
             ),
-        
-        
-        markTaskActive:   staticChange({ status: status.active }),
-        
-
-        markTaskDone:     staticChange({ status: status.done }),
-        
-
+        markTaskActive: staticChange({ status: status.active }),
+        markTaskDone:   staticChange({ status: status.done }),
         restoreTask:    ( state, { payload: id }) => {
             state.history[ id ] = false;
             tasksAdapter.updateOne( state, {
