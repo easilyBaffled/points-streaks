@@ -21,7 +21,7 @@ const baseState = {
     ids: [],
     // A lookup table mapping entity IDs to the corresponding entity objects
     entities: {},
-    completed: {}
+    history: {}
 };
 
 const nextState = (fn) => createNextState(baseState, fn);
@@ -57,6 +57,7 @@ describe("Task CRUD", () => {
         const actual = reducer(nextState, resolveDay({ tasks: true }));
         const expected = createNextState(nextState, (s) => {
             s.history[a] = true;
+            s.entities[a].value = 0;
         });
 
         expect(actual).to.eqls(expected);
@@ -70,6 +71,7 @@ describe("Task CRUD", () => {
 
         const expected = createNextState(actual, (s) => {
             s.entities[a].status = status.active;
+            s.entities[a].value = 0;
             s.history[a] = false;
         });
 

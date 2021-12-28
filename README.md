@@ -21,10 +21,11 @@
 - [x] add task list to UI
 - [x] add history list
 - [x] add tabbed view for active/history
-- [ ] add restore task button
-- [ ] add handler to bank to move task's value
+- [x] add restore task button
+- [x] add handler to bank to move task's value
+- [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
-
+- [ ] https://rebassjs.org/ or Tailwind
 </details>
 
 <details>

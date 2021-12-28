@@ -47,8 +47,10 @@ const tasksSlice = createSlice({
         [resolveDay]: (state, { payload }) => {
             if (payload.tasks) {
                 Object.values(state.entities).forEach((task) => {
-                    if (task.status === status.done)
+                    if (task.status === status.done) {
                         state.history[task.id] = true;
+                        task.value = 0;
+                    }
                 });
             }
         }
