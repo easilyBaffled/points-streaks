@@ -15,7 +15,7 @@ const modifyEntity = _modifyEntity( testState );
 
 describe( "Task Actions", () => {
     it( "should return the initial state", () => {
-        expect( reducer( undefined, {}) ).to.eqls( testState );
+        expect( reducer( testState, {}) ).to.eqls( testState );
     });
 
     it( "should mark an active task as done", () => {
@@ -50,7 +50,7 @@ describe( "Task Actions", () => {
         const actual = reducer( state, actions.bumpStreak( a ) );
         const expected = modifyEntity( a, ( e ) => {
             e.streakIterations += 1;
-            e.currentStreakIndex = 0;
+            e.currentStreakIndex = 1;
         });
 
         expect( actual ).to.eqls( expected );
