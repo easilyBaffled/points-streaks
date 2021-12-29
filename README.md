@@ -1,5 +1,24 @@
 <details>
 	<summary>
+		<strong>Stream Of Thought: Infrastructure</strong>
+	</summary>
+
+> The longer you wait to add infra like eslint, coverage, responsive, the harder it is to add
+> So when coding features hits a lul I should take the opportunity to add cov
+
+- [ ] eslint
+	- [x] add eslint
+	- [ ] fix eslint issues
+	- [ ] add eslint to pr req
+- [ ] unit tests
+	- [ ] add passing req to PRs
+	- [x] add coverage
+	- [ ] add cov limit to PRs
+	- [ ] add deploy cov report to PRs
+
+</details>
+<details>
+	<summary>
 		<strong>Stream Of Thought: Standard Tasks</strong>
 	</summary>
 
@@ -29,6 +48,9 @@
 - [ ] keep a history of actions on each task
 - [ ] how can I compose specialized tasks like streaks using the baseTask reducer so that I'm not duplicating work like
   internal history?
+- [ ] transfer streaks to app
+- [ ] add tailwind + material
+- [ ] make mobile friendly
 
 </details>
 
@@ -220,67 +242,6 @@
 - [ ] try https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md
 
 </details>
-
-<details>
-	<summary>
-		<strong>Set Up the work</strong>
-	</summary>
-
-> This is going to be real TDD. which means I don't write code until there is absolutely no other option. That starts with the "definitions" changes I created in [[problem statement]]. For each entry I will:
-
-- [ ] name the situation
-- [ ] define the necessary types
-- [ ] give a 1 line description that includes, in, out, why and possible variations.
-- [ ] create unit test to exercise the situation.
-- [ ] all tests will fail
-
-</details>
-
-<details>
-	<summary>
-		<strong>Get something on the page</strong>
-	</summary>
-
-> Using the unit tests as my strict guide I will start making them pass
-
-- [ ] set up example with [createEntityAdapter](https://redux-toolkit.js.org/api/createEntityAdapter)
-- [ ] add redux dev tools
-- [ ] can I use the redux dev tools as my UI?
-- [ ] send "api" to the console
-- [ ] subscribe to state change with `console.log`
-- [ ] pass initial state
-- [ ] pass toggle
-- [ ] ...
-
-</details>
-
-<details>
-	<summary>
-		<strong>Connection</strong>
-	</summary>
-
-> Once I have had the satisfaction of getting work done, it's time to make it matter.
-> I am going to use supabase as my data store so that I can access it anywhere
-
-- [ ] read the docs
-- [ ] update my unit tests to mock supabase (if necessary)
-- [ ] persist changes to supabase
-- [ ] read state from supabase on start
-- [ ] update from supabase when there's a change
-
-</details>
-
-<details>
-	<summary>
-		<strong>Wishlist</strong>
-	</summary>
-
-> This is going to be everything that I would like to do
-
-- [ ] ...
-
-</details>
-
 ---
 /**
 

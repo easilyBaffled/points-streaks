@@ -8,10 +8,9 @@ export default defineConfig({
     plugins: [
         react(),
         istanbul({
-            exclude:    [ "node_modules", "test/" ],
-            extension:  [ ".js", ".ts", ".vue" ],
-            include:    "src/*",
-            requireEnv: true
+            exclude:   [ "node_modules", "test/" ],
+            extension: [ ".js", ".jsx" ],
+            include:   "src/*"
         })
     ]
 });

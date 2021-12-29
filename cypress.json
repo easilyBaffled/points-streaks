@@ -1,5 +1,6 @@
 {
   "testFiles": "**/*.spec.{js,jsx}",
   "componentFolder": "src",
-  "video": false
+  "video": false,
+  "failOnStatusCode": false
 }

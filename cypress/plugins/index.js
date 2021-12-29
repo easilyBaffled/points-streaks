@@ -17,9 +17,20 @@
  */
 // eslint-disable-next-line no-unused-vars
 const path = require( "path" );
+const fs = require( "fs" );
 const { startDevServer } = require( "@cypress/vite-dev-server" );
 
-module.exports = ( on ) => {
+function mdPreprocessor( file ) {
+    const { filePath, outputPath, shouldWatch } = file;
+    console.log({ filePath, outputPath, shouldWatch });
+    // we need to output something
+    fs.writeFileSync( outputPath, "", "utf8" );
+    return outputPath;
+}
+
+module.exports = ( on, config ) => {
+    require( "@cypress/code-coverage/task" )( on, config );
+    // on( "file:preprocessor", mdPreprocessor );
     on( "dev-server:start", ( options ) => {
         try {
             return startDevServer({
@@ -38,4 +49,5 @@ module.exports = ( on ) => {
             console.error( e );
         }
     });
+    return config;
 };
