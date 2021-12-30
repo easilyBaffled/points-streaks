@@ -10,11 +10,20 @@
 	- [x] add eslint
 	- [ ] fix eslint issues
 	- [ ] add eslint to pr req
+	- [ ] add the `no-import` rule from bulletproof
 - [ ] unit tests
 	- [ ] add passing req to PRs
 	- [x] add coverage
 	- [ ] add cov limit to PRs
 	- [ ] add deploy cov report to PRs
+- [ ] [add `@` path alias](https://javascript.plainenglish.io/how-to-set-up-path-resolving-in-vite-ad284e0d9eae)
+	- [x] add `jsconfig.json`
+	- [x] update vite.config.js
+	- [ ] run tests to make sure everything still works
+- [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
+	- [ ] https://create-react-app.dev/docs/measuring-performance/
+	- [ ] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
+- [ ] get push notifications from github if pipeline fails
 
 </details>
 <details>
