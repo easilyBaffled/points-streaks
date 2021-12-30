@@ -61,6 +61,10 @@
 - [ ] transfer streaks to app
 - [ ] add tailwind + material
 - [ ] make mobile friendly
+- [ ] display bank
+- [ ] does tailwind have vertical rhythm
+- [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
+- [ ] add daily tasks
 
 </details>
 
