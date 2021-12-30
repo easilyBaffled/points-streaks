@@ -22,7 +22,8 @@
 	- [ ] run tests to make sure everything still works
 - [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
 	- [ ] https://create-react-app.dev/docs/measuring-performance/
-	- [ ] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
+	- [x] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
+	- [ ] what do these numbers mean?
 - [ ] get push notifications from github if pipeline fails
 
 </details>

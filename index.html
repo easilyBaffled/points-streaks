@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-	  <script>
-		  console.tap = (v, ...rest) => {
-			  console.log(v, ...rest);
-			  return v;
-		  }
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+	<script>
+		console.tap = (v, ...rest) => {
+			console.log(v, ...rest, (new Error()).stack);
+			return v;
+		};
 
-		  console.tap.label = label => (v, ...rest) => {
-			  console.log(label, v, ...rest);
-			  return v;
-		  }
-	  </script>
-  </head>
-  <body>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LcoFrwdAAAAAIN5F7hTL1efQofeFUQPU32UJk3a"></script>
+		console.tap.label = label => (v, ...rest) => {
+			console.log(label, v, ...rest);
+			return v;
+		};
+	</script>
+</head>
+<body>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcoFrwdAAAAAIN5F7hTL1efQofeFUQPU32UJk3a"></script>
 
-  <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
 </html>

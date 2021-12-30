@@ -18,7 +18,6 @@ export function createFBStorageAPI( stateDoc, interval = 2000 ) {
         getItem:    () =>
             getDoc( stateDoc )
                 .then( ( doc ) => doc.data() )
-                .then( console.tap )
                 .catch( console.error ),
         setItem: setFBValue
     };

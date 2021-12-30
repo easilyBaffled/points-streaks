@@ -81,7 +81,7 @@ const store = configureStore({
                 ]
             }
         }),
-    reducer:  persistedReducer // process.env.NODE_ENV !== "production",
+    reducer: persistedReducer
     // preloadedState,
     // enhancers: [reduxBatch],
 });

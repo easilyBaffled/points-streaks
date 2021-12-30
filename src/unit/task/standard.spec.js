@@ -64,16 +64,15 @@ describe( "Task CRUD", () => {
     });
     it( "should move a done task to history", () => {
         const nextState = reducer( testState, actions.markTaskDone( a ) );
-        console.tap( nextState, resolveDay({ tasks: true }) );
         const actual = reducer( nextState, resolveDay({ tasks: true }) );
-        // const expected = createNextState( nextState, ( s ) => {
-        //     s.history[ a ] = true;
-        //     s.entities[ a ].value = 0;
-        //     withHistory( s.entities[ a ], actions.markTaskDone( a ) );
-        //     withHistory( s.entities[ a ], resolveDay({ tasks: true }) );
-        // });
+        const expected = createNextState( nextState, ( s ) => {
+            s.history[ a ] = true;
+            s.entities[ a ].value = 0;
+            withHistory( s.entities[ a ], actions.markTaskDone( a ) );
+            withHistory( s.entities[ a ], resolveDay({ tasks: true }) );
+        });
 
-        // expect( actual ).to.eqls( expected );
+        expect( actual ).to.eqls( expected );
     });
     it( "should move a task out of history and mark as active", () => {
         const actual = flow(

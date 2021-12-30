@@ -3,6 +3,7 @@
 	width: 100vw;
 	height: 100vh;
 	overflow: scroll;
+	padding: 3rem;
 }
 
 .App.debug {
@@ -21,9 +22,9 @@
 }
 
 .streak {
-  gap: .5rem;
-  align-items: baseline;
-  justify-content: space-between;
+	gap: .5rem;
+	align-items: baseline;
+	justify-content: space-between;
 }
 
 .point {
@@ -34,32 +35,38 @@
 .point.dist-1 {
 	font-size: 1rem;
 }
+
 .point.dist-2 {
 	font-size: .9rem;
 	font-weight: lighter;
 }
+
 .point.dist-3 {
 	font-size: .8rem;
 	font-weight: lighter;
 }
+
 .point.dist-4 {
 	font-size: .7rem;
 	font-weight: lighter;
 }
+
 .point.dist-0,
-.point.active{
+.point.active {
 	color: #333;
 	font-size: 1.1rem;
 	font-weight: bolder;
 }
 
 #task-section {
-	flex-wrap: wrap;
 	justify-content: center;
+	min-width: 50vw;
+	flex-direction: column;
+
 }
 
 #task-section > * {
-	min-width: 50vw;
+	width: 100%;
 }
 
 .task-list {
@@ -87,6 +94,7 @@
 	background: lightgray;
 	color: black;
 }
+
 .task-list-link.inactive {
 	/*color: lightgray;*/
 }
