@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/points-streaks/assets/favicon.17e50649.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-	  <script>
-		  console.tap = (v, ...rest) => {
-			  console.log(v, ...rest);
-			  return v;
-		  }
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/points-streaks/assets/favicon.17e50649.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+	<script>
+		console.tap = (v, ...rest) => {
+			console.log(v, ...rest, (new Error()).stack);
+			return v;
+		};
 
-		  console.tap.label = label => (v, ...rest) => {
-			  console.log(label, v, ...rest);
-			  return v;
-		  }
-	  </script>
-    <script type="module" crossorigin src="/points-streaks/assets/index.6576e67d.js"></script>
-    <link rel="modulepreload" href="/points-streaks/assets/vendor.1107f9e6.js">
-    <link rel="stylesheet" href="/points-streaks/assets/index.53877e6f.css">
-  <link rel="manifest" href="/points-streaks/manifest.webmanifest"></head>
-  <body>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LcoFrwdAAAAAIN5F7hTL1efQofeFUQPU32UJk3a"></script>
+		console.tap.label = label => (v, ...rest) => {
+			console.log(label, v, ...rest);
+			return v;
+		};
+	</script>
+  <script type="module" crossorigin src="/points-streaks/assets/index.d4cf4701.js"></script>
+  <link rel="modulepreload" href="/points-streaks/assets/vendor.1107f9e6.js">
+  <link rel="stylesheet" href="/points-streaks/assets/index.bbc7e6ca.css">
+<link rel="manifest" href="/points-streaks/manifest.webmanifest"></head>
+<body>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcoFrwdAAAAAIN5F7hTL1efQofeFUQPU32UJk3a"></script>
 
-  <div id="root"></div>
-    
-  </body>
+<div id="root"></div>
+
+</body>
 </html>
