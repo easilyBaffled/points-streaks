@@ -2,6 +2,7 @@ import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import istanbul from "vite-plugin-istanbul";
+import { VitePWA } from "vite-plugin-pwa";
 
 // console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 
@@ -13,7 +14,8 @@ export default defineConfig({
             exclude:   [ "node_modules", "test/" ],
             extension: [ ".js", ".jsx" ],
             include:   "src/*"
-        })
+        }),
+        VitePWA({})
     ],
     resolve: {
         alias: {
