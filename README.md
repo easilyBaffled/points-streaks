@@ -6,6 +6,14 @@
 > The longer you wait to add infra like eslint, coverage, responsive, the harder it is to add
 > So when coding features hits a lul I should take the opportunity to add cov
 
+- [x] reduce [vite logging](https://vitejs.dev/config/)
+- [x] Could Not Complete: update reporting to only show broken tests
+- [x] get tests to pass
+- [ ] how to have cy `watch` _and_ notify locally
+- [ ] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
+- [ ] [what are the results of WebPageTest](https://www.webpagetest.org/result/211230_AiDcPS_170f6a8d6557a088fb0c27b52631abec/)
+- [ ] [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+- [ ] [Manage Users in Firebase](https://firebase.google.com/docs/auth/web/manage-users)
 - [ ] eslint
 	- [x] add eslint
 	- [ ] fix eslint issues

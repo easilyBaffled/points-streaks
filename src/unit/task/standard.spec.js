@@ -68,7 +68,6 @@ describe( "Task CRUD", () => {
         const expected = createNextState( nextState, ( s ) => {
             s.history[ a ] = true;
             s.entities[ a ].value = 0;
-            withHistory( s.entities[ a ], actions.markTaskDone( a ) );
             withHistory( s.entities[ a ], resolveDay({ tasks: true }) );
         });
 

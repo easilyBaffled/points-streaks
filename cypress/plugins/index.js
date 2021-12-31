@@ -42,7 +42,8 @@ module.exports = ( on, config ) => {
                         "..",
                         "vite.config.js"
                     ),
-                    mode: "test"
+                    logLevel: "error",
+                    mode:     "test"
                 }
             });
         } catch ( e ) {
