@@ -2,5 +2,6 @@
   "testFiles": "**/*.spec.{js,jsx}",
   "componentFolder": "src",
   "video": false,
-  "failOnStatusCode": false
+  "failOnStatusCode": false,
+  "projectId": "qnoxub"
 }
