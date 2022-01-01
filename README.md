@@ -10,7 +10,11 @@
 - [x] **Could Not Complete:** update reporting to only show broken tests
 - [x] get tests to pass
 - [x] **Cypress Doesn't have an option:** how to have cy `watch` _and_ notify locally
-- [ ] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
+- [x] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
+- [ ] CICD
+	- [ ] the pipeline should install and/or cache build
+	- [ ] lint, test, and so on
+	- [ ] if all things pass properly deploy anew
 - [ ] [what are the results of WebPageTest](https://www.webpagetest.org/result/211230_AiDcPS_170f6a8d6557a088fb0c27b52631abec/)
 - [ ] [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [ ] [Manage Users in Firebase](https://firebase.google.com/docs/auth/web/manage-users)
@@ -33,6 +37,7 @@
 	- [x] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
 	- [ ] what do these numbers mean?
 - [ ] get push notifications from github if pipeline fails
+- [ ] how to convert my CI/CD to apply for all branches
 
 </details>
 <details>
