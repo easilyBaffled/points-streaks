@@ -110,7 +110,6 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome"
-          spec: cypress/integrations/*
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -153,7 +152,6 @@ jobs:
           record: true
           parallel: true
           group: "UI - Chrome - Mobile"
-          spec: cypress/integrations/*
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

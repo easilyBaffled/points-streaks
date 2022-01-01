@@ -41,6 +41,7 @@
 - [ ] get push notifications from github if pipeline fails
 - [ ] how to convert my CI/CD to apply for all branches
 - [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
+- [ ] do I want to add snyk to the github workflow
 
 </details>
 <details>
