@@ -12,7 +12,7 @@
 - [x] **Cypress Doesn't have an option:** how to have cy `watch` _and_ notify locally
 - [x] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
 - [ ] CICD
-	- [ ] why is my [pipeline](https://github.com/easilyBaffled/points-streaks/runs/4680123332?check_suite_focus=true)
+	- [x] why is my [pipeline](https://github.com/easilyBaffled/points-streaks/runs/4680123332?check_suite_focus=true)
 	  breaking
 	- [ ] the pipeline should install and/or cache build
 	- [ ] lint, test, and so on
