@@ -164,14 +164,20 @@ jobs:
       [ verify, ui-chrome-tests, ui-chrome-mobile-tests ]
     runs-on: ubuntu-latest
     steps:
+      - name: Download the build folders
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+
       - name: Deploy to github pages
         uses: JamesIves/github-pages-deploy-action@4.1.8
         with:
           branch: gh-pages
-          folder: dist
+          folder: build
 
       - name: Publish deployed code
         uses: actions/upload-artifact@v2
         with:
           name: published
-          path: dist
+          path: build
