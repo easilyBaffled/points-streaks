@@ -144,7 +144,7 @@ jobs:
 
   deploy:
     needs:
-      [ verify, ui-chrome-test, ui-chrome-mobile-tests ]
+      [ verify, ui-chrome-tests, ui-chrome-mobile-tests ]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to github pages
