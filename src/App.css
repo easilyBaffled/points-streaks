@@ -61,8 +61,7 @@
 
 #task-section {
 	justify-content: center;
-	min-width: 50vw;
-	max-width: 75vw;
+	width: 50vw;
 	flex-direction: column;
 
 }
