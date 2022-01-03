@@ -100,3 +100,7 @@
 .task-list-link.inactive {
 	/*color: lightgray;*/
 }
+
+#bank {
+	flex-direction: column;
+}

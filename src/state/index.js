@@ -26,7 +26,7 @@ import firebaseConfig from "../config/firebase";
 import bank, {
     actions as bankActions,
     selectors as bankSelectors
-} from "./bank";
+} from "../features/bank/store";
 import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./actions/reset";
 

@@ -5,7 +5,7 @@ import {
     nanoid
 } from "@reduxjs/toolkit";
 import { reset } from "../../../state/actions/reset";
-import { currencies } from "../../../state/bank";
+import { currencies } from "../../bank/store";
 import { listToEntity, _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
 
@@ -61,7 +61,8 @@ export const initialState = listToEntity(
         "track 🥪",
         "track 🥤",
         "fiber 🧻",
-        "#points"
+        "#points",
+        "reduce lists 5%"
     ].map( ( s ) => createTask( s, { id: s.replace( / /g, "-" ) }) )
 );
 
@@ -101,31 +102,24 @@ const tasksSlice = createSlice({
             }
         }
     },
-    initialState:  tasksAdapter.getInitialState( initialState ),
+    initialState: tasksAdapter.getInitialState( initialState ),
     name:         "streaks",
     reducers:     {
-        
-        
-        bumpStreak:       dynamicChange( bumpStreakChange ),
-        
+        bumpStreak: dynamicChange( bumpStreakChange ),
 
         bumpStreakIndex: dynamicChange( ( t ) => ({
             currentStreakIndex: t.currentStreakIndex + 1
         }) ),
-        
 
         bumpStreakIterations: dynamicChange( ( t ) => ({
             streakIterations: t.streakIterations + 1
         }) ),
-        
 
-        markTaskActive:   staticChange({ status: status.active }),
-        
+        markTaskActive: staticChange({ status: status.active }),
 
-        markTaskDone:     staticChange({ status: status.done }),
-        
+        markTaskDone: staticChange({ status: status.done }),
 
-        resetStreak:  staticChange({
+        resetStreak: staticChange({
             currentStreakIndex: 1,
             status:             status.active,
             streakIterations:   1
@@ -174,9 +168,10 @@ selectors.getDaysPoints = createSelector(
             .reduce(
                 ( acc, value ) => {
                     if ( Number.isInteger( value ) ) acc.points += value;
-                    else
-                    { acc[ currencies[ value ] ] =
-                            ( acc?.[ currencies[ value ] ] ?? 0 ) + 1; }
+                    else {
+                        acc[ currencies[ value ] ] =
+                            ( acc?.[ currencies[ value ] ] ?? 0 ) + 1;
+                    }
                     return acc;
                 },
                 { points: 0 }

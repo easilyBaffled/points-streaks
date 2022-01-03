@@ -13,6 +13,7 @@ import { selectors } from "./state";
 import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
 import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
+import { Bank } from "@/features/bank";
 
 function shouldDebugUI() {
     let params = new URL( document.location ).searchParams;
@@ -42,6 +43,7 @@ function App({
         <div className={clsx( "App", { debug: shouldDebugUI() })}>
             <CreateTaskInput />
             <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
+            <Bank />
             <div id="task-section">
                 <div className="task-list">
                     {streaks.map( ( t ) => (

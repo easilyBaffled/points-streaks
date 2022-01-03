@@ -6,6 +6,36 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 
+const pwaConfig = {
+    injectRegister: "inline",
+    manifest:       {
+        description: "Description of your app",
+        icons:       [
+            {
+                sizes: "192x192",
+                src:   "pwa-192x192.png",
+                type:  "image/png"
+            },
+            {
+                sizes: "512x512",
+                src:   "pwa-512x512.png",
+                type:  "image/png"
+            },
+            {
+                purpose: "any maskable",
+                sizes:   "512x512",
+                src:     "pwa-512x512.png",
+                type:    "image/png"
+            }
+        ],
+        name:       "Points",
+        short_name: "Points"
+    },
+
+    minify: false,
+    mode:   "development"
+};
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
@@ -15,7 +45,7 @@ export default defineConfig({
             extension: [ ".js", ".jsx" ],
             include:   "src/*"
         }),
-        VitePWA({})
+        VitePWA( pwaConfig )
     ],
     resolve: {
         alias: {

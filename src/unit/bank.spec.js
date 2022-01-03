@@ -1,5 +1,9 @@
 import { createNextState } from "@reduxjs/toolkit";
-import reducer, { selectors, initialState, actions } from "../state/bank";
+import reducer, {
+    selectors,
+    initialState,
+    actions
+} from "../features/bank/store";
 
 describe( "actions", () => {
     it( "should spendPoints", () => {

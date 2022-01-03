@@ -9,7 +9,7 @@ import {
     streakMax
 } from "../../features/streak";
 import { _modifyEntity } from "../modifyEntity";
-import { currencies } from "../../state/bank";
+import { currencies } from "../../features/bank/store";
 
 const modifyEntity = _modifyEntity( testState );
 

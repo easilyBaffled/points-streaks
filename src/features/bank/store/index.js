@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { reset } from "../actions/reset";
-import { resolveDay } from "../actions";
+import { reset } from "../../../state/actions/reset";
+import { resolveDay } from "../../../state/actions";
 
 export const currencies = {
     pizza: "pizza"
@@ -14,8 +14,8 @@ export const initialState = {
     }
 };
 
-const specialWorthCalculators = {
-    pizza: ( s ) => s.points * 0.05
+export const specialWorthCalculators = {
+    pizza: ( s ) => ( s?.points ?? s ) * 0.05
 };
 
 export const bankSliceDefinition = {
@@ -55,11 +55,13 @@ export const bankSliceDefinition = {
 /**
  * Selectors
  */
+const getBank = ( state ) => state?.bank ?? state;
 const getSpecial = ( state, type ) => ( state?.bank ?? state ).special[ type ];
 const getPizza = ( state ) => ( state?.bank ?? state ).special.pizza;
 const getPoints = ( state ) => ( state?.bank ?? state ).points;
 const getSpecialValue = ( state, type ) => specialWorthCalculators[ type ]( state );
 export const selectors = {
+    getBank,
     getPizza,
     getPoints,
     getSpecial,

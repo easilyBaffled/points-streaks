@@ -11,13 +11,21 @@
 - [x] get tests to pass
 - [x] **Cypress Doesn't have an option:** how to have cy `watch` _and_ notify locally
 - [x] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
-- [ ] CICD
+- [x] CICD
 	- [x] why is my [pipeline](https://github.com/easilyBaffled/points-streaks/runs/4680123332?check_suite_focus=true)
 	  breaking
-	- [ ] the pipeline should install and/or cache build
-	- [ ] lint, test, and so on
-	- [ ] if all things pass properly deploy anew
-- [ ] [what are the results of WebPageTest](https://www.webpagetest.org/result/211230_AiDcPS_170f6a8d6557a088fb0c27b52631abec/)
+	- [x] the pipeline should install and/or cache build
+	- [x] lint, test, and so on
+	- [x] if all things pass properly deploy anew
+- [ ] create prod data
+- [ ] create `PROD` switch for build
+- [ ] use `build:prod` for deployments
+- [ ] PWA
+	- [ ] read [package.json](https://github.com/antfu/vite-plugin-pwa/blob/main/examples/react-router/package.json)
+	- [ ] read [vite.config.ts](https://github.com/antfu/vite-plugin-pwa/blob/main/examples/react-router/vite.config.ts)
+	- [ ] run lighthouse
+	- [ ] (why am I not passing lighthouse)
+	- [ ] [what are the results of WebPageTest](https://www.webpagetest.org/result/211230_AiDcPS_170f6a8d6557a088fb0c27b52631abec/)
 - [ ] [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
 - [ ] [Manage Users in Firebase](https://firebase.google.com/docs/auth/web/manage-users)
 - [ ] eslint
@@ -42,6 +50,7 @@
 - [ ] how to convert my CI/CD to apply for all branches
 - [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
 - [ ] do I want to add snyk to the github workflow
+- [ ] why did i lose state
 
 </details>
 <details>

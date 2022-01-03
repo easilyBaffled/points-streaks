@@ -5,7 +5,7 @@ import {
     selectors as streakSelectors,
     testState
 } from "../features/streak/store";
-import { selectors as bank } from "../state/bank";
+import { selectors as bank } from "../features/bank/store";
 import { getDaysState } from "../state/resolveDaySelector";
 import { resolveDay } from "../state/actions";
 
@@ -91,7 +91,7 @@ describe( "resolve day", () => {
                 );
 
                 const actual = {
-                    a:      {
+                    a: {
                         currentStreakIndex: streakSelectors.getStreakIndex(
                             nextState,
                             a
@@ -105,7 +105,7 @@ describe( "resolve day", () => {
                     points: bank.getPoints( nextState )
                 };
                 const expected = {
-                    a:      {
+                    a: {
                         currentStreakIndex: 1,
                         streakIterations:   2
                     },
