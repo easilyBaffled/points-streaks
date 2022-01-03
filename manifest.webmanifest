@@ -1,1 +1,28 @@
-{"name":"points-streaks","short_name":"points-streaks","start_url":"/points-streaks/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/points-streaks/"}
+{
+  "name": "Points",
+  "short_name": "Points",
+  "start_url": "/points-streaks/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en",
+  "scope": "/points-streaks/",
+  "description": "Description of your app",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "pwa-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "pwa-512x512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any maskable",
+      "sizes": "512x512",
+      "src": "pwa-512x512.png",
+      "type": "image/png"
+    }
+  ]
+}
