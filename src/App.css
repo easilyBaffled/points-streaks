@@ -104,3 +104,7 @@
 #bank {
 	flex-direction: column;
 }
+
+#bankInput {
+	width: 6ch;
+}

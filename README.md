@@ -1,5 +1,18 @@
 <details>
 	<summary>
+		<strong>Stream Of Thought: just anything</strong>
+	</summary>
+
+- [ ] input to add points to bank
+- [ ] render markdown
+- [ ] rewards slice
+- [ ] rewards list
+- [ ] rewards input
+- [ ] why is the deployment failing
+
+</details>
+<details>
+	<summary>
 		<strong>Stream Of Thought: Infrastructure</strong>
 	</summary>
 

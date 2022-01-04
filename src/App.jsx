@@ -20,10 +20,6 @@ function shouldDebugUI() {
     return params.get( "debug" ) === "ui";
 }
 
-function Test() {
-    return <h1>test</h1>;
-}
-
 function App({
     streaks,
     tasks,
