@@ -159,10 +159,10 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy:
+  publish:
+    runs-on: ubuntu-latest
     needs:
       [ verify, ui-chrome-tests, ui-chrome-mobile-tests ]
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.4.0
@@ -173,14 +173,10 @@ jobs:
           name: build
           path: build
 
-      - name: Deploy to github pages
-        uses: JamesIves/github-pages-deploy-action@4.1.8
+      - name: Publish
+        uses: netlify/actions/cli@master
         with:
-          branch: gh-pages
-          folder: build
-
-      - name: Publish deployed code
-        uses: actions/upload-artifact@v2
-        with:
-          name: published
-          path: build
+          args: deploy --dir=build
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
