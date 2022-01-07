@@ -34,5 +34,14 @@ export interface App {
         entities: TaskDict;
     };
 }
+
 export { dynamicChange } from "./utils";
 export { staticChange } from "./utils";
+
+export interface Reward {
+    id: string;
+    reward: string;
+    value: number;
+}
+
+export type RewardParts = Partial<Reward>;
