@@ -1,10 +1,14 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { reset } from "../../../state/actions/reset";
-import { _dynamicChange, _staticChange } from "../../../utils";
+import {
+    createEntityAdapter,
+    createSelector,
+    createSlice
+} from "@reduxjs/toolkit";
 import { createReward } from "./createReward";
+import { reset } from "@/state/actions/reset";
+import { _dynamicChange } from "@/utils";
+import { purchaseReward } from "@/state/actions/purchaseReward";
 
 const rewardsAdapter = createEntityAdapter();
-const staticChange = _staticChange( rewardsAdapter );
 
 const dynamicChange = _dynamicChange( rewardsAdapter );
 
@@ -53,7 +57,7 @@ const rewardsSlice = createSlice({
             rewardsAdapter.addOne( state, createReward( payload ) ),
         deleteReward: ( state, { payload: id }) =>
             rewardsAdapter.removeOne( state, id ),
-        purchaseReward: ( state, { payload: { id } }) => {
+        [ purchaseReward ]: ( state, { payload: { id } }) => {
             state.history[ id ] = true;
             return state;
         },
@@ -66,6 +70,10 @@ const rewardsSlice = createSlice({
 
 export const reducer = rewardsSlice.reducer;
 export const actions = rewardsSlice.actions;
-export const selectors = rewardsAdapter.getSelectors(
-    ( state ) => state?.rewards ?? state
+export const selectors = rewardsAdapter.getSelectors( ( state ) =>
+    console.tap( state?.rewards ?? state )
+);
+selectors.getHistory = createSelector(
+    ( s ) => s.tasks,
+    ( s ) => s.history
 );

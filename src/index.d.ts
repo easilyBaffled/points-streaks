@@ -1,8 +1,6 @@
 export interface Bank {
     points: number;
-    special: {
-        pizza: number;
-    };
+    special: { [key: string]: number };
 }
 
 export interface TaskBase {

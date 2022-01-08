@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { reset } from "../../../state/actions/reset";
-import { resolveDay } from "../../../state/actions";
+import { reset } from "@/state/actions/reset";
+import { resolveDay } from "@/state/actions";
+import { purchaseReward } from "@/state/actions/purchaseReward";
 
 export const currencies = {
     pizza: "pizza"
@@ -20,6 +21,9 @@ export const specialWorthCalculators = {
 
 export const bankSliceDefinition = {
     extraReducers: {
+        [ purchaseReward ]: ( s, { payload: { cost } }) => {
+            s.points -= cost;
+        },
         [ reset ]:      () => initialState,
         [ resolveDay ]: ( s, { payload: { bank } }) => {
             Object.entries( bank ).forEach( ([ k, v ]) => {

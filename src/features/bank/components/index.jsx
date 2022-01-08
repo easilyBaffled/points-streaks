@@ -10,14 +10,16 @@ export const _Bank = ({ special, points }) => {
             <h3>{points}</h3>
             <AdjustValueInput />
             {Object.entries( special ).map( ([ name, amount ]) => (
-                <>
+                <span key={name}>
+                    <h3>{name}:</h3>
                     <h3>
-                        {name}:</h3>
-                    <h3>
-                        {amount}
-						( worth: {Math.round( specialWorthCalculators[ name ]( points ) * amount )})
+                        {amount}( worth:{" "}
+                        {Math.round(
+                            specialWorthCalculators[ name ]( points ) * amount
+                        )}
+                        )
                     </h3>
-                </>
+                </span>
             ) )}
         </main>
     );

@@ -21,7 +21,6 @@ import {
     actions as taskActions,
     selectors as taskSelectors
 } from "../features/task/store";
-import { createFireBaseRealTimePersistConfig } from "../libs/persistFirebase";
 import firebaseConfig from "../config/firebase";
 import bank, {
     actions as bankActions,
@@ -29,6 +28,12 @@ import bank, {
 } from "../features/bank/store";
 import app, { actions as appActions, selectors as appSelectors } from "./app";
 import { reset } from "./actions/reset";
+import { createFireBaseRealTimePersistConfig } from "@/libs/persistFirebase";
+import {
+    reducer as rewards,
+    actions as rewardsActions,
+    selectors as rewardsSelectors
+} from "@/features/rewards";
 
 const fbStorage = createFireBaseRealTimePersistConfig( firebaseConfig );
 
@@ -45,6 +50,7 @@ const persistConfig = {
 export const actions = {
     reset,
     ...taskActions,
+    ...rewardsActions,
     ...appActions,
     ...bankActions,
     ...streakActions
@@ -53,6 +59,7 @@ export const actions = {
 export const selectors = {
     app:     appSelectors,
     bank:    bankSelectors,
+    rewards: rewardsSelectors,
     streaks: streakSelectors,
     tasks:   taskSelectors
 };
@@ -60,6 +67,7 @@ export const selectors = {
 export const reducer = combineReducers({
     app,
     bank,
+    rewards,
     streaks,
     tasks
 });
@@ -91,17 +99,3 @@ export let persistor = persistStore( store );
 export default store;
 
 export const initialState = store.getState();
-
-//
-// store.dispatch(counter.actions.increment());
-// // -> { counter: 1, user: {name : '', age: 21} }
-// store.dispatch(counter.actions.increment());
-// // -> { counter: 2, user: {name: '', age: 22} }
-// store.dispatch(counter.actions.multiply(3));
-// // -> { counter: 6, user: {name: '', age: 22} }
-// store.dispatch(counter.actions.multiply());
-// // -> { counter: 12, user: {name: '', age: 22} }
-// console.log(`${counter.actions.decrement}`);
-// // -> "counter/decrement"
-// store.dispatch(user.actions.setUserName("eric"));
-// // -> { counter: 12, user: { name: 'eric', age: 22} }

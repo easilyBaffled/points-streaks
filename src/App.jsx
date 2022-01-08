@@ -1,6 +1,6 @@
 import "./App.css";
 import { connect } from "react-redux";
-import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { Route, Routes, NavLink } from "react-router-dom";
 import "@reach/tabs/styles.css";
 import clsx from "clsx";
 import {
@@ -14,6 +14,7 @@ import { getDaysState } from "./state/resolveDaySelector";
 import { resolveDay } from "./state/actions";
 import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
 import { Bank } from "@/features/bank";
+import { AddRewardInput, RewardsList } from "@/features/rewards";
 
 function shouldDebugUI() {
     let params = new URL( document.location ).searchParams;
@@ -47,29 +48,23 @@ function App({
                     ) )}
                 </div>
                 <span>
-                    <NavLink
-                        to="active"
-                        className={({ isActive }) =>
-                            `task-list-link ${isActive ? "active" : ""}`
-                        }
-                    >
-                        Active
-                    </NavLink>
-                    <NavLink
-                        to="history"
-                        className={({ isActive }) =>
-                            `task-list-link ${isActive ? "active" : ""}`
-                        }
-                    >
-                        History
-                    </NavLink>
+                    {[ "active", "history", "rewards" ].map( ( route ) => (
+                        <NavLink
+                            key={route}
+                            to={route}
+                            className={({ isActive }) =>
+                                `task-list-link ${isActive ? "active" : ""}`
+                            }
+                        >
+                            {route.toUpperCase()}
+                        </NavLink>
+                    ) )}
                 </span>
                 <Routes>
                     <Route
                         path={`/active`}
                         element={
                             <div className="task-list">
-                                <h3>Active</h3>
                                 {activeTasks.map( ( t ) => (
                                     <BaseTask key={t.id} {...t} />
                                 ) )}
@@ -80,10 +75,18 @@ function App({
                         path={`/history`}
                         element={
                             <div className="task-list">
-                                <h3>History</h3>
                                 {historicalTasks.map( ( t ) => (
                                     <HistoryTask key={t.id} {...t} />
                                 ) )}
+                            </div>
+                        }
+                    />
+                    <Route
+                        path={`/rewards`}
+                        element={
+                            <div className="task-list">
+                                <AddRewardInput />
+                                <RewardsList />
                             </div>
                         }
                     />

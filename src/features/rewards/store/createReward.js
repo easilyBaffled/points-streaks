@@ -12,7 +12,7 @@ export function createReward( reward, optional = {}) {
         history: [],
         id:      nanoid(),
         reward,
-        value:   1,
+        value:   75,
         ...optional
     };
 }

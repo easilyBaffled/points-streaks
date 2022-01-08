@@ -9,6 +9,10 @@
 - [ ] rewards list
 - [ ] rewards input
 - [ ] why is the deployment failing
+- [ ] sort history by done date
+- [ ] 📝 my goal for personal points is to do away with due and bear
+
+# points how to code up deadlines
 
 </details>
 <details>
