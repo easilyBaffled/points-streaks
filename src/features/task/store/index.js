@@ -3,6 +3,7 @@ import {
     createSelector,
     createSlice
 } from "@reduxjs/toolkit";
+import { groupBy } from "lodash";
 import { reset } from "../../../state/actions/reset";
 import { _dynamicChange, _staticChange } from "../../../utils";
 import { resolveDay } from "../../../state/actions";
@@ -121,6 +122,18 @@ selectors.getHistoricalTasks = createSelector(
     selectors.getHistory,
     ( entities, history ) => entities.filter( ( task ) => history[ task.id ])
 );
+
+selectors.getHistoryListGroupedByDate = createSelector(
+    selectors.getHistoricalTasks,
+    ( taskList ) =>
+        groupBy(
+            taskList,
+            ( task ) =>
+                task.history.find( ( h ) => h.action.type === resolveDay().type )
+                    ?.date
+        )
+);
+
 selectors.getActiveTasks = createSelector(
     selectors.selectAll,
     selectors.getHistory,

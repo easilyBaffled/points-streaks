@@ -75,9 +75,23 @@ function App({
                         path={`/history`}
                         element={
                             <div className="task-list">
-                                {historicalTasks.map( ( t ) => (
-                                    <HistoryTask key={t.id} {...t} />
-                                ) )}
+                                {console
+                                    .tap( Object.entries( historicalTasks ) )
+                                    .map( ([ date, taskList ]) => (
+                                        <>
+                                            <h1>
+                                                {new Date(
+                                                    Number( date )
+                                                ).toDateString()}
+                                            </h1>
+                                            {taskList.map( ( t ) => (
+                                                <HistoryTask
+                                                    key={t.id}
+                                                    {...t}
+                                                />
+                                            ) )}
+                                        </>
+                                    ) )}
                             </div>
                         }
                     />
@@ -109,7 +123,7 @@ function prettyDateFormat( date ) {
 export default connect(
     ( state ) => ({
         activeTasks:     selectors.tasks.getActiveTasks( state ),
-        historicalTasks: selectors.tasks.getHistoricalTasks( state ),
+        historicalTasks: selectors.tasks.getHistoryListGroupedByDate( state ),
         lastRunDate:     prettyDateFormat( state.app.date ),
         state,
         streaks:         selectors.streaks.selectAll( state ),

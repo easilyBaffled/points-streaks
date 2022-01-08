@@ -2,13 +2,7 @@
 	<summary>
 		<strong>Stream Of Thought: just anything</strong>
 	</summary>
-
-- [ ] input to add points to bank
-- [ ] render markdown
-- [ ] rewards slice
-- [ ] rewards list
-- [ ] rewards input
-- [ ] why is the deployment failing
+- [ ] create prod & dev data (with a "sync" button)
 - [ ] sort history by done date
 - [ ] 📝 my goal for personal points is to do away with due and bear
 
