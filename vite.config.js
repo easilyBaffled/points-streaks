@@ -31,7 +31,6 @@ const pwaConfig = {
         name:       "Points",
         short_name: "Points"
     },
-
     minify: false,
     mode:   "development"
 };
@@ -51,5 +50,8 @@ export default defineConfig({
         alias: {
             "@": path.resolve( __dirname, "./src" )
         }
+    },
+    server: {
+        https: true
     }
 });

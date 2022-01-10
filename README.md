@@ -2,6 +2,9 @@
 	<summary>
 		<strong>Stream Of Thought: just anything</strong>
 	</summary>
+
+- [ ] walk
+  through https://www.twilio.com/blog/2018/06/installable-web-apps-practical-introduction-progressive-web-apps.html
 - [ ] create prod & dev data (with a "sync" button)
 - [ ] sort history by done date
 - [ ] 📝 my goal for personal points is to do away with due and bear
@@ -293,7 +296,9 @@
 - [ ] try https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md
 
 </details>
+
 ---
+
 /**
 
 * bank: 0

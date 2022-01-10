@@ -10,12 +10,11 @@
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 	<link rel="mask-icon" href="/favicon.svg" color="#FFFFFF">
 	<meta name="theme-color" content="#ffffff">
-
 	<script>
 		console.tap = (v, ...rest) => {
-			const stack = (new Error()).stack.split('\n')
-			const selfIndex = stack.findIndex(s => s.includes('console.tap'))
-			const sourceStr = stack[selfIndex + 1]
+			const stack = (new Error()).stack.split("\n");
+			const selfIndex = stack.findIndex(s => s.includes("console.tap"));
+			const sourceStr = stack[selfIndex + 1];
 
 			console.log(
 				v,

@@ -15,6 +15,7 @@ import { resolveDay } from "./state/actions";
 import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
 import { Bank } from "@/features/bank";
 import { AddRewardInput, RewardsList } from "@/features/rewards";
+import { activeDoc, getDoc } from "@/libs/firestore";
 
 function shouldDebugUI() {
     let params = new URL( document.location ).searchParams;
@@ -30,6 +31,7 @@ function App({
     activeTasks
 }) {
     useEffect( () => {
+        console.tap( "test" );
         startReportingRuntimeErrors({
             onError: () => {}
         });

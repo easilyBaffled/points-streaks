@@ -73,6 +73,8 @@
 .task-list {
 	display: grid;
 	gap: 1rem;
+	max-height: 50vh;
+	overflow: scroll;
 }
 
 #task-streaks {

@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import store, { persistor } from "./state";
 import App from "./App";
 import reportWebVitals, { tableReport } from "./reportWebVitals";
+import { activeDoc, getDoc } from "@/libs/firestore";
 
 export const Redux = ({ children }) => (
     <Provider store={store}>
@@ -106,3 +107,21 @@ window.points.timebox.defaultList = `
 - How many open PRs: 15
 - How are stories moving on the board: 15
 - PRs: 120`;
+
+window.points.syncToHistory = () => {
+    const historyDoc = getDoc( "state", "state" );
+    activeDoc
+        .getItem()
+        .then( ( data ) => historyDoc.setItem( data ) )
+        .then( console.log )
+        .catch( console.error );
+};
+
+window.points.syncFromHistory = () => {
+    const historyDoc = getDoc( "state", "state" );
+    historyDoc
+        .getItem()
+        .then( ( data ) => activeDoc.setItem( data ) )
+        .then( console.log )
+        .catch( console.error );
+};

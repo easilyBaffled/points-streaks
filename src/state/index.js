@@ -21,7 +21,6 @@ import {
     actions as taskActions,
     selectors as taskSelectors
 } from "../features/task/store";
-import firebaseConfig from "../config/firebase";
 import bank, {
     actions as bankActions,
     selectors as bankSelectors
@@ -35,7 +34,7 @@ import {
     selectors as rewardsSelectors
 } from "@/features/rewards";
 
-const fbStorage = createFireBaseRealTimePersistConfig( firebaseConfig );
+const fbStorage = createFireBaseRealTimePersistConfig();
 
 const testStorage = { storage };
 /**
