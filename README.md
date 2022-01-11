@@ -8,6 +8,8 @@
 - [ ] create prod & dev data (with a "sync" button)
 - [ ] sort history by done date
 - [ ] 📝 my goal for personal points is to do away with due and bear
+- [ ] how to identify critical css
+-
 
 # points how to code up deadlines
 
@@ -294,6 +296,8 @@
 - [x] add .eslint
 - [x] configure prettier-eslint
 - [ ] try https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md
+- [ ] use https://github.com/wtchnm/Vitamin for Lighthouse and structure
+- [ ] give https://github.com/mathe42/vite-plugin-comlink a try when I need a web worker
 
 </details>
 

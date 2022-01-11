@@ -77,9 +77,8 @@ function App({
                         path={`/history`}
                         element={
                             <div className="task-list">
-                                {console
-                                    .tap( Object.entries( historicalTasks ) )
-                                    .map( ([ date, taskList ]) => (
+                                {Object.entries( historicalTasks ).map(
+                                    ([ date, taskList ]) => (
                                         <>
                                             <h1>
                                                 {new Date(
@@ -93,7 +92,8 @@ function App({
                                                 />
                                             ) )}
                                         </>
-                                    ) )}
+                                    )
+                                )}
                             </div>
                         }
                     />

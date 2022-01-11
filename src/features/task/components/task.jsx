@@ -1,14 +1,23 @@
-import { Task } from "../../../components";
-import { actions, status as taskStatus } from "../store";
 import { connect } from "react-redux";
+import { actions, status as taskStatus } from "../store";
+import { Task } from "@/components";
+import { DefaultValue } from "@/components/Task/DefaultValue";
 
-export const _BaseTask = (task) => <Task {...task} />;
+export const _BaseTask = ({ deleteTask, ...task }) => (
+    <Task {...task}>
+        <span>
+            <DefaultValue {...task} />
+            <button onClick={deleteTask}>x</button>
+        </span>
+    </Task>
+);
 
 export const BaseTask = connect(
-    (_, { status }) => ({
+    ( _, { status }) => ({
         isDone: status === taskStatus.done
     }),
-    (dispatch, { id }) => ({
-        toggleTaskStatus: () => dispatch(actions.toggleTaskStatus(id))
+    ( dispatch, { id }) => ({
+        deleteTask:       () => dispatch( actions.deleteTask( id ) ),
+        toggleTaskStatus: () => dispatch( actions.toggleTaskStatus( id ) )
     })
-)(_BaseTask);
+)( _BaseTask );

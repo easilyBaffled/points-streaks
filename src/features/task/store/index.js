@@ -81,6 +81,8 @@ const tasksSlice = createSlice({
                 state,
                 tasks.map( ( t ) => createTask( t ) )
             ),
+        deleteTask: ( state, { payload: id }) =>
+            tasksAdapter.removeOne( state, id ),
         markTaskActive: staticChange({ status: status.active }),
         markTaskDone:   staticChange({ status: status.done }),
         restoreTask:    ( state, { payload: id }) => {

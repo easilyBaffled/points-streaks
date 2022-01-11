@@ -38,30 +38,29 @@ export const Value = DefaultValue;
  *     <AltValue />
  * </Task>
  */
-export const Task = ({ children, toggleTaskStatus, ...task }) => {
-    let elArr = React.Children.toArray(children);
+export const Task = ({ children, toggleTaskStatus, deleteTask, ...task }) => {
+    let elArr = React.Children.toArray( children );
 
-    if (!elArr.length) {
-        elArr = [DefaultName, DefaultValue];
-    } else if (elArr.length === 1) elArr.unshift(DefaultName); // assume that I am going to use a custom Value more often than a custom name
+    if ( !elArr.length ) elArr = [ DefaultName, DefaultValue ];
+    else if ( elArr.length === 1 ) elArr.unshift( DefaultName ); // assume that I am going to use a custom Value more often than a custom name
 
     return (
         <div className="task" onClick={toggleTaskStatus}>
             <input type="checkbox" readOnly checked={task.isDone} />
-            {elArr.map((elOrCmp, i) => {
+            {elArr.map( ( elOrCmp, i ) => {
                 const key = `${task.id}_${
                     elOrCmp?.type?.name ?? elOrCmp.type
                 }_${i}`;
 
-                return React.isValidElement(elOrCmp)
-                    ? React.cloneElement(elOrCmp, {
-                          ...task,
-                          key
-                      })
-                    : React.createElement(elOrCmp, {
-                          ...task,
-                          key
-                      });
+                return React.isValidElement( elOrCmp )
+                    ? React.cloneElement( elOrCmp, {
+                        ...task,
+                        key
+                    })
+                    : React.createElement( elOrCmp, {
+                        ...task,
+                        key
+                    });
             })}
         </div>
     );
