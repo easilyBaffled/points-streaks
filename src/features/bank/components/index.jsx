@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { selectors, specialWorthCalculators } from "../store";
 import { AdjustValueInput } from "@/features/bank/components/adjustValueInput";
+import { ConvertSpecialInput } from "@/features/bank/components/convertSpecialToPointsInput";
 
 export const _Bank = ({ special, points }) => {
     return (
@@ -19,6 +20,7 @@ export const _Bank = ({ special, points }) => {
                         )}
                         )
                     </h3>
+                    <ConvertSpecialInput maximum={amount} type={name} />
                 </span>
             ) )}
         </main>

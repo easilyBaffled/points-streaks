@@ -41,6 +41,10 @@ export const bankSliceDefinition = {
         addSpecial( s, { payload: { amount, type = "pizza" } }) {
             s.special[ type ] += amount;
         },
+        convertSpecial( s, { payload: { amount, type = "pizza" } }) {
+            s.special[ type ] -= amount;
+            s.points += specialWorthCalculators[ type ]( s ) * amount;
+        },
         setPoints( s, { payload: amount }) {
             s.points = amount;
         },

@@ -3,10 +3,10 @@
 		<strong>Stream Of Thought: just anything</strong>
 	</summary>
 
-- [ ] walk
+- [x] walk
   through https://www.twilio.com/blog/2018/06/installable-web-apps-practical-introduction-progressive-web-apps.html
-- [ ] create prod & dev data (with a "sync" button)
-- [ ] sort history by done date
+- [x] create prod & dev data (with a "sync" button)
+- [x] sort history by done date
 - [ ] 📝 my goal for personal points is to do away with due and bear
 - [ ] how to identify critical css
 -
@@ -54,10 +54,10 @@
 	- [x] add coverage
 	- [ ] add cov limit to PRs
 	- [ ] add deploy cov report to PRs
-- [ ] [add `@` path alias](https://javascript.plainenglish.io/how-to-set-up-path-resolving-in-vite-ad284e0d9eae)
+- [x] [add `@` path alias](https://javascript.plainenglish.io/how-to-set-up-path-resolving-in-vite-ad284e0d9eae)
 	- [x] add `jsconfig.json`
 	- [x] update vite.config.js
-	- [ ] run tests to make sure everything still works
+	- [x] run tests to make sure everything still works
 - [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
 	- [ ] https://create-react-app.dev/docs/measuring-performance/
 	- [x] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
@@ -66,7 +66,7 @@
 - [ ] how to convert my CI/CD to apply for all branches
 - [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
 - [ ] do I want to add snyk to the github workflow
-- [ ] why did i lose state
+- [x] why did i lose state
 
 </details>
 <details>
@@ -96,8 +96,8 @@
 - [ ] fix eslint issues
 - [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
 - [ ] https://firebase.google.com/docs/auth/web/firebaseui
-- [ ] https://rebassjs.org/ or Tailwind
-- [ ] keep a history of actions on each task
+- [x] https://rebassjs.org/ or Tailwind
+- [x] keep a history of actions on each task
 - [ ] how can I compose specialized tasks like streaks using the baseTask reducer so that I'm not duplicating work like
   internal history?
 - [ ] transfer streaks to app
