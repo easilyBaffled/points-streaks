@@ -161,8 +161,9 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    needs:
-      [ verify, ui-chrome-tests, ui-chrome-mobile-tests ]
+    needs: install-and-build
+    # needs:
+    #  [ verify, ui-chrome-tests, ui-chrome-mobile-tests ]
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.4.0
