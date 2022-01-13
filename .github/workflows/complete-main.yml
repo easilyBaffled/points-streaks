@@ -173,10 +173,9 @@ jobs:
           name: build
           path: build
 
-      - name: Publish
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=build
+      - name: Deploy to Vercel
         env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        run: npx vercel --prod

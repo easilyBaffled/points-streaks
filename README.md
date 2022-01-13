@@ -9,7 +9,14 @@
 - [x] sort history by done date
 - [ ] 📝 my goal for personal points is to do away with due and bear
 - [ ] how to identify critical css
--
+- [ ] direct state editor
+- [ ] why does removing something from the list lock scrolling
+- [ ] add snky to github
+  workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
+- [ ] Deploy
+	- [ ] convert all firebase config to env
+	- [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
+	- [ ] how to tie vercel's new with github actions
 
 # points how to code up deadlines
 
@@ -225,10 +232,6 @@
 	- [x] wire up firebase/supabase to
 	  persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
 	- [x] RTK-Query?
-- [ ] Deploy
-	- [ ] convert all firebase config to env
-	- [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
-	- [ ] how to tie vercel's new with github actions
 - [ ] Persist v2
 	- [ ] how to do persistence with state
 	  migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
