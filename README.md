@@ -11,6 +11,7 @@
 - [ ] how to identify critical css
 - [ ] direct state editor
 - [ ] why does removing something from the list lock scrolling
+- [ ] get tests working again
 - [ ] add snky to github
   workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
 - [ ] Deploy
