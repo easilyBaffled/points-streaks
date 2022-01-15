@@ -1,5 +1,9 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { status } from "@/features/streak";
+
+const status = {
+    active: "active",
+    done:   "done"
+};
 
 /**
  *

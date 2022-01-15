@@ -160,21 +160,27 @@ module.exports = {
                 max: 4
             }
         ],
-        "no-native-reassign":   1,
-        "no-negated-in-lhs":    1,
-        "no-new":               1,
-        "no-new-func":          1,
-        "no-new-object":        1,
-        "no-new-require":       1,
-        "no-new-symbol":        1,
-        "no-new-wrappers":      1,
-        "no-obj-calls":         1,
-        "no-octal":             1,
-        "no-octal-escape":      1,
-        "no-path-concat":       1,
-        "no-proto":             1,
-        "no-redeclare":         1,
-        "no-regex-spaces":      1,
+        "no-native-reassign":    1,
+        "no-negated-in-lhs":     1,
+        "no-new":                1,
+        "no-new-func":           1,
+        "no-new-object":         1,
+        "no-new-require":        1,
+        "no-new-symbol":         1,
+        "no-new-wrappers":       1,
+        "no-obj-calls":          1,
+        "no-octal":              1,
+        "no-octal-escape":       1,
+        "no-path-concat":        1,
+        "no-proto":              1,
+        "no-redeclare":          1,
+        "no-regex-spaces":       1,
+        "no-restricted-imports": [
+            "error",
+            {
+                patterns: [ "@/features/*/*" ]
+            }
+        ],
         "no-restricted-syntax": [
             "error",
             "MemberExpression[object.name=/describe|it/][property.name='only']"

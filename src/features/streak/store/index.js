@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createTask } from "./createTask";
 import { initialState } from "./initialState";
 import { dynamicChange, staticChange, tasksAdapter } from "./tasksAdapter";
-import { status, streakMax } from "./constants";
+import { status as _status, streakMax as _streakMax } from "./constants";
 import { reset } from "@/state/actions/reset";
 import { resolveDay } from "@/state/actions";
 
+export { selectors } from "./selectors";
+export const status = _status;
+export const streakMax = _streakMax;
 export const a = "a";
 export const b = "b";
 
