@@ -10,15 +10,15 @@ import {
 
 export { AddRewardInput } from "./addRewardInput";
 
-export function _RewardsList({ rewards, hasEnoughPoints, purchase }) {
-    return console.tap( rewards ).map( ({ reward, id, value }) => {
+export function _RewardsList({ rewards, notEnoughPoints, purchase }) {
+    return rewards.map( ({ reward, id, value }) => {
         return (
             <div key={id}>
                 <ReactMarkdown className={clsx( "name" )}>{reward}</ReactMarkdown>
                 <code className="value">{value}</code>
                 <button
                     onClick={() => purchase( id )}
-                    disabled={hasEnoughPoints( value )}
+                    disabled={notEnoughPoints( value )}
                 >
                     Purchase
                 </button>
@@ -29,11 +29,12 @@ export function _RewardsList({ rewards, hasEnoughPoints, purchase }) {
 
 export const RewardsList = connect(
     ( state ) => ({
-        hasEnoughPoints: ( amount ) => bankSelectors.getPoints( state ) >= amount,
+        notEnoughPoints: ( amount ) =>
+            bankSelectors.getPoints( state ) < Number( amount ),
         // historicalRewards: selectors
         //     .selectAll( state )
         //     .filter( ( r ) => selectors.getHistory( state )[ r ]),
-        rewards:         selectors
+        rewards: selectors
             .selectAll( state )
             .filter( ( r ) => !selectors.getHistory( state )[ r ])
     }),
