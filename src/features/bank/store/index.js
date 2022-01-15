@@ -21,8 +21,8 @@ export const specialWorthCalculators = {
 
 export const bankSliceDefinition = {
     extraReducers: {
-        [ purchaseReward ]: ( s, { payload: { cost } }) => {
-            s.points -= cost;
+        [ purchaseReward ]: ( s, { payload: { amount } }) => {
+            s.points -= amount;
         },
         [ reset ]:      () => initialState,
         [ resolveDay ]: ( s, { payload: { bank } }) => {
@@ -51,8 +51,8 @@ export const bankSliceDefinition = {
         setSpecial( s, { payload: { amount, type = "pizza" } }) {
             s.special[ type ] = amount;
         },
-        spendPoints( s, { payload: amount }) {
-            if ( amount <= s.points ) s.points -= amount;
+        spendPoints( s, { payload: { amount } }) {
+            s.points -= amount;
         },
         spendSpecial( s, { payload: { amount, type = "pizza" } }) {
             if ( amount <= s.special[ type ]) s.special[ type ] -= amount;

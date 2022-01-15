@@ -3,10 +3,8 @@ import ReactMarkdown from "react-markdown";
 import React from "react";
 import { connect } from "react-redux";
 import { selectors } from "../store";
-import {
-    actions as bankActions,
-    selectors as bankSelectors
-} from "@/features/bank";
+import { selectors as bankSelectors } from "@/features/bank";
+import { purchaseReward } from "@/state/actions/purchaseReward";
 
 export { AddRewardInput } from "./addRewardInput";
 
@@ -17,7 +15,7 @@ export function _RewardsList({ rewards, notEnoughPoints, purchase }) {
                 <ReactMarkdown className={clsx( "name" )}>{reward}</ReactMarkdown>
                 <code className="value">{value}</code>
                 <button
-                    onClick={() => purchase( id )}
+                    onClick={() => purchase( value, id )}
                     disabled={notEnoughPoints( value )}
                 >
                     Purchase
@@ -36,9 +34,9 @@ export const RewardsList = connect(
         //     .filter( ( r ) => selectors.getHistory( state )[ r ]),
         rewards: selectors
             .selectAll( state )
-            .filter( ( r ) => !selectors.getHistory( state )[ r ])
+            .filter( ( r ) => !selectors.hasBeenPurchased( state, r.id ) )
     }),
     ( dispatch ) => ({
-        purchase: ( amount ) => dispatch( bankActions.spendPoints( amount ) )
+        purchase: ( amount, id ) => dispatch( purchaseReward({ amount, id }) )
     })
 )( _RewardsList );

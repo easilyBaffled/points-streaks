@@ -48,6 +48,11 @@ export const initialState = rewardsAdapter.getInitialState({ history: {} });
 
 const rewardsSlice = createSlice({
     extraReducers: includeHistory({
+        [ purchaseReward ]: ( state, { payload: { id } }) => {
+            console.tap( state, id );
+            state.history[ id ] = true;
+            return state;
+        },
         [ reset ]: () => initialState
     }),
     initialState,
@@ -57,10 +62,7 @@ const rewardsSlice = createSlice({
             rewardsAdapter.addOne( state, createReward( payload ) ),
         deleteReward: ( state, { payload: id }) =>
             rewardsAdapter.removeOne( state, id ),
-        [ purchaseReward ]: ( state, { payload: { id } }) => {
-            state.history[ id ] = true;
-            return state;
-        },
+
         restoreReward: ( state, { payload: id }) => {
             state.history[ id ] = false;
             return state;
@@ -70,10 +72,15 @@ const rewardsSlice = createSlice({
 
 export const reducer = rewardsSlice.reducer;
 export const actions = rewardsSlice.actions;
-export const selectors = rewardsAdapter.getSelectors( ( state ) =>
-    console.tap( state?.rewards ?? state )
+export const selectors = rewardsAdapter.getSelectors(
+    ( state ) => state?.rewards ?? state
 );
 selectors.getHistory = createSelector(
-    ( s ) => s.tasks,
+    ( s ) => s.rewards,
     ( s ) => s.history
+);
+
+selectors.hasBeenPurchased = createSelector(
+    [ selectors.getHistory, ( __, id ) => id ],
+    ( history, id ) => history[ id ]
 );
