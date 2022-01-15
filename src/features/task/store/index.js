@@ -1,23 +1,15 @@
-import {
-    createEntityAdapter,
-    createSelector,
-    createSlice
-} from "@reduxjs/toolkit";
-import { groupBy } from "lodash";
-import { reset } from "../../../state/actions/reset";
-import { _dynamicChange, _staticChange } from "../../../utils";
-import { resolveDay } from "../../../state/actions";
+import { createSlice } from "@reduxjs/toolkit";
 import { createTask } from "./createTask";
+import { dynamicChange, staticChange, tasksAdapter } from "./tasksAdapter";
+import { reset } from "@/state/actions/reset";
+import { resolveDay } from "@/state/actions";
 
+export { selectors } from "./selectors";
 export { a, b, testState } from "./testItems";
 export const status = {
     active: "active",
     done:   "done"
 };
-const tasksAdapter = createEntityAdapter();
-const staticChange = _staticChange( tasksAdapter );
-
-const dynamicChange = _dynamicChange( tasksAdapter );
 
 function doesPayloadHaveId( state, action ) {
     const maybeId = action?.payload?.id ?? action.payload;
@@ -104,40 +96,3 @@ const tasksSlice = createSlice({
 export const initialState = tasksSlice.getInitialState();
 export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
-export const selectors = tasksAdapter.getSelectors(
-    ( state ) => state?.tasks ?? state
-);
-selectors.getTask = selectors.selectById;
-selectors.getValue = createSelector( selectors.getTask, ( task ) => task.value );
-selectors.getDaysPoints = createSelector(
-    [ selectors.selectIds, ( state ) => state ],
-    ( taskIds, state ) =>
-        taskIds.reduce( ( sum, id ) => sum + selectors.getValue( state, id ), 0 )
-);
-
-selectors.getHistory = createSelector(
-    ( s ) => s.tasks,
-    ( s ) => s.history
-);
-selectors.getHistoricalTasks = createSelector(
-    selectors.selectAll,
-    selectors.getHistory,
-    ( entities, history ) => entities.filter( ( task ) => history[ task.id ])
-);
-
-selectors.getHistoryListGroupedByDate = createSelector(
-    selectors.getHistoricalTasks,
-    ( taskList ) =>
-        groupBy(
-            taskList,
-            ( task ) =>
-                task.history.find( ( h ) => h.action.type === resolveDay().type )
-                    ?.date
-        )
-);
-
-selectors.getActiveTasks = createSelector(
-    selectors.selectAll,
-    selectors.getHistory,
-    ( entities, history ) => entities.filter( ( task ) => !history[ task.id ])
-);

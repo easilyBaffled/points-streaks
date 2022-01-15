@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function, max-nested-callbacks, max-lines */
 import store, { actions } from "../state";
 import {
     a,
@@ -6,17 +7,17 @@ import {
     testState
 } from "../features/streak/store";
 import { selectors as bank } from "../features/bank/store";
-import { getDaysState } from "../state/resolveDaySelector";
-import { resolveDay } from "../state/actions";
+import { getDaysState } from "@/state/resolveDaySelector";
+import { resolveDay } from "@/state/actions";
 
 const dispatchPipe = ( ...actions ) => {
-    actions.reduce( ( s, action ) => {
+    actions.forEach( ( action ) => {
         if ( typeof action === "function" ) {
             if ( action.name === "tap" || action.name === "log" )
                 action( store.getState() );
             else store.dispatch( action( store.getState() ) );
         } else store.dispatch( action );
-    }, {});
+    });
     return store.getState();
 };
 

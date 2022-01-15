@@ -1,12 +1,11 @@
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import { createDefaultPersistConfig } from "./configuredPersist";
-import { rq } from "./utils";
 import { deserializePersist } from "./deserializePersist";
-import { activeDoc, getDoc } from "@/libs/firestore";
+import { activeDoc } from "@/libs/firestore";
 
 export default createDefaultPersistConfig;
 
-export const createFireBaseRealTimePersistConfig = ( throttleTime = 100 ) => {
+export const createFireBaseRealTimePersistConfig = () => {
     const dbStorage = activeDoc;
 
     const mergedStorage = {

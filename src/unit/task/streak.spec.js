@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function, max-lines */
 import {
     reducer,
     a,
@@ -9,7 +10,7 @@ import {
     streakMax
 } from "../../features/streak";
 import { _modifyEntity } from "../modifyEntity";
-import { currencies } from "../../features/bank/store";
+import { currencies } from "@/features/bank";
 
 const modifyEntity = _modifyEntity( testState );
 
@@ -75,6 +76,7 @@ describe( "Task Actions", () => {
         expect( actual ).to.eqls( expected );
     });
 });
+
 describe( "selectors", () => {
     describe( "getTaskValue", () => {
         const state = reducer( testState, actions.markTaskDone( a ) );

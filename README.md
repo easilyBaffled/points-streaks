@@ -42,8 +42,8 @@
 	- [x] the pipeline should install and/or cache build
 	- [x] lint, test, and so on
 	- [x] if all things pass properly deploy anew
-- [ ] create prod data
-- [ ] create `PROD` switch for build
+- [x] create prod data
+- [x] create `PROD` switch for build
 - [ ] use `build:prod` for deployments
 - [ ] PWA
 	- [ ] read [package.json](https://github.com/antfu/vite-plugin-pwa/blob/main/examples/react-router/package.json)

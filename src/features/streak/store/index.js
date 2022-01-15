@@ -1,39 +1,10 @@
-import {
-    createEntityAdapter,
-    createSelector,
-    createSlice,
-    nanoid
-} from "@reduxjs/toolkit";
-import { reset } from "../../../state/actions/reset";
-import { currencies } from "../../bank/store";
-import { listToEntity, _dynamicChange, _staticChange } from "../../../utils";
-import { resolveDay } from "../../../state/actions";
-
-export const status = {
-    active: "active",
-    done:   "done"
-};
-
-/**
- *
- * @param {string} task
- * @param {TaskParts} optional
- * @return TaskStreak
- */
-function createTask( task, optional = {}) {
-    return {
-        currentStreakIndex: 1,
-        id:                 nanoid(),
-        status:             status.active,
-        streakIterations:   1,
-        task,
-        ...optional
-    };
-}
-
-export const streakMax = 6;
-
-const tasksAdapter = createEntityAdapter();
+import { createSlice } from "@reduxjs/toolkit";
+import { createTask } from "./createTask";
+import { initialState } from "./initialState";
+import { dynamicChange, staticChange, tasksAdapter } from "./tasksAdapter";
+import { status, streakMax } from "./constants";
+import { reset } from "@/state/actions/reset";
+import { resolveDay } from "@/state/actions";
 
 export const a = "a";
 export const b = "b";
@@ -45,30 +16,6 @@ export const testState = {
     },
     ids: [ a, b ]
 };
-
-export const initialState = listToEntity(
-    [
-        "email",
-        "meditate",
-        "teeth",
-        "clean 5%",
-        "quirk",
-        "walk",
-        "dev tea",
-        "luminosity",
-        "🔊📚 (20)",
-        "read(20)",
-        "track 🥪",
-        "track 🥤",
-        "fiber 🧻",
-        "#points",
-        "reduce lists 5%"
-    ].map( ( s ) => createTask( s, { id: s.replace( / /g, "-" ) }) )
-);
-
-const staticChange = _staticChange( tasksAdapter );
-
-const dynamicChange = _dynamicChange( tasksAdapter );
 
 function bumpStreakChange( t ) {
     if ( t.currentStreakIndex === streakMax ) {
@@ -134,46 +81,3 @@ const tasksSlice = createSlice({
 
 export const reducer = tasksSlice.reducer;
 export const actions = tasksSlice.actions;
-export const selectors = tasksAdapter.getSelectors(
-    ( state ) => state?.streaks ?? state
-);
-selectors.getStreak = selectors.selectById;
-
-// /**
-//  * @type {(state: unknown, id: EntityId) => number}
-//  */
-selectors.getStreakIndex = createSelector(
-    selectors.getStreak,
-    ( task ) => task.currentStreakIndex
-);
-
-selectors.getStreakIteration = createSelector(
-    selectors.getStreak,
-    ( task ) => task.streakIterations
-);
-
-selectors.getStreakValue = createSelector( selectors.getStreak, ( task ) =>
-    task.status === status.active
-        ? 0
-        : task.currentStreakIndex === streakMax
-            ? currencies.pizza
-            : task.currentStreakIndex * task.streakIterations
-);
-
-selectors.getDaysPoints = createSelector(
-    [ selectors.selectIds, ( state ) => state ],
-    ( taskIds, state ) =>
-        taskIds
-            .map( ( id ) => selectors.getStreakValue( state, id ) )
-            .reduce(
-                ( acc, value ) => {
-                    if ( Number.isInteger( value ) ) acc.points += value;
-                    else {
-                        acc[ currencies[ value ] ] =
-                            ( acc?.[ currencies[ value ] ] ?? 0 ) + 1;
-                    }
-                    return acc;
-                },
-                { points: 0 }
-            )
-);
