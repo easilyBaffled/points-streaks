@@ -19,6 +19,8 @@
 	- [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
 	- [ ] how to tie vercel's new with github actions
 	- [ ] might be good https://aaronfrancis.com/2021/the-perfect-vercel-github-actions-deployment-pipeline
+- [ ] grids (or flex wrap) for points
+- [ ] try error overlay again
 
 # points how to code up deadlines
 

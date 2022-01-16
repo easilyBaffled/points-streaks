@@ -1,72 +1,40 @@
 import "./App.css";
 import { connect } from "react-redux";
-import { Route, Routes, NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "@reach/tabs/styles.css";
 import clsx from "clsx";
-import {
-    startReportingRuntimeErrors,
-    stopReportingRuntimeErrors
-} from "react-error-overlay";
-import { useEffect } from "react";
 import { StreakTask } from "./features/streak";
 import { selectors } from "./state";
-import { getDaysState } from "./state/resolveDaySelector";
-import { resolveDay } from "./state/actions";
 import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
-import { Bank } from "@/features/bank";
 import { AddRewardInput, RewardsList } from "@/features/rewards";
-import { activeDoc, getDoc } from "@/libs/firestore";
+import { NavTabs } from "@/components/navTabs/NavTabs";
+import { ActionHeader } from "@/features/actionHeader";
 
 function shouldDebugUI() {
     let params = new URL( document.location ).searchParams;
     return params.get( "debug" ) === "ui";
 }
 
-function App({
-    streaks,
-    tasks,
-    lastRunDate,
-    resolveDay,
-    historicalTasks,
-    activeTasks
-}) {
-    useEffect( () => {
-        console.tap( "test" );
-        startReportingRuntimeErrors({
-            onError: () => {}
-        });
-        return () => stopReportingRuntimeErrors();
-    }, []);
-
-    return (
-        <div className={clsx( "App", { debug: shouldDebugUI() })}>
-            <CreateTaskInput />
-            <button onClick={() => resolveDay()}>Resolve {lastRunDate}</button>
-            <Bank />
-            <div id="task-section">
-                <div className="task-list">
-                    {streaks.map( ( t ) => (
-                        <StreakTask key={t.id} {...t} />
-                    ) )}
-                </div>
-                <span>
-                    {[ "active", "history", "rewards" ].map( ( route ) => (
-                        <NavLink
-                            key={route}
-                            to={route}
-                            className={({ isActive }) =>
-                                `task-list-link ${isActive ? "active" : ""}`
-                            }
-                        >
-                            {route.toUpperCase()}
-                        </NavLink>
-                    ) )}
-                </span>
+const EasyTaskList = ({ tasks }) => (
+    <div className="task-list">
+        {tasks.map( ( t ) => (
+            <StreakTask key={t.id} {...t} />
+        ) )}
+    </div>
+);
+const App = ({ streaks, historicalTasks, activeTasks }) => (
+    <div className={clsx( "App", { debug: shouldDebugUI() })}>
+        <ActionHeader />
+        <main className="content">
+            <EasyTaskList tasks={streaks} />
+            <span className="task-list">
+                <NavTabs routes={[ "active", "history", "rewards" ]} />
                 <Routes>
                     <Route
                         path={`/active`}
                         element={
                             <div className="task-list">
+                                <CreateTaskInput />
                                 {activeTasks.map( ( t ) => (
                                     <BaseTask key={t.id} {...t} />
                                 ) )}
@@ -107,37 +75,15 @@ function App({
                         }
                     />
                 </Routes>
-            </div>
-        </div>
-    );
-}
+            </span>
+        </main>
+    </div>
+);
 
-function prettyDateFormat( date ) {
-    var options = {
-        day:     "numeric",
-        month:   "long",
-        weekday: "long"
-    };
-
-    return new Intl.DateTimeFormat( "en-US", options ).format( new Date( date ) );
-}
-
-export default connect(
-    ( state ) => ({
-        activeTasks:     selectors.tasks.getActiveTasks( state ),
-        historicalTasks: selectors.tasks.getHistoryListGroupedByDate( state ),
-        lastRunDate:     prettyDateFormat( state.app.date ),
-        state,
-        streaks:         selectors.streaks.selectAll( state ),
-        tasks:           selectors.tasks.selectAll( state )
-    }),
-    ( dispatch ) => ({
-        resolveDay: ( state ) => () => dispatch( resolveDay( getDaysState( state ) ) )
-    }),
-    ({ state, ...stateProps }, { resolveDay, ...dispatchProps }, ownProps ) => ({
-        ...ownProps,
-        ...dispatchProps,
-        ...stateProps,
-        resolveDay: resolveDay( state )
-    })
-)( App );
+export default connect( ( state ) => ({
+    activeTasks:     selectors.tasks.getActiveTasks( state ),
+    historicalTasks: selectors.tasks.getHistoryListGroupedByDate( state ),
+    state,
+    streaks:         selectors.streaks.selectAll( state ),
+    tasks:           selectors.tasks.selectAll( state )
+}) )( App );
