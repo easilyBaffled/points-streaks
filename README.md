@@ -1,3 +1,95 @@
+## UX
+
+	- [ ] Add Tailwind
+	- [ ] Create Composed Tailwind Classes
+	- [ ] Pick Tailwind Theme
+	- [ ] Pick Component Library ([Presentation | Material Tailwind by Creative Tim](https://material-tailwind.com)?) [Tailwind UI - Official Tailwind CSS Components](https://tailwindui.com/#product-application-ui)
+	- [ ] does tailwind have vertical rhythm
+	- [ ] celebration on click
+
+## Performance
+
+	- [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
+		- [ ] https://create-react-app.dev/docs/measuring-performance/
+		- [ ] what do these numbers mean?
+	- [ ] use https://github.com/wtchnm/Vitamin for Lighthouse
+	- [ ] how to identify critical css
+
+## Features
+
+	- [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
+	- [ ] add daily tasks
+	- [ ] login https://firebase.google.com/docs/auth/web/firebaseui
+		- [ ] points how to code up deadlines
+	- [ ] why does removing something from the list lock scrolling
+	- [ ] clear input after submit
+	- [ ] redux history
+	- [ ] wire in redux dev tools
+
+## CICD
+
+	- [ ] raise coverage limit
+	- [ ] report coverage
+	- [ ] do I want to add snyk to the github workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
+	- [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
+	- [ ] how to convert my CI/CD to apply for all branches
+	- [ ] get push notifications from github if pipeline fails
+	- [ ] add eslint to pr req
+	- [ ] use  `build:prod` for deployments
+	- [ ] how are [React-Query](https://github.com/tannerlinsley/react-query/pull/3006)'s PRs setup?
+
+## Security
+
+	- [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
+	- [ ] Firebase Security
+		- [ ] auth based security
+		- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
+		- [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
+		- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
+		- [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
+		- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
+		- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
+		- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
+		- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
+		- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's
+		  api
+		- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
+	- [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
+
+## Confidence
+
+	- [ ] Get Unit tests working
+	- [ ] How to intercept Firestore	[prescottprue/cypress-firebase](https://github.com/prescottprue/cypress-firebase)
+	- [ ] Easy Error Boundries
+	- [ ] Port Reacts Error Layer
+	- [ ] Add Sentry
+	- [ ] [Chaos Frontend Toolkit - Tools to break your web apps and find ways to improve them | Product Hunt](https://www.producthunt.com/posts/chaos-frontend-toolkit)
+
+## V2
+
+	- [ ] define types as GQL Scheme
+	- [ ] How to mutate
+	- [ ] Create BE
+	- [ ] Convert to React Native
+	- [ ] create composable Task reducer
+
+## Reading/Planning
+
+	- [ ] [GitHub - alan2207/bulletproof-react: 🛡️ ⚛️ A simple, scalable, and powerful architecture for building production ready React applications.](https://github.com/alan2207/bulletproof-react)
+	- [ ] [GitHub - wtchnm/Vitamin: Opinionated Vite starter template.](https://github.com/wtchnm/Vitamin)
+	- [ ] [An Introduction to GraphQL | Tania Rascia](https://www.taniarascia.com/introduction-to-graphql/)
+	- [ ] [How and Why You Should Store React UI State in the URL](https://betterprogramming.pub/how-and-why-you-should-store-react-ui-state-in-the-url-f2013a204cb2)
+	- [ ] [Tao of React - Software Design, Architecture & Best Practices | Alex Kondov - Software Engineer](https://alexkondov.com/tao-of-react/?ck_subscriber_id=478727104)
+	- [ ] [React Architecture: How to Structure and Organize a React Application | Tania Rascia](https://www.taniarascia.com/react-architecture-directory-structure/)
+	- [ ] [React folder structure for enterprise level applications](https://engineering.udacity.com/react-folder-structure-for-enterprise-level-applications-f8384eff162b)
+	- [ ] 📝 my goal for personal points is to do away with due and bear
+
+## Toys
+
+	- [ ] try [copilot-docs/gettingstarted.md at main · github/copilot-docs · GitHub](https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md)
+	- [ ] give [Use WebWorkers in Vite with comlink!](https://github.com/mathe42/vite-plugin-comlink) a try when I need a web worker
+	- [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
+
 <details>
 	<summary>
 		<strong>Stream Of Thought: just anything</strong>
@@ -7,24 +99,15 @@
   through https://www.twilio.com/blog/2018/06/installable-web-apps-practical-introduction-progressive-web-apps.html
 - [x] create prod & dev data (with a "sync" button)
 - [x] sort history by done date
-- [ ] 📝 my goal for personal points is to do away with due and bear
-- [ ] how to identify critical css
-- [ ] direct state editor
-- [ ] why does removing something from the list lock scrolling
-- [ ] get tests working again
-- [ ] add snky to github
-  workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
-- [ ] Deploy
-	- [ ] convert all firebase config to env
-	- [ ] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
-	- [ ] how to tie vercel's new with github actions
-	- [ ] might be good https://aaronfrancis.com/2021/the-perfect-vercel-github-actions-deployment-pipeline
-- [ ] grids (or flex wrap) for points
-- [ ] try error overlay again
-
-# points how to code up deadlines
+- [x] Deploy
+	- [x] convert all firebase config to env
+	- [x] use https://vercel.com/new/import?s=https%3A%2F%2Fgithub.com%2FeasilyBaffled%2Fpoints-streaks for first deploy
+	- [x] how to tie vercel's new with github actions
+	- [x] might be good https://aaronfrancis.com/2021/the-perfect-vercel-github-actions-deployment-pipeline
+- [x] grids (or flex wrap) for points
 
 </details>
+
 <details>
 	<summary>
 		<strong>Stream Of Thought: Infrastructure</strong>
@@ -46,40 +129,21 @@
 	- [x] if all things pass properly deploy anew
 - [x] create prod data
 - [x] create `PROD` switch for build
-- [ ] use `build:prod` for deployments
-- [ ] PWA
-	- [ ] read [package.json](https://github.com/antfu/vite-plugin-pwa/blob/main/examples/react-router/package.json)
-	- [ ] read [vite.config.ts](https://github.com/antfu/vite-plugin-pwa/blob/main/examples/react-router/vite.config.ts)
-	- [ ] run lighthouse
-	- [ ] (why am I not passing lighthouse)
-	- [ ] [what are the results of WebPageTest](https://www.webpagetest.org/result/211230_AiDcPS_170f6a8d6557a088fb0c27b52631abec/)
-- [ ] [Web app manifests](https://developer.mozilla.org/en-US/docs/Web/Manifest)
-- [ ] [Manage Users in Firebase](https://firebase.google.com/docs/auth/web/manage-users)
-- [ ] eslint
+- [x] eslint
 	- [x] add eslint
-	- [ ] fix eslint issues
-	- [ ] add eslint to pr req
-	- [ ] add the `no-import` rule from bulletproof
-- [ ] unit tests
-	- [ ] add passing req to PRs
-	- [x] add coverage
-	- [ ] add cov limit to PRs
-	- [ ] add deploy cov report to PRs
+	- [x] fix eslint issues
+	- [x] add the `no-import` rule from bulletproof
+- [x] unit tests
+	- [x] collect coverage
+	- [x] error on coverage
 - [x] [add `@` path alias](https://javascript.plainenglish.io/how-to-set-up-path-resolving-in-vite-ad284e0d9eae)
 	- [x] add `jsconfig.json`
 	- [x] update vite.config.js
 	- [x] run tests to make sure everything still works
-- [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
-	- [ ] https://create-react-app.dev/docs/measuring-performance/
-	- [x] https://github.com/alan2207/bulletproof-react/blob/341919f8b03d1054202a049d24ec6f20271a7019/src/reportWebVitals.ts
-	- [ ] what do these numbers mean?
-- [ ] get push notifications from github if pipeline fails
-- [ ] how to convert my CI/CD to apply for all branches
-- [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
-- [ ] do I want to add snyk to the github workflow
 - [x] why did i lose state
 
 </details>
+
 <details>
 	<summary>
 		<strong>Stream Of Thought: Standard Tasks</strong>
@@ -104,20 +168,11 @@
 - [x] add tabbed view for active/history
 - [x] add restore task button
 - [x] add handler to bank to move task's value
-- [ ] fix eslint issues
-- [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
-- [ ] https://firebase.google.com/docs/auth/web/firebaseui
+- [x] fix eslint issues
 - [x] https://rebassjs.org/ or Tailwind
 - [x] keep a history of actions on each task
-- [ ] how can I compose specialized tasks like streaks using the baseTask reducer so that I'm not duplicating work like
-  internal history?
-- [ ] transfer streaks to app
-- [ ] add tailwind + material
-- [ ] make mobile friendly
-- [ ] display bank
-- [ ] does tailwind have vertical rhythm
-- [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
-- [ ] add daily tasks
+- [x] transfer streaks to app
+- [x] display bank
 
 </details>
 
@@ -167,20 +222,6 @@
 > my number one concern is not having to work in two projects, so no client/server situation.
 > Even if they both live in the same project, I really don't want to have to maintain a front and backend
 
-- [ ] Firebase Security
-	- [ ] auth based security
-	- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
-		- [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
-		- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
-		- [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
-		- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
-		- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
-		- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
-		- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
-		- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's
-		  api
-		- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
-	- [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
 - [ ] Magic Wand DB
 	- [ ] draft what the "magic wand" option would be
 	- [ ] why don't I think Apollo is that option
@@ -236,17 +277,9 @@
 	- [x] wire up firebase/supabase to
 	  persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
 	- [x] RTK-Query?
-- [ ] Persist v2
-	- [ ] how to do persistence with state
+- [x] Persist v2
+	- [x] how to do persistence with state
 	  migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
-- [ ] Testing
-	- [ ] [Testing React + Firebase Apps With Cypress](https://prescottprue.medium.com/testing-react-firebase-apps-with-cypress-7d7a64d155de)
-	- [ ] [cypress-firebase](https://github.com/prescottprue/cypress-firebase)
-	- [x] [Set up the Local Emulator Suite](https://firebase.google.com/docs/rules/emulator-setup)
-	- [ ] [Unit Testing Firebase Testing Quickstarts](https://firebaseopensource.com/projects/firebase/quickstart-testing/)
-
-- [ ] Styling
-	- [ ] [try styling](https://tailwindcss.com/blog/tailwindcss-v3)
 
 </details>
 
@@ -295,97 +328,12 @@
 - [x] pick cloud place to work for now
 - [x] use `vite` to create a project
 - [x] add `readme.md`
-- [ ] add `.gitignore`
+- [x] add `.gitignore`
 - [x] add redux toolkit requirements
 - [x] add Cypress for unit testing
 - [x] add the fun script to update deps if PRs Pass
-- [ ] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
+- [x] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
 - [x] add .eslint
 - [x] configure prettier-eslint
-- [ ] try https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md
-- [ ] use https://github.com/wtchnm/Vitamin for Lighthouse and structure
-- [ ] give https://github.com/mathe42/vite-plugin-comlink a try when I need a web worker
 
 </details>
-
----
-
-/**
-
-* bank: 0
-*
-	- [x] task: [ 1, 2, 3, 4, 5, 🍕]
-*
-* resolve
-*
-* bank: 1
-*
-	- [ ] task: [ x, 2, 3, 4, 5, 🍕]
-*
-* when a day resolves if a task was marked complete then the tasks streak is incremented and the task is marked active
-  and points are added to the bank
-  */ // I need a way to check if a task was complete // I need a way to increment the streak // I need a way to mark a
-  task as active // I need a way to add a certain amount of points to the bank
-
-/**
-
-* bank: 0
-*
-	- [x] task: [ x, 2, 3, 4, 5 🍕]
-*
-* resolve
-*
-* bank: 2
-*
-	- [ ] task: [ x, x, 3, 4, 5 🍕]
-*
-* when a day resolves if a task was marked complete and the task had an active streak then the tasks streak is
-  incremented and the task is marked active and points are added to the bank
-  */
-
-/**
-
-* bank: 0
-*
-	- [x] task: [ x, x, x, x, x 🍕]
-*
-* resolve
-*
-* bank: 0 | 🍕
-*
-	- [ ] task: [ 2, 3, 4, 5, 6 🍕]
-*
-* when a day resolves if a task was marked complete and the task was at the last entry in the iteration then the active
-  streak is reset and a special value is added to the bank and the entire streaks value is incremented
-  */
-
-/**
-
-* bank: 0
-*
-	- [ ] task: [ 1, 2, 3, 4, 5, 🍕]
-*
-* resolve
-*
-* bank: 0
-*
-	- [ ] task: [ 1, 2, 3, 4, 5, 🍕]
-*
-* When the day resolves
-* if no tasks were marked complete then no tasks are toggled and no points are added to the bank
-  */
-
-/**
-
-* bank: 0
-*
-	- [ ] task: [ x, 3, 4, 5, 6 🍕]
-*
-* resolve
-*
-* bank: 0
-*
-	- [ ] task: [ 1, 2, 3, 4, 5 🍕]
-*
-* When the day resolves if no tasks were marked complete and a task had an active streak then the active streak is reset
-  **/

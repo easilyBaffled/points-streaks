@@ -7,6 +7,7 @@ function buildSubmitHandler( submitters ) {
         submitters.forEach( ({ name, onSubmit }) => {
             onSubmit( e.target.elements[ name ].value, e );
         });
+        // e.target.reset()
     };
 }
 
