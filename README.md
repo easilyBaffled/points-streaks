@@ -1,94 +1,141 @@
+## Bulletproof
+
+- [ ]
+  port [bulletproof-react/lazyImport](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/src/utils/lazyImport.ts#L4)
+- [ ] use [plopjs](https://plopjs.com/)
+  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
+  to generate features
+- [ ] use [plopjs](https://plopjs.com/)
+  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
+  to generate component
+- [ ] use [plopjs](https://plopjs.com/)
+  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
+  to generate slice
+- [ ] integrate graphql generation
+- [ ] create top level routing work / login
+- [ ] move all routing to `features`
+- [ ] create doc explaining `feature`, `routing`, and `index.js`s
+- [ ] poke julian about that whole HTTP/2 file serving
+- [ ] move all tests to their proper `/__test__`
+- [ ] create `constants` and `utils`
+- [ ] use direnv or something to make proper `.env` in accordance with what vite expects
+
+## Vitamin
+
+[GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
+for each directory/file- write up what is different and the tasks i need to move it over to my project
+
+- `/.github`
+- `/.husky`
+- `/cypress`
+	- [ ] integration vs e2e - `"integrationFolder": "cypress/e2e"`, what's `"fileServerFolder": "dist",`
+	- [ ] cypress specific eslint.js
+	- [ ] what does `testing-library` provide
+- `/public`
+- `.postcssrc.json`
+- `.stylelintrc.json`
+- `index.html`
+- `package.json` - mostly scripts and `lint-staged`
+- `tailwind.config.js`
+- `vercel.json`
+- `vite.config.ts`
+- [ ] add [GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
+- [ ] how to add lighthouse measurements to github
+
 ## UX
 
-	- [ ] Add Tailwind
-	- [ ] Create Composed Tailwind Classes
-	- [ ] Pick Tailwind Theme
-	- [ ] Pick Component Library ([Presentation | Material Tailwind by Creative Tim](https://material-tailwind.com)?) [Tailwind UI - Official Tailwind CSS Components](https://tailwindui.com/#product-application-ui)
-	- [ ] does tailwind have vertical rhythm
-	- [ ] celebration on click
+- [ ] Add Tailwind
+- [ ] Create Composed Tailwind Classes
+- [ ] Pick Tailwind Theme
+- [ ] Pick Component Library ([Presentation | Material Tailwind by Creative Tim](https://material-tailwind.com)
+  ?) [Tailwind UI - Official Tailwind CSS Components](https://tailwindui.com/#product-application-ui)
+- [ ] does tailwind have vertical rhythm
+- [ ] celebration on click
 
 ## Performance
 
-	- [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
-		- [ ] https://create-react-app.dev/docs/measuring-performance/
-		- [ ] what do these numbers mean?
-	- [ ] use https://github.com/wtchnm/Vitamin for Lighthouse
-	- [ ] how to identify critical css
+- [ ] add [web-vitals](https://github.com/GoogleChrome/web-vitals)
+	- [ ] https://create-react-app.dev/docs/measuring-performance/
+	- [ ] what do these numbers mean?
+- [ ] use https://github.com/wtchnm/Vitamin for Lighthouse
+- [ ] how to identify critical css
 
 ## Features
 
-	- [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
-	- [ ] add daily tasks
-	- [ ] login https://firebase.google.com/docs/auth/web/firebaseui
-		- [ ] points how to code up deadlines
-	- [ ] why does removing something from the list lock scrolling
-	- [ ] clear input after submit
-	- [ ] redux history
-	- [ ] wire in redux dev tools
+- [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
+- [ ] add daily tasks
+- [ ] login https://firebase.google.com/docs/auth/web/firebaseui
+	- [ ] points how to code up deadlines
+- [ ] why does removing something from the list lock scrolling
+- [ ] clear input after submit
+- [ ] redux history
+- [ ] wire in redux dev tools
 
 ## CICD
 
-	- [ ] raise coverage limit
-	- [ ] report coverage
-	- [ ] do I want to add snyk to the github workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
-	- [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
-	- [ ] how to convert my CI/CD to apply for all branches
-	- [ ] get push notifications from github if pipeline fails
-	- [ ] add eslint to pr req
-	- [ ] use  `build:prod` for deployments
-	- [ ] how are [React-Query](https://github.com/tannerlinsley/react-query/pull/3006)'s PRs setup?
+- [ ] raise coverage limit
+- [ ] report coverage
+- [ ] do I want to add snyk to the github
+  workflow https://docs.snyk.io/features/integrations/ci-cd-integrations/github-actions-integration
+- [ ] have a `console.log` that outputs the last commit id so I can know if I'm really looking at the last change
+- [ ] how to convert my CI/CD to apply for all branches
+- [ ] get push notifications from github if pipeline fails
+- [ ] add eslint to pr req
+- [ ] use  `build:prod` for deployments
+- [ ] how are [React-Query](https://github.com/tannerlinsley/react-query/pull/3006)'s PRs setup?
 
 ## Security
 
-	- [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
-	- [ ] Firebase Security
-		- [ ] auth based security
-		- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
-		- [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
-		- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
-		- [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
-		- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
-		- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
-		- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
-		- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
-		- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's
-		  api
-		- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
-	- [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
+- [ ] [can I set limits for firestore](https://firebase.google.com/docs/firestore/quotas)
+- [ ] Firebase Security
+	- [ ] auth based security
+	- [ ] [javascript - Is it safe to expose Firebase apiKey to the public? - Stack Overflow](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
+	- [x] how do [Firebase](https://firebase.google.com/docs/projects/api-keys) say to secure my keys
+	- [ ] [How to secure your Firebase project even when your API key is publicly available | by Devesu | Medium](https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843)
+	- [x] [How to keep your Firebase project safe and secure from everyone - DEV Community](https://dev.to/obnoxiousnerd/how-to-keep-your-firebase-project-safe-and-secure-from-everyone-1p2i)
+	- [ ] [Hiding API Keys with Environment Variables](https://www.youtube.com/watch?v=17UVejOw3zA)
+	- [ ] does [dotenv](https://github.com/motdotla/dotenv) secure anything or just make it easier
+	- [ ] how does [GitHub - prescottprue/firething](https://github.com/prescottprue/firething) secure env
+	- [ ] [Dotenv Action · Actions · GitHub Marketplace · GitHub](https://github.com/marketplace/actions/dotenv-action)
+	- [ ] how does [bulletproof-react](https://github.com/alan2207/bulletproof-react/tree/master/src) secure it's api
+	- [ ] [environment variables - How do I use an env file with GitHub Actions? - Stack Overflow](https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions)
+- [ ] [env based keys](https://firebase.google.com/docs/projects/api-keys#test-vs-prod-keys)
 
 ## Confidence
 
-	- [ ] Get Unit tests working
-	- [ ] How to intercept Firestore	[prescottprue/cypress-firebase](https://github.com/prescottprue/cypress-firebase)
-	- [ ] Easy Error Boundries
-	- [ ] Port Reacts Error Layer
-	- [ ] Add Sentry
-	- [ ] [Chaos Frontend Toolkit - Tools to break your web apps and find ways to improve them | Product Hunt](https://www.producthunt.com/posts/chaos-frontend-toolkit)
+- [ ] Get Unit tests working
+- [ ] How to intercept Firestore    [prescottprue/cypress-firebase](https://github.com/prescottprue/cypress-firebase)
+- [ ] Easy Error Boundries
+- [ ] Port Reacts Error Layer
+- [ ] Add Sentry
+- [ ] [Chaos Frontend Toolkit - Tools to break your web apps and find ways to improve them | Product Hunt](https://www.producthunt.com/posts/chaos-frontend-toolkit)
 
 ## V2
 
-	- [ ] define types as GQL Scheme
-	- [ ] How to mutate
-	- [ ] Create BE
-	- [ ] Convert to React Native
-	- [ ] create composable Task reducer
+- [ ] define types as GQL Scheme
+- [ ] How to mutate
+- [ ] Create BE
+- [ ] Convert to React Native
+- [ ] create composable Task reducer
 
 ## Reading/Planning
 
-	- [ ] [GitHub - alan2207/bulletproof-react: 🛡️ ⚛️ A simple, scalable, and powerful architecture for building production ready React applications.](https://github.com/alan2207/bulletproof-react)
-	- [ ] [GitHub - wtchnm/Vitamin: Opinionated Vite starter template.](https://github.com/wtchnm/Vitamin)
-	- [ ] [An Introduction to GraphQL | Tania Rascia](https://www.taniarascia.com/introduction-to-graphql/)
-	- [ ] [How and Why You Should Store React UI State in the URL](https://betterprogramming.pub/how-and-why-you-should-store-react-ui-state-in-the-url-f2013a204cb2)
-	- [ ] [Tao of React - Software Design, Architecture & Best Practices | Alex Kondov - Software Engineer](https://alexkondov.com/tao-of-react/?ck_subscriber_id=478727104)
-	- [ ] [React Architecture: How to Structure and Organize a React Application | Tania Rascia](https://www.taniarascia.com/react-architecture-directory-structure/)
-	- [ ] [React folder structure for enterprise level applications](https://engineering.udacity.com/react-folder-structure-for-enterprise-level-applications-f8384eff162b)
-	- [ ] 📝 my goal for personal points is to do away with due and bear
+- [x] [GitHub - alan2207/bulletproof-react: 🛡️ ⚛️ A simple, scalable, and powerful architecture for building production ready React applications.](https://github.com/alan2207/bulletproof-react)
+- [ ] [GitHub - wtchnm/Vitamin: Opinionated Vite starter template.](https://github.com/wtchnm/Vitamin)
+- [ ] [An Introduction to GraphQL | Tania Rascia](https://www.taniarascia.com/introduction-to-graphql/)
+- [ ] [How and Why You Should Store React UI State in the URL](https://betterprogramming.pub/how-and-why-you-should-store-react-ui-state-in-the-url-f2013a204cb2)
+- [ ] [Tao of React - Software Design, Architecture & Best Practices | Alex Kondov - Software Engineer](https://alexkondov.com/tao-of-react/?ck_subscriber_id=478727104)
+- [ ] [React Architecture: How to Structure and Organize a React Application | Tania Rascia](https://www.taniarascia.com/react-architecture-directory-structure/)
+- [ ] [React folder structure for enterprise level applications](https://engineering.udacity.com/react-folder-structure-for-enterprise-level-applications-f8384eff162b)
+- [ ] 📝 my goal for personal points is to do away with due and bear
 
 ## Toys
 
-	- [ ] try [copilot-docs/gettingstarted.md at main · github/copilot-docs · GitHub](https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md)
-	- [ ] give [Use WebWorkers in Vite with comlink!](https://github.com/mathe42/vite-plugin-comlink) a try when I need a web worker
-	- [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
+- [ ]
+  try [copilot-docs/gettingstarted.md at main · github/copilot-docs · GitHub](https://github.com/github/copilot-docs/blob/main/docs/jetbrains/gettingstarted.md)
+- [ ] give [Use WebWorkers in Vite with comlink!](https://github.com/mathe42/vite-plugin-comlink) a try when I need a
+  web worker
+- [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
 
 <details>
 	<summary>

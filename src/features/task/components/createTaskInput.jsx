@@ -1,16 +1,19 @@
 import { connect } from "react-redux";
 import { actions } from "../store";
+import { EasyForm } from "@/components";
 
-const processTaskCreationForm = ( action ) => ( e ) => {
-    e.preventDefault();
-    action( e.target.elements.tasks.value.split( "\n" ) );
+const processTaskCreationForm = ( action ) => ( value ) => {
+    action( value.split( "\n" ) );
 };
 
-export const _CreateTaskInput = ({ createTask, createTasks }) => (
-    <form onSubmit={processTaskCreationForm( createTasks )}>
-        <textarea name="tasks" />
-        <button type="submit">Submit</button>
-    </form>
+export const _CreateTaskInput = ({ createTasks }) => (
+    <EasyForm showSubmit>
+        <textarea
+            name="tasks"
+            className="new-task-input"
+            onSubmit={processTaskCreationForm( createTasks )}
+        />
+    </EasyForm>
 );
 
 export const CreateTaskInput = connect( null, ( dispatch ) => ({

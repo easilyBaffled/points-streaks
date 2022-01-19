@@ -81,6 +81,7 @@
 	flex: 1;
 	min-width: 40rem;
 	box-shadow: inset 0px 4px 5px 0px #bebebe4d;
+	padding: 1rem;
 
 }
 
@@ -127,4 +128,8 @@
 	flex-wrap: wrap;
 	height: 80vh;
 	overflow: scroll;
+}
+
+.new-task-input {
+	padding: 1rem;
 }

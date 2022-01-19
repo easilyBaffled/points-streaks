@@ -24,7 +24,8 @@ function _ActionHeader({ lastRunDate, resolveDay }) {
 
 export const ActionHeader = connect(
     ( state ) => ({
-        lastRunDate: prettyDateFormat( state.app.date )
+        lastRunDate: prettyDateFormat( state.app.date ),
+        state
     }),
     ( dispatch ) => ({
         resolveDay: ( state ) => () => dispatch( resolveDay( getDaysState( state ) ) )
