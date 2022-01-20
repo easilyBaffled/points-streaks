@@ -2,15 +2,15 @@
 
 - [ ]
   port [bulletproof-react/lazyImport](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/src/utils/lazyImport.ts#L4)
-- [ ] use [plopjs](https://plopjs.com/)
+- [x] use [plopjs](https://plopjs.com/)
   with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
   to generate features
+- [x] use [plopjs](https://plopjs.com/)
+  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
+  to generate slice
 - [ ] use [plopjs](https://plopjs.com/)
   with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
   to generate component
-- [ ] use [plopjs](https://plopjs.com/)
-  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
-  to generate slice
 - [ ] integrate graphql generation
 - [ ] create top level routing work / login
 - [ ] move all routing to `features`

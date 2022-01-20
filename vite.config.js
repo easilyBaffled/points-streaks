@@ -3,36 +3,41 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import istanbul from "vite-plugin-istanbul";
 import { VitePWA } from "vite-plugin-pwa";
+import { fileURLToPath } from "url";
 
+const filename = fileURLToPath(import.meta.url);
+
+// 👇️ "/home/john/Desktop/javascript"
+const dirname = path.dirname(filename);
 // console.tap = (v, ...rest) => (console.log(v, ...rest), v);
 
 const pwaConfig = {
     injectRegister: "inline",
-    manifest:       {
+    manifest: {
         description: "Description of your app",
-        icons:       [
+        icons: [
             {
                 sizes: "192x192",
-                src:   "pwa-192x192.png",
-                type:  "image/png"
+                src: "pwa-192x192.png",
+                type: "image/png"
             },
             {
                 sizes: "512x512",
-                src:   "pwa-512x512.png",
-                type:  "image/png"
+                src: "pwa-512x512.png",
+                type: "image/png"
             },
             {
                 purpose: "any maskable",
-                sizes:   "512x512",
-                src:     "pwa-512x512.png",
-                type:    "image/png"
+                sizes: "512x512",
+                src: "pwa-512x512.png",
+                type: "image/png"
             }
         ],
-        name:       "Points",
+        name: "Points",
         short_name: "Points"
     },
     minify: false,
-    mode:   "development"
+    mode: "development"
 };
 
 // https://vitejs.dev/config/
@@ -40,15 +45,15 @@ export default defineConfig({
     plugins: [
         react(),
         istanbul({
-            exclude:   [ "node_modules", "test/" ],
-            extension: [ ".js", ".jsx" ],
-            include:   "src/*"
+            exclude: ["node_modules", "test/"],
+            extension: [".js", ".jsx"],
+            include: "src/*"
         }),
-        VitePWA( pwaConfig )
+        VitePWA(pwaConfig)
     ],
     resolve: {
         alias: {
-            "@": path.resolve( __dirname, "./src" )
+            "@": path.resolve(dirname, "./src")
         }
     },
     server: {
