@@ -1,33 +1,28 @@
-import fs from "fs";
+import { getFeatureList } from "../getFeatureList.js";
 
-function getFeatureList() {
-    return fs.readdirSync( "./src/features" );
-}
-
-export const featureConfig = {
-    actions: function({ needsEntities, sliceName, featureName }) {
+export const sliceConfig = {
+    actions: function ({ needsEntities, sliceName, featureName }) {
         const sliceIndex = `export * from './initialState';
 		export * from './reducer';
 		export * from './selectors';
 		${needsEntities ? "export * from './entity'" : ""}`;
-
         const entityAdapterImport = needsEntities
             ? `import { ${sliceName}Adapter } from "./entityAdapter";`
             : "";
 
         const actions = [
             {
-                path:     `src/features/${featureName}/store/${sliceName}/index.js`,
+                path: `src/features/${featureName}/store/${sliceName}/index.js`,
                 template: sliceIndex,
-                type:     "add"
+                type: "add"
             },
             {
-                path:     `src/features/${featureName}/store/${sliceName}/initialState.js`,
+                path: `src/features/${featureName}/store/${sliceName}/initialState.js`,
                 template: "export const initialState = null",
-                type:     "add"
+                type: "add"
             },
             {
-                path:     `src/features/${featureName}/store/${sliceName}/reducer.js`,
+                path: `src/features/${featureName}/store/${sliceName}/reducer.js`,
                 template: `
                 	import { createSlice } from "@reduxjs/toolkit";
                 	import { initialState } from './initialState';
@@ -37,51 +32,51 @@ export const featureConfig = {
 						name: "${sliceName}",
 						reducers: {}
 					});
-                `.replace( /(^\s+)/gm, "" ),
+                `.replace(/(^\s+)/gm, ""),
                 type: "add"
             },
             {
-                path:     `src/features/${featureName}/store/${sliceName}/selectors.js`,
+                path: `src/features/${featureName}/store/${sliceName}/selectors.js`,
                 template: `
                 	import { createSelector } from "@reduxjs/toolkit";
 					${entityAdapterImport}
-                `.replace( /(^\s+)/gm, "" ),
+                `.replace(/(^\s+)/gm, ""),
                 type: "add"
             }
         ];
 
         return needsEntities
             ? actions.concat({
-                path:     `src/features/${featureName}/store/${sliceName}/entityAdapter.js`,
-                template: `
+                  path: `src/features/${featureName}/store/${sliceName}/entityAdapter.js`,
+                  template: `
 					import { createEntityAdapter } from "@reduxjs/toolkit";
 					import { _dynamicChange, _staticChange } from "@/utils";
 
 					export const ${sliceName}Adapter = createEntityAdapter();
 					export const staticChange = _staticChange( ${sliceName}Adapter );
 					export const dynamicChange = _dynamicChange( ${sliceName}Adapter );
-				`.replace( /(^\s+)/gm, "" ),
-                type: "add"
-            })
+				`.replace(/(^\s+)/gm, ""),
+                  type: "add"
+              })
             : actions;
     },
     description: "Slice Generator",
-    prompts:     [
+    prompts: [
         {
             message: "Slice Name",
-            name:    "sliceName",
-            type:    "input"
+            name: "sliceName",
+            type: "input"
         },
         {
             choices: getFeatureList(),
             message: "Feature Name",
-            name:    "featureName",
-            type:    "rawlist"
+            name: "featureName",
+            type: "rawlist"
         },
         {
             message: "Does this needs entities",
-            name:    "needsEntities",
-            type:    "confirm"
+            name: "needsEntities",
+            type: "confirm"
         }
     ]
 };
