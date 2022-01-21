@@ -7,6 +7,8 @@ export interface TaskBase {
     id: string;
     status: "active" | "done";
     task: string;
+    tags: string[];
+    created_at: number;
 }
 
 export interface Task extends TaskBase {
@@ -43,3 +45,4 @@ export interface Reward {
 }
 
 export type RewardParts = Partial<Reward>;
+export { includeHistory } from "./utils/includeHistory";

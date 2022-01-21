@@ -3,6 +3,7 @@ import { createTask } from "./createTask";
 import { dynamicChange, staticChange, tasksAdapter } from "./tasksAdapter";
 import { reset } from "@/state/actions/reset";
 import { resolveDay } from "@/state/actions";
+import { promoteTask } from "@/state/actions/promoteTask.js";
 
 export { selectors } from "./selectors";
 export { a, b, testState } from "./testItems";
@@ -45,6 +46,9 @@ function includeHistory( reducers ) {
 
 const tasksSlice = createSlice({
     extraReducers: includeHistory({
+        [ promoteTask ]: ( state, { payload: { task } }) =>
+            tasksAdapter.addOne( state, task ),
+
         [ reset ]:      () => tasksAdapter.getInitialState({ history: {} }),
         [ resolveDay ]: ( state, action ) => {
             const { payload } = action;

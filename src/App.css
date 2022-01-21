@@ -126,7 +126,6 @@
 .content {
 	width: 100vw;
 	flex-wrap: wrap;
-	height: 80vh;
 	overflow: scroll;
 }
 
