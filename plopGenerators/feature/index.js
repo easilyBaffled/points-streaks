@@ -1,7 +1,7 @@
 export const featureConfig = {
     actions: function({ featureName, needs }) {
         const featureRootIndex = needs
-            .map( ( s ) => `export * from './${s}` )
+            .map( ( s ) => `export * from './${s}'` )
             .join( "\n" );
 
         return needs.reduce(
