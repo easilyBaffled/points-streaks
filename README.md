@@ -1,51 +1,56 @@
+How can I keep infrastructure the same across both projects?
+
 ## Bulletproof
 
-- [ ]
-  port [bulletproof-react/lazyImport](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/src/utils/lazyImport.ts#L4)
-- [x] use [plopjs](https://plopjs.com/)
-  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
-  to generate features
-- [x] use [plopjs](https://plopjs.com/)
-  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
-  to generate slice
-- [ ] use [plopjs](https://plopjs.com/)
-  with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js)
-  to generate component
-- [ ] integrate graphql generation
-- [ ] create top level routing work / login
-- [ ] move all routing to `features`
-- [ ] create doc explaining `feature`, `routing`, and `index.js`s
-- [ ] poke julian about that whole HTTP/2 file serving
-- [ ] move all tests to their proper `/__test__`
-- [ ] create `constants` and `utils`
-- [ ] use direnv or something to make proper `.env` in accordance with what vite expects
+	- [ ] Copy over plop
+	- [ ] add MSW from [react-query-auth-demo - CodeSandbox](https://codesandbox.io/s/react-query-auth-demo-fvvvt?file=/src/index.tsx) to get login working
+	- [ ] evaluate Cypress vs Jest
+	- [x] use [plopjs](https://plopjs.com/) with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js) to generate features
+	- [x] use [plopjs](https://plopjs.com/) with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js) to generate slice
+	- [x] use [plopjs](https://plopjs.com/) with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js) to generate component
+	- [ ] port over my changes from Mapware
+	- [ ] port over my changes from Points
 
-## Vitamin
+## Mapware
+
+	- [ ] #fetch configure endpoint
+	- [ ] #fetch create the project specific fetch function for codegen
+	- [ ] #fetch integrate graphql generation
+	- [ ] create top level routing work / login
+	- [ ] move all routing to `features`
+
+## Infrastructure
 
 [GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
 for each directory/file- write up what is different and the tasks i need to move it over to my project
 
-- `/.github`
-- `/.husky`
-- `/cypress`
+* `/.github`
+* `/.husky`
+* `/cypress`
 	- [ ] integration vs e2e - `"integrationFolder": "cypress/e2e"`, what's `"fileServerFolder": "dist",`
 	- [ ] cypress specific eslint.js
 	- [ ] what does `testing-library` provide
-- `/public`
-- `.postcssrc.json`
-- `.stylelintrc.json`
-- `index.html`
-- `package.json` - mostly scripts and `lint-staged`
-- `tailwind.config.js`
-- `vercel.json`
-- `vite.config.ts`
+* `/public`
+* `.postcssrc.json`
+* `.stylelintrc.json`
+* `index.html`
+* `package.json` - mostly scripts and `lint-staged`
+* `tailwind.config.js`
+* `vercel.json`
+* `vite.config.ts`
+
 - [ ] add [GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
 - [ ] how to add lighthouse measurements to github
+- [ ] create `constants` and `utils`
+- [ ] move all tests to their proper `/__test__`
+- [ ] create doc explaining `feature`, `routing`, and `index.js`s
+- [ ] use direnv or something to make proper `.env` in accordance with what vite expects
 
 ## UX
 
 - [ ] Add Tailwind
 - [ ] Create Composed Tailwind Classes
+- [ ] pull in basic tailwind for a better style
 - [ ] Pick Tailwind Theme
 - [ ] Pick Component Library ([Presentation | Material Tailwind by Creative Tim](https://material-tailwind.com)
   ?) [Tailwind UI - Official Tailwind CSS Components](https://tailwindui.com/#product-application-ui)
@@ -59,9 +64,21 @@ for each directory/file- write up what is different and the tasks i need to move
 	- [ ] what do these numbers mean?
 - [ ] use https://github.com/wtchnm/Vitamin for Lighthouse
 - [ ] how to identify critical css
+- [ ] poke julian about that whole HTTP/2 file serving
 
-## Features
+## Points
 
+### Backlog
+
+	- [ ] view list
+	- [ ] remove item
+	- [ ] edit item
+	- [ ] add single item
+	- [ ] promote item
+	- [ ] add bulk
+	- [ ] use [liqe](https://github.com/gajus/liqe) to sort/filter
+
+- [ ] add redux history
 - [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
 - [ ] add daily tasks
 - [ ] login https://firebase.google.com/docs/auth/web/firebaseui
@@ -137,10 +154,7 @@ for each directory/file- write up what is different and the tasks i need to move
   web worker
 - [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
 
-<details>
-	<summary>
-		<strong>Stream Of Thought: just anything</strong>
-	</summary>
+---
 
 - [x] walk
   through https://www.twilio.com/blog/2018/06/installable-web-apps-practical-introduction-progressive-web-apps.html
@@ -153,20 +167,13 @@ for each directory/file- write up what is different and the tasks i need to move
 	- [x] might be good https://aaronfrancis.com/2021/the-perfect-vercel-github-actions-deployment-pipeline
 - [x] grids (or flex wrap) for points
 
-</details>
-
-<details>
-	<summary>
-		<strong>Stream Of Thought: Infrastructure</strong>
-	</summary>
-
 > The longer you wait to add infra like eslint, coverage, responsive, the harder it is to add
 > So when coding features hits a lul I should take the opportunity to add cov
 
 - [x] reduce [vite logging](https://vitejs.dev/config/)
 - [x] **Could Not Complete:** update reporting to only show broken tests
 - [x] get tests to pass
-- [x] **Cypress Doesn't have an option:** how to have cy `watch` _and_ notify locally
+- [x] **Cypress Doesn't have an option:** how to have cy `watch` *and* notify locally
 - [x] [Cy GitHub Actions](https://docs.cypress.io/guides/continuous-integration/github-actions#Cypress-GitHub-Action)
 - [x] CICD
 	- [x] why is my [pipeline](https://github.com/easilyBaffled/points-streaks/runs/4680123332?check_suite_focus=true)
@@ -188,13 +195,6 @@ for each directory/file- write up what is different and the tasks i need to move
 	- [x] update vite.config.js
 	- [x] run tests to make sure everything still works
 - [x] why did i lose state
-
-</details>
-
-<details>
-	<summary>
-		<strong>Stream Of Thought: Standard Tasks</strong>
-	</summary>
 
 > So I have finally hit a major refactoring point. I want to add standard tasks, ones that I can create, complete, move to history, and move back if necessary.
 > I am going to have to recover from shooting myself in the foot first, because I named all the streak stuff "task" so the first thing is to refactor that to be just streaks
@@ -221,13 +221,6 @@ for each directory/file- write up what is different and the tasks i need to move
 - [x] transfer streaks to app
 - [x] display bank
 
-</details>
-
-<details>
-	<summary>
-		<strong>Stream Of Thought: Firestore Persist</strong>
-	</summary>
-
 > So I know that I am doing things very wrong writing everything to the Firestore everytime I make a change to state.
 > And there are certainly a number of things I could do to improve the situation but honestly right now I just need this thing to move along.
 > So all improvements I can think of will go to Ideal Cloud/DB, but for now the job is GET IT DONE.
@@ -236,24 +229,21 @@ for each directory/file- write up what is different and the tasks i need to move
 	- [x] locate my persist code in the previous points
 	- [x] port over persist
 	- [x] read the new docs
-		- [x] [collection](https://firebase.google.com/docs/reference/js/firestore_.md#collection)
-		  > Gets a CollectionReference Not too much I can do with it, so I need to use getDoc(s)
-		- [x] [getDoc](https://firebase.google.com/docs/reference/js/firestore_.md#getdoc)
-		  > Reads the document referred to by this DocumentReference.
-		  `getDocs` lets you specify a query and get an array, but if I'm only playing by myself then I don't need to query. But really I care about `DocumentReference`
-		  > A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with .data() or .get(<field>) to get a specific field.
-		- [x] [setDoc](https://firebase.google.com/docs/reference/js/firestore_.md#setdoc)
-		  > Writes to the document referred to by this DocumentReference. If the document does not yet exist, it will be created.
-		  > If you provide `merge` or `mergeFields`, the provided data can be merged into an existing document. Perhaps I can in the future send just the chunk of state that has been updated, rather than sending the whole thing
-	- [x] set up persisting an object
-	- [x] get object persist working
+		- [x] [collection](https://firebase.google.com/docs/reference/js/firestore_.md#collection)> Gets a
+		  CollectionReference Not too much I can do with it, so I need to use getDoc(s)
+		- [x] [getDoc](https://firebase.google.com/docs/reference/js/firestore_.md#getdoc)> Reads the document referred
+		  to by this DocumentReference.
 
-</details>
+> `getDocs` lets you specify a query and get an array, but if I'm only playing by myself then I don't need to query. But really I care about `DocumentReference`
+> A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with .data() or .get() to get a specific field.
 
-<details>
-	<summary>
-		<strong>Ideal Cloud/DB</strong>
-	</summary>
+- [x] [setDoc](https://firebase.google.com/docs/reference/js/firestore_.md#setdoc)> Writes to the document referred to
+  by this DocumentReference. If the document does not yet exist, it will be created.
+
+> If you provide `merge` or `mergeFields`, the provided data can be merged into an existing document. Perhaps I can in the future send just the chunk of state that has been updated, rather than sending the whole thing
+
+- [x] set up persisting an object
+- [x] get object persist working
 
 > OK I have finally hit the wall that I feel I always run into and then drop
 > Cloud Storage. At savepoint I need a database.
@@ -285,13 +275,6 @@ for each directory/file- write up what is different and the tasks i need to move
 	- [ ] [LIFT-OFF III: ARGUMENTS](https://odyssey.apollographql.com/lift-off-part3)
 	- [ ] [LIFT-OFF IV: MUTATIONS](https://odyssey.apollographql.com/lift-off-part4)
 
-</details>
-
-<details>
-	<summary>
-		<strong>Train of Thought: UI</strong>
-	</summary>
-
 > ok so that last "Train of Thought" probably went on for long enoug, so this is where the new one starts.
 > Once again I am going to try and stay away from all of that good foundational scaffolding that I'm working on in bulletproof
 > in exchange for speed of getting things done here
@@ -311,30 +294,28 @@ for each directory/file- write up what is different and the tasks i need to move
   messaging for destructuring errors)
 - [x] persist state
 	- [x] localStorage
-	- [x]
-	  add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
-		- [x] add emulation https://firebase.google.com/docs/emulator-suite
-		  & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
-		- [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
-	- [x] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
-	- [x]
-	  read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
-	- [x] just add basic
-	  read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-	- [x] wire up firebase/supabase to
-	  persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
-	- [x] RTK-Query?
+
+	* [x]
+
+add [firebase connections](https://console.firebase.google.com/u/0/project/points-streaks/firestore/data/~2Fstate~2FmBCVz1POhx56wpHNrvjW)
+
+- [x] add emulation https://firebase.google.com/docs/emulator-suite
+  & https://firebase.google.com/docs/emulator-suite/connect_and_prototype?database=Firestore
+- [x] [Firestore QuickStart](https://firebase.google.com/docs/firestore/quickstart#web-version-9)
+- [x] [rect-redux-firebase + redux-persist](https://github.com/prescottprue/react-redux-firebase/blob/master/docs/integrations/redux-persist.md)
+
+* [x]
+
+read [React and Firebase without Redux](https://prescottprue.medium.com/react-and-firebase-without-redux-5c1b2b6a6ba1)
+
+- [x] just add basic
+  read [Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+- [x] wire up firebase/supabase to
+  persistence [react-redux-firebase](https://redux-toolkit.js.org/usage/usage-guide#use-with-react-redux-firebase)
+- [x] RTK-Query?
 - [x] Persist v2
 	- [x] how to do persistence with state
 	  migration [?](https://www.freecodecamp.org/news/how-to-use-redux-persist-when-migrating-your-states-a5dee16b5ead/)
-
-</details>
-
-
-<details>
-	<summary>
-		<strong>Train of Thought: State</strong>
-	</summary>
 
 > I am trying to build to `resolveDay` and to that end the next piece that I think I need is `Bank`
 > So I am working on that. **BUT** I still don't have a way to solve the global state issue, so I am not creating a `bankSlice`
@@ -360,14 +341,7 @@ for each directory/file- write up what is different and the tasks i need to move
 - [x] # resolveDaySelectors create action detailer
 - [x] test `resolveDay` with the bank and `getDaysPoints`
 - [x] load `initialState` for tests
-- [x] create _actual_ initialState
-
-</details>
-
-<details>
-	<summary>
-		<strong>Create The Project</strong>
-	</summary>
+- [x] create *actual* initialState
 
 > I don't really want to get too bogged down in the infrastructure, like I would with Bulletproof, this is really to get the thing off the ground. because nothing is more valuable than just using the damn thing. So this is, "just enough to use it" which includes:
 
@@ -382,5 +356,3 @@ for each directory/file- write up what is different and the tasks i need to move
 - [x] https://docs.cypress.io/guides/continuous-integration/github-actions?utm_source=Test+Runner&utm_medium=CI+Prompt+1&utm_campaign=GitHub&utm_content=Automatic
 - [x] add .eslint
 - [x] configure prettier-eslint
-
-</details>
