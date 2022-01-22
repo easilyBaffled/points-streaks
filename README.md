@@ -70,7 +70,8 @@ for each directory/file- write up what is different and the tasks i need to move
 
 ### Backlog
 
-	- [ ] view list
+- [ ] create slice
+- [ ] view list
 	- [ ] remove item
 	- [ ] edit item
 	- [ ] add single item

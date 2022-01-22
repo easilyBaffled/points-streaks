@@ -132,3 +132,7 @@
 .new-task-input {
 	padding: 1rem;
 }
+
+.graphAndLinks {
+	flex-wrap: wrap;
+}
