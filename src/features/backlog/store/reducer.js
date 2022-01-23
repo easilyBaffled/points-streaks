@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialState } from "./initialState";
-import { backlogAdapter } from "./entityAdapter";
-import { createTask } from "./createTask";
+import { initialState } from "./initialState.js";
+import { backlogAdapter } from "./entityAdapter.js";
+import { createTask } from "./createTask.js";
 import { promoteTask } from "@/state/actions/promoteTask.js";
 
 export const slice = createSlice({
@@ -20,6 +20,9 @@ export const slice = createSlice({
                 tasks.map( ( t ) => createTask( t ) )
             ),
         deleteTask: ( state, { payload: id }) =>
-            backlogAdapter.removeOne( state, id )
+            backlogAdapter.removeOne( state, console.tap( id, state ) )
     }
 });
+
+export const actions = slice.actions;
+export const reducer = slice.reducer;

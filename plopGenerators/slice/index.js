@@ -32,6 +32,9 @@ export const sliceConfig = {
 						name: "${sliceName}",
 						reducers: {}
 					});
+
+					export const actions = slice.actions;
+					export const reducer = slice.reducer;
                 `.replace( /(^\s+)/gm, "" ),
                 type: "add"
             },

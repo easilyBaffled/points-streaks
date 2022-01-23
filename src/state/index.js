@@ -17,6 +17,11 @@ import {
     selectors as streakSelectors
 } from "../features/streak/store";
 import {
+    reducer as backlog,
+    actions as backlogActions,
+    selectors as backlogSelectors
+} from "../features/backlog/store";
+import {
     reducer as tasks,
     actions as taskActions,
     selectors as taskSelectors
@@ -48,6 +53,7 @@ const persistConfig = {
 
 export const actions = {
     reset,
+    ...backlogActions,
     ...taskActions,
     ...rewardsActions,
     ...appActions,
@@ -57,6 +63,7 @@ export const actions = {
 
 export const selectors = {
     app:     appSelectors,
+    backlog: backlogSelectors,
     bank:    bankSelectors,
     rewards: rewardsSelectors,
     streaks: streakSelectors,
@@ -65,6 +72,7 @@ export const selectors = {
 
 export const reducer = combineReducers({
     app,
+    backlog,
     bank,
     rewards,
     streaks,

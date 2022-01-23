@@ -2,7 +2,6 @@ import React from "react";
 
 function buildSubmitHandler( submitters ) {
     return function handleFormSubmission( e ) {
-        console.log( e );
         e.preventDefault();
         submitters.forEach( ({ name, onSubmit }) => {
             onSubmit( e.target.elements[ name ].value, e );

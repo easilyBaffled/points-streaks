@@ -9,6 +9,8 @@ import { BaseTask, CreateTaskInput, HistoryTask } from "./features/task";
 import { AddRewardInput, RewardsList } from "@/features/rewards";
 import { NavTabs } from "@/components/navTabs/NavTabs";
 import { ActionHeader } from "@/features/actionHeader";
+import { TaskPage } from "@/features/task";
+import { BacklogPage } from "@/features/backlog";
 
 function shouldDebugUI() {
     let params = new URL( document.location ).searchParams;
@@ -22,25 +24,16 @@ const EasyTaskList = ({ tasks }) => (
         ) )}
     </div>
 );
-const App = ({ streaks, historicalTasks, activeTasks }) => (
+const App = ({ streaks, historicalTasks }) => (
     <div className={clsx( "App", { debug: shouldDebugUI() })}>
         <ActionHeader />
         <main className="content">
             <EasyTaskList tasks={streaks} />
             <span className="task-list">
-                <NavTabs routes={[ "active", "history", "rewards" ]} />
+                <NavTabs routes={[ "active", "history", "rewards", "backlog" ]} />
                 <Routes>
-                    <Route
-                        path={`/active`}
-                        element={
-                            <div className="task-list">
-                                <CreateTaskInput />
-                                {activeTasks.map( ( t ) => (
-                                    <BaseTask key={t.id} {...t} />
-                                ) )}
-                            </div>
-                        }
-                    />
+                    <Route path={`/active`} element={<TaskPage />} />
+                    <Route path={`/backlog`} element={<BacklogPage />} />
                     <Route
                         path={`/history`}
                         element={
@@ -81,7 +74,6 @@ const App = ({ streaks, historicalTasks, activeTasks }) => (
 );
 
 export default connect( ( state ) => ({
-    activeTasks:     selectors.tasks.getActiveTasks( state ),
     historicalTasks: selectors.tasks.getHistoryListGroupedByDate( state ),
     state,
     streaks:         selectors.streaks.selectAll( state ),

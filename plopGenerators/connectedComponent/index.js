@@ -12,7 +12,7 @@ export const connectedComponent = {
             {
                 path:     indexFile,
                 pattern:  /($)/,
-                template: `$1\nexport { ${componentName} } from "./${name}";`,
+                template: `$1\nexport * from "./${name}";`,
                 type:     "modify"
             },
             {

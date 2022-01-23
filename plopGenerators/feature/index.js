@@ -7,13 +7,13 @@ export const featureConfig = {
         return needs.reduce(
             ( acc, k ) =>
                 acc.concat({
-                    path:     `src/features/${featureName}/${k}/index.js`,
+                    path:     `src/features/${featureName}/${k}/index.jsx`,
                     template: `export const ${k} = "I think Plop.js is neat.";`,
                     type:     "add"
                 }),
             [
                 {
-                    path:     `src/features/${featureName}/index.js`,
+                    path:     `src/features/${featureName}/index.jsx`,
                     template: featureRootIndex,
                     type:     "add"
                 }
