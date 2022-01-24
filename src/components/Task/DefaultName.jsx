@@ -4,7 +4,12 @@ import ReactMarkdown from "react-markdown";
 
 function LinkRenderer( props ) {
     return (
-        <a href={props.href} target="_blank" rel="noreferrer">
+        <a
+            href={props.href}
+            target="_blank"
+            rel="noreferrer"
+            className="word-wrap"
+        >
             {props.children}
         </a>
     );
@@ -29,11 +34,16 @@ function NameActual({ children }) {
     return <li className="graphAndLinks">{children}</li>;
 }
 
+function NameActualP({ children }) {
+    return <p className="graphAndLinks">{children}</p>;
+}
+
 export const DefaultName = ({ task, children, isDone }) => (
     <ReactMarkdown
         components={{
             a:  LinkRenderer,
-            li: NameActual
+            li: NameActual,
+            p:  NameActualP
         }}
         className={clsx( "name", { done: isDone })}
     >

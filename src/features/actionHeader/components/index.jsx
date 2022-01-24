@@ -18,19 +18,6 @@ function _ActionHeader({ lastRunDate, resolveDay }) {
         <header className="action-header">
             <button onClick={resolveDay}>Resolve {lastRunDate}</button>
             <Bank />
-            <details className="dev-tools-section">
-                <summary>
-                    <h3>Developer Tools</h3>
-                </summary>
-                <span className="dev-tools-controls">
-                    <button onClick={window.points.syncFromHistory}>
-                        Pull from History
-                    </button>
-                    <button onClick={window.points.syncToHistory}>
-                        Push to History
-                    </button>
-                </span>
-            </details>
         </header>
     );
 }

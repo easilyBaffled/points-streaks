@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>Points</title>
-	<meta name="description" content="Your app description">
-	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-	<link rel="alternate icon" href="/favicon.ico" type="image/png" sizes="16x16">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-	<link rel="mask-icon" href="/favicon.svg" color="#FFFFFF">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Your app description" />
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+	<link
+		rel="alternate icon"
+		href="/favicon.ico"
+		type="image/png"
+		sizes="16x16"
+	/>
+	<link
+		rel="apple-touch-icon"
+		href="/apple-touch-icon.png"
+		sizes="180x180"
+	/>
+	<link rel="mask-icon" href="/favicon.svg" color="#FFFFFF" />
+	<meta name="theme-color" content="#ffffff" />
 	<script>
 		console.tap = (v, ...rest) => {
-			const stack = (new Error()).stack.split("\n");
-			const selfIndex = stack.findIndex(s => s.includes("console.tap"));
+			const stack = new Error().stack.split("\n");
+			const selfIndex = stack.findIndex((s) =>
+				s.includes("console.tap")
+			);
 			const sourceStr = stack[selfIndex + 1];
 
 			console.log(
@@ -27,13 +38,15 @@
 			return v;
 		};
 
-		console.tap.label = label => (v, ...rest) => {
-			console.log(label, v, ...rest);
-			return v;
-		};
+		console.tap.label =
+			(label) =>
+				(v, ...rest) => {
+					console.log(label, v, ...rest);
+					return v;
+				};
 	</script>
 </head>
-<body>
+<body class="h-full">
 <script src="https://www.google.com/recaptcha/api.js?render=6LcoFrwdAAAAAIN5F7hTL1efQofeFUQPU32UJk3a"></script>
 
 <div id="root"></div>
