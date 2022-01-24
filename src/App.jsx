@@ -2,15 +2,12 @@ import "./App.css";
 import "@reach/tabs/styles.css";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import clsx from "clsx";
 import { Disclosure } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/outline";
 import { StreakTask } from "./features/streak";
 import { selectors } from "./state";
 import { HistoryTask } from "./features/task";
 import { AddRewardInput, RewardsList } from "@/features/rewards";
-import { NavTabs } from "@/components/navTabs/NavTabs";
-import { ActionHeader } from "@/features/actionHeader";
 import { TaskPage } from "@/features/task";
 import { BacklogPage } from "@/features/backlog";
 import {
