@@ -17,15 +17,6 @@ export const Redux = ({ children }) => (
     </Provider>
 );
 
-console.tap = ( v, ...rest ) => (
-    console.log(
-        // "%c" + new Error().stack.split("\n"),
-        // "background: tomato;color: #eee;padding: 5px;border-radius: 10px;margin: 5px",
-        v,
-        ...rest
-    ),
-    v
-);
 // https://goulet.dev/posts/how-to-write-ts-interfaces-in-jsdoc/
 /**
  * @typedef { import("./index").Bank } Bank
@@ -107,6 +98,10 @@ window.points.timebox.defaultList = `
 - How many open PRs: 15
 - How are stories moving on the board: 15
 - PRs: 120`;
+
+getDoc( "state", "state" ).getItem().then( console.log );
+activeDoc.getItem().then( console.log );
+getDoc( `state_production`, "state" ).getItem().then( console.log );
 
 window.points.syncToHistory = () => {
     const historyDoc = getDoc( "state", "state" );

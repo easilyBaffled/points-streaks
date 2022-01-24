@@ -136,3 +136,16 @@
 .graphAndLinks {
 	flex-wrap: wrap;
 }
+
+.dev-tools-section {
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 2rem;
+}
+
+.dev-tools-controls {
+	width: 100%;
+	justify-content: space-evenly;
+	padding: 2rem;
+}
