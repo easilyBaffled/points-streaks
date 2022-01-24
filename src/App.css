@@ -76,13 +76,6 @@
 	flex-direction: column;
 	align-items: stretch;
 	gap: 1rem;
-	max-height: 50vh;
-	overflow: scroll;
-	flex: 1;
-	min-width: 40rem;
-	box-shadow: inset 0px 4px 5px 0px #bebebe4d;
-	padding: 1rem;
-
 }
 
 #task-streaks {
@@ -112,10 +105,6 @@
 }
 
 #bank {
-}
-
-#bankInput {
-	width: 6ch;
 }
 
 .action-header {

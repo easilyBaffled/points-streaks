@@ -39,7 +39,7 @@ const EasyTaskList = ({ tasks }) => (
 const user = {
     email:    "tom@example.com",
     imageUrl:
-		"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     name: "Tom Cook"
 };
 const navigation = [
@@ -62,8 +62,8 @@ function classNames( ...classes ) {
 const routes = [ "streaks", "active", "history", "rewards", "backlog" ];
 
 const App = ({ streaks, historicalTasks }) => (
-    <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+    <div className="min-h-screen">
+        <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10">
             {({ open }) => (
                 <>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,56 +118,48 @@ const App = ({ streaks, historicalTasks }) => (
 
         <ContentHeader />
         <Main>
-            <div className={clsx( "App", { debug: shouldDebugUI() })}>
-                <ActionHeader />
-                <main className="content">
-
-                    <Routes>
-                        <Route path={`/active`} element={<TaskPage />} />
-                        <Route
-                            path={`/streaks`}
-                            element={<EasyTaskList tasks={streaks} />}
-                        />
-                        <Route
-                            path={`/backlog`}
-                            element={<BacklogPage />}
-                        />
-                        <Route
-                            path={`/history`}
-                            element={
-                                <div className="task-list">
-                                    {Object.entries( historicalTasks ).map(
-                                        ([ date, taskList ]) => (
-                                            <>
-                                                <h1>
-                                                    {new Date(
-                                                        Number( date )
-                                                    ).toDateString()}
-                                                </h1>
-                                                {taskList.map( ( t ) => (
-                                                    <HistoryTask
-                                                        key={t.id}
-                                                        {...t}
-                                                    />
-                                                ) )}
-                                            </>
-                                        )
-                                    )}
-                                </div>
-                            }
-                        />
-                        <Route
-                            path={`/rewards`}
-                            element={
-                                <div className="task-list">
-                                    <AddRewardInput />
-                                    <RewardsList />
-                                </div>
-                            }
-                        />
-                    </Routes>
-
-                </main>
+            <div className="inline-block w-full p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <Routes>
+                    <Route path={`/active`} element={<TaskPage />} />
+                    <Route
+                        path={`/streaks`}
+                        element={<EasyTaskList tasks={streaks} />}
+                    />
+                    <Route path={`/backlog`} element={<BacklogPage />} />
+                    <Route
+                        path={`/history`}
+                        element={
+                            <div className="task-list">
+                                {Object.entries( historicalTasks ).map(
+                                    ([ date, taskList ]) => (
+                                        <>
+                                            <h1>
+                                                {new Date(
+                                                    Number( date )
+                                                ).toDateString()}
+                                            </h1>
+                                            {taskList.map( ( t ) => (
+                                                <HistoryTask
+                                                    key={t.id}
+                                                    {...t}
+                                                />
+                                            ) )}
+                                        </>
+                                    )
+                                )}
+                            </div>
+                        }
+                    />
+                    <Route
+                        path={`/rewards`}
+                        element={
+                            <div className="task-list">
+                                <AddRewardInput />
+                                <RewardsList />
+                            </div>
+                        }
+                    />
+                </Routes>
             </div>
         </Main>
     </div>
