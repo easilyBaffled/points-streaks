@@ -1,0 +1,1 @@
+export const routes = "I think Plop.js is neat.";
