@@ -21,7 +21,7 @@ selectors.getHistory = createSelector(
 selectors.getHistoricalTasks = createSelector(
     selectors.selectAll,
     selectors.getHistory,
-    ( entities, history ) => entities.filter( ( task ) => history[ task.id ])
+    ( entities, history ) => entities.filter( ( task ) => task && history[ task.id ])
 );
 
 selectors.getHistoryListGroupedByDate = createSelector(
@@ -30,13 +30,13 @@ selectors.getHistoryListGroupedByDate = createSelector(
         groupBy(
             taskList,
             ( task ) =>
-                task.history.find( ( h ) => h.action.type === resolveDay().type )
-                    ?.date
+                task?.history.find( ( h ) => h.action.type === resolveDay().type )
+                    ?.date ?? Date.now()
         )
 );
 
 selectors.getActiveTasks = createSelector(
     selectors.selectAll,
     selectors.getHistory,
-    ( entities, history ) => entities.filter( ( task ) => !history[ task.id ])
+    ( entities, history ) => entities.filter( ( task ) => task && !history[ task.id ])
 );

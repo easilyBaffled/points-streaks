@@ -16,6 +16,5 @@ export const _AdjustValueInput = ({ addPoints }) => (
 );
 
 export const AdjustValueInput = connect( null, ( dispatch ) => ({
-    addPoints: ( amount ) =>
-        dispatch( actions.addPoints( console.tap( amount, typeof amount ) ) )
+    addPoints: ( amount ) => dispatch( actions.addPoints( amount ) )
 }) )( _AdjustValueInput );

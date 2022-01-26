@@ -99,9 +99,13 @@ window.points.timebox.defaultList = `
 - How are stories moving on the board: 15
 - PRs: 120`;
 
-getDoc( "state", "state" ).getItem().then( console.log );
-activeDoc.getItem().then( console.log );
-getDoc( `state_production`, "state" ).getItem().then( console.log );
+// getDoc( "state", "state" )
+//     .getItem()
+//     .then( ( d ) => console.log( "hystory", d ) );
+// activeDoc.getItem().then( ( d ) => console.log( "active", d ) );
+// getDoc( `state_production`, "state" )
+//     .getItem()
+//     .then( ( d ) => console.log( "prod", d ) );
 
 window.points.syncToHistory = () => {
     const historyDoc = getDoc( "state", "state" );
@@ -116,7 +120,11 @@ window.points.syncFromHistory = () => {
     const historyDoc = getDoc( "state", "state" );
     historyDoc
         .getItem()
-        .then( ( data ) => activeDoc.setItem( data ) )
+        .then( ( data ) => {
+            console.log( data, activeDoc );
+            return activeDoc.setItem( data );
+        })
+        // .then( () => activeDoc.getItem() )
         .then( console.log )
         .catch( console.error );
 };

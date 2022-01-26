@@ -7,7 +7,6 @@ export default createDefaultPersistConfig;
 
 export const createFireBaseRealTimePersistConfig = () => {
     const dbStorage = activeDoc;
-
     const mergedStorage = {
         deleteItem: ( ...args ) =>
             storage.deleteItem( ...args ).then( ( res ) => {

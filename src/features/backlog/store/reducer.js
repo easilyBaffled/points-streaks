@@ -20,7 +20,7 @@ export const slice = createSlice({
                 tasks.map( ( t ) => createTask( t ) )
             ),
         deleteTask: ( state, { payload: id }) =>
-            backlogAdapter.removeOne( state, console.tap( id, state ) )
+            backlogAdapter.removeOne( state, id )
     }
 });
 

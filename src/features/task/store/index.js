@@ -47,7 +47,7 @@ function includeHistory( reducers ) {
 const tasksSlice = createSlice({
     extraReducers: includeHistory({
         [ promoteTask ]: ( state, { payload: { task } }) =>
-            tasksAdapter.addOne( state, task ),
+            tasksAdapter.addOne( state, createTask( task ) ),
         [ reset ]:      () => tasksAdapter.getInitialState({ history: {} }),
         [ resolveDay ]: ( state, action ) => {
             const { payload } = action;

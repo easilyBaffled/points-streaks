@@ -40,8 +40,8 @@ const tasksSlice = createSlice({
             if ( payload.tasks ) {
                 Object.values( state.entities ).forEach( ( task ) => {
                     if ( task.status === status.active ) {
-                        task.streakIterations = 1;
-                        task.currentStreakIndex = 1;
+                        // task.streakIterations = 1;
+                        // task.currentStreakIndex = 1;
                     } else {
                         task.status = status.active;
                         dynamicChange( bumpStreakChange )( state, {

@@ -13,10 +13,14 @@ const processTaskCreationForm = ( action ) => ( value ) => {
 
 export const _CreateTaskInput = ({ createTasks, createTask }) => (
     <EasyForm showSubmit>
-        <input name="task" onSubmit={ignoreIfEmpty( createTask )} />
+        <input
+            className="focus:ring-indigo-500 focus:border-indigo-500 block pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
+            name="task"
+            onSubmit={ignoreIfEmpty( createTask )}
+        />
         <textarea
             name="tasks"
-            className="new-task-input"
+            className="focus:ring-indigo-500 focus:border-indigo-500 block pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
             onSubmit={ignoreIfEmpty( processTaskCreationForm( createTasks ) )}
         />
     </EasyForm>

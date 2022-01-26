@@ -17,7 +17,10 @@ export const BaseTask = connect(
         isDone: status === taskStatus.done
     }),
     ( dispatch, { id }) => ({
-        deleteTask:       () => dispatch( actions.deleteTask( id ) ),
+        deleteTask: ( e ) => {
+            e.stopPropagation();
+            return dispatch( actions.deleteTask( id ) );
+        },
         toggleTaskStatus: () => dispatch( actions.toggleTaskStatus( id ) )
     })
 )( _BaseTask );

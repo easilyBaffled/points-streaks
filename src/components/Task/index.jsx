@@ -46,7 +46,6 @@ export const Task = ({ children, toggleTaskStatus, deleteTask, ...task }) => {
 
     return (
         <div className="task" onClick={toggleTaskStatus}>
-            <input type="checkbox" readOnly checked={task.isDone} />
             {elArr.map( ( elOrCmp, i ) => {
                 const key = `${task.id}_${
                     elOrCmp?.type?.name ?? elOrCmp.type

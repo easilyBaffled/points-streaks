@@ -49,7 +49,7 @@ export const initialState = rewardsAdapter.getInitialState({ history: {} });
 const rewardsSlice = createSlice({
     extraReducers: includeHistory({
         [ purchaseReward ]: ( state, { payload: { id } }) => {
-            console.tap( state, id );
+
             state.history[ id ] = true;
             return state;
         },

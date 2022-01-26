@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/outline";
+import { Fragment } from "react";
 import { StreakTask } from "./features/streak";
 import { selectors } from "./state";
 import { HistoryTask } from "./features/task";
@@ -19,11 +20,6 @@ import {
     NavMobileView,
     UserProfileDropdown
 } from "@/features/mainPage";
-
-function shouldDebugUI() {
-    let params = new URL( document.location ).searchParams;
-    return params.get( "debug" ) === "ui";
-}
 
 const EasyTaskList = ({ tasks }) => (
     <div className="task-list">
@@ -129,7 +125,7 @@ const App = ({ streaks, historicalTasks }) => (
                             <div className="task-list">
                                 {Object.entries( historicalTasks ).map(
                                     ([ date, taskList ]) => (
-                                        <>
+                                        <Fragment key="date">
                                             <h1>
                                                 {new Date(
                                                     Number( date )
@@ -141,7 +137,7 @@ const App = ({ streaks, historicalTasks }) => (
                                                     {...t}
                                                 />
                                             ) )}
-                                        </>
+                                        </Fragment>
                                     )
                                 )}
                             </div>

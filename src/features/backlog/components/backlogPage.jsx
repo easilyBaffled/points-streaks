@@ -1,16 +1,42 @@
 import { connect } from "react-redux";
+import { useState } from "react";
+import { filter, parse } from "liqe";
 import { selectors } from "../store";
 import { CreateTaskInput } from "./createTaskInput";
+
 import { BacklogTask } from "./task";
 
-export const _BacklogPage = ({ backlogTasks }) => (
-    <div className="task-list">
-        <CreateTaskInput />
-        {backlogTasks.map( ( t ) => (
-            <BacklogTask key={t.id} {...t} />
-        ) )}
-    </div>
-);
+const filterList = ( list, filterText ) => {
+    try {
+        return filterText ? filter( parse( filterText ), list ) : list;
+    } catch ( error ) {
+        console.error( error );
+
+        return list;
+    }
+};
+export const _BacklogPage = ({ backlogTasks }) => {
+    const [ filterText, setFilter ] = useState();
+
+    return (
+        <div className="task-list">
+            <CreateTaskInput />
+            <input
+                placeholder="search"
+                className="focus:ring-indigo-500 focus:border-indigo-500 block pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
+                onChange={( e ) => setFilter( e.target.value )}
+            />
+            {backlogTasks.length && (
+                <>
+                    <code>{Object.keys( backlogTasks[ 0 ]).join( ", " )}</code>
+                    {filterList( backlogTasks, filterText ).map( ( t ) => (
+                        <BacklogTask key={t.id} {...t} />
+                    ) )}
+                </>
+            )}
+        </div>
+    );
+};
 export const BacklogPage = connect( ( state ) => ({
     backlogTasks: selectors.getBacklog( state )
 }) )( _BacklogPage );

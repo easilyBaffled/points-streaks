@@ -25,7 +25,6 @@ How can I keep infrastructure the same across both projects?
 
 ## Infrastructure
 
-[GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
 for each directory/file- write up what is different and the tasks i need to move it over to my project
 
 * `/.github`

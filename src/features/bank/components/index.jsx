@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { TicketIcon } from "@heroicons/react/solid";
-import { selectors, specialWorthCalculators } from "../store";
-import { AdjustValueInput } from "@/features/bank/components/adjustValueInput";
-import { ConvertSpecialInput } from "@/features/bank/components/convertSpecialToPointsInput";
+import { selectors } from "../store";
+import { AdjustValueInput } from "./adjustValueInput";
+import { ConvertSpecialInput } from "./convertSpecialToPointsInput";
 
 const nameIconMap = {
     pizza: "🍕"
@@ -21,7 +21,10 @@ export const _Bank = ({ special, points }) => {
                     <AdjustValueInput />
                 </div>
                 {Object.entries( special ).map( ([ name, amount ]) => (
-                    <div className="mt-2 flex items-center text-sm text-gray-500">
+                    <div
+                        key={name}
+                        className="mt-2 flex items-center text-sm text-gray-500"
+                    >
                         <p className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400">
                             {" "}
                             {nameIconMap[ name ] ?? name}
