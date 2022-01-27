@@ -1,6 +1,10 @@
 // New Firebase Lib
 import { initializeApp } from "firebase/app";
-import { doc, getFirestore } from "firebase/firestore";
+import {
+    doc,
+    getFirestore,
+    enableIndexedDbPersistence
+} from "firebase/firestore";
 import firebaseConfig from "@/config/firebase";
 import { createFBStorageAPI } from "@/libs/firestore/createFBStorageAPI";
 
@@ -9,6 +13,18 @@ let db = null;
 export function init() {
     initializeApp( firebaseConfig );
     db = getFirestore();
+    enableIndexedDbPersistence( db ).catch( ( err ) => {
+        console.log( err );
+        if ( err.code == "failed-precondition" ) {
+            // Multiple tabs open, persistence can only be enabled
+            // in one tab at a a time.
+            // ...
+        } else if ( err.code == "unimplemented" ) {
+            // The current browser does not support all of the
+            // features required to enable persistence
+            // ...
+        }
+    });
 }
 
 init( firebaseConfig );

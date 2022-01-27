@@ -19,11 +19,11 @@ export const _BacklogPage = ({ backlogTasks }) => {
     const [ filterText, setFilter ] = useState();
 
     return (
-        <div className="task-list">
+        <div className="task-list gap-3">
             <CreateTaskInput />
             <input
                 placeholder="search"
-                className="focus:ring-indigo-500 focus:border-indigo-500 block pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
+                className="focus:ring-indigo-500 focus:border-indigo-500 pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
                 onChange={( e ) => setFilter( e.target.value )}
             />
             {backlogTasks.length && (

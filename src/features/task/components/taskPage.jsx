@@ -4,7 +4,7 @@ import { CreateTaskInput } from "./createTaskInput";
 import { BaseTask } from "./task";
 
 export const _TaskPage = ({ activeTasks }) => (
-    <div className="task-list">
+    <div className="task-list gap-0">
         <CreateTaskInput />
         {activeTasks.map( ( t ) => (
             <BaseTask key={t.id} {...t} />

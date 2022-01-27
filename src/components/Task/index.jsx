@@ -45,7 +45,10 @@ export const Task = ({ children, toggleTaskStatus, deleteTask, ...task }) => {
     else if ( elArr.length === 1 ) elArr.unshift( DefaultName ); // assume that I am going to use a custom Value more often than a custom name
 
     return (
-        <div className="task" onClick={toggleTaskStatus}>
+        <div
+            className="task border-b border-gray-300 p-3"
+            onClick={toggleTaskStatus}
+        >
             {elArr.map( ( elOrCmp, i ) => {
                 const key = `${task.id}_${
                     elOrCmp?.type?.name ?? elOrCmp.type

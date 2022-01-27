@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
+import { TrashIcon } from "@heroicons/react/outline";
 import { actions, status as taskStatus } from "../store";
 import { Task } from "@/components";
-import { DefaultValue } from "@/components/Task/DefaultValue";
 
 export const _BaseTask = ({ deleteTask, ...task }) => (
     <Task {...task}>
-        <span>
-            <DefaultValue {...task} />
-            <button onClick={deleteTask}>x</button>
-        </span>
+        <TrashIcon
+            className="h-6 w-6"
+            aria-hidden="true"
+            onClick={deleteTask}
+        />
     </Task>
 );
 
