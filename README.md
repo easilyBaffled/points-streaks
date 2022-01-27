@@ -104,6 +104,7 @@ for each directory/file- write up what is different and the tasks i need to move
 - [ ] add eslint to pr req
 - [ ] use  `build:prod` for deployments
 - [ ] how are [React-Query](https://github.com/tannerlinsley/react-query/pull/3006)'s PRs setup?
+- [ ] try adding try adding this to points https://app.ponicode.com/turbo-cov/projects
 
 ## Security
 

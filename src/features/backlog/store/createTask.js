@@ -1,4 +1,5 @@
 import { nanoid } from "@reduxjs/toolkit";
+import { rateTask } from "./ranking.js";
 
 const status = {
     active: "active",
@@ -34,7 +35,10 @@ const splitTagsAndTask = ( task ) => splitAt( task, findRegexIndex( task ) );
  * @return Task
  */
 export function createTask( task, optional = {}) {
-    if ( typeof task === "object" ) optional = task;
+    if ( typeof task === "object" ) {
+        optional = task;
+        task = task.task;
+    }
     const [ _tags, _task ] = splitTagsAndTask( task );
     const tags = _tags.split( " " );
     return {
@@ -46,6 +50,7 @@ export function createTask( task, optional = {}) {
         ...optional,
         created_at: Date.now(),
         fullTask:   task,
+        ranking:    rateTask( task ),
         tags,
         tagsString: _tags
     };

@@ -26,6 +26,7 @@ export const _BacklogPage = ({ backlogTasks }) => {
                 className="focus:ring-indigo-500 focus:border-indigo-500 pl-3 sm:text-sm border-2 border-gray-300 rounded-md"
                 onChange={( e ) => setFilter( e.target.value )}
             />
+            <code>{backlogTasks.length}</code>
             {backlogTasks.length && (
                 <>
                     <code>{Object.keys( backlogTasks[ 0 ]).join( ", " )}</code>
@@ -38,5 +39,5 @@ export const _BacklogPage = ({ backlogTasks }) => {
     );
 };
 export const BacklogPage = connect( ( state ) => ({
-    backlogTasks: selectors.getBacklog( state )
+    backlogTasks: selectors.getSortedBacklog( state )
 }) )( _BacklogPage );
