@@ -19,7 +19,7 @@ const splitAt = ( str, index ) => [ str.slice( 0, index ), str.slice( index ) ];
  * @param {string} str
  * @return {number}
  */
-const findRegexIndex = ( str ) => /( [a-zA-Z].*)/.exec( str )?.index ?? 0;
+const findRegexIndex = ( str ) => / ([^#])/.exec( str )?.index ?? 0;
 
 /**
  *

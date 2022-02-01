@@ -3,8 +3,9 @@ How can I keep infrastructure the same across both projects?
 ## Bulletproof
 
 	- [x] Copy over plop
-	- [ ] set proper repo
-	- [ ] add MSW from [react-query-auth-demo - CodeSandbox](https://codesandbox.io/s/react-query-auth-demo-fvvvt?file=/src/index.tsx) to get login working
+	- [x] set proper repo
+	- [x] add MSW from [react-query-auth-demo - CodeSandbox](https://codesandbox.io/s/react-query-auth-demo-fvvvt?file=/src/index.tsx) to get login working
+		> It was already in there, just not working
 	- [ ] evaluate Cypress vs Jest
 	- [x] use [plopjs](https://plopjs.com/) with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js) to generate features
 	- [x] use [plopjs](https://plopjs.com/) with [bulletproof example](https://github.com/alan2207/bulletproof-react/blob/ff8308ffe773782937e96a1883185eccebfd931e/generators/component/index.js) to generate slice
@@ -30,10 +31,14 @@ for each directory/file- write up what is different and the tasks i need to move
 * `/.github`
 * `/.husky`
 * `/cypress`
-	- [ ] integration vs e2e - `"integrationFolder": "cypress/e2e"`, what's `"fileServerFolder": "dist",`
+	- [x] integration vs e2e - `"integrationFolder": "cypress/e2e"`,
+	- [ ] what's `"fileServerFolder": "dist",`
 	- [ ] cypress specific eslint.js
 	- [ ] what does `testing-library` provide
 * `/public`
+	- [ ] copy files
+	- [ ] create replacement files
+	- [ ] document instructions to change them
 * `.postcssrc.json`
 * `.stylelintrc.json`
 * `index.html`
@@ -48,10 +53,12 @@ for each directory/file- write up what is different and the tasks i need to move
 - [ ] move all tests to their proper `/__test__`
 - [ ] create doc explaining `feature`, `routing`, and `index.js`s
 - [ ] use direnv or something to make proper `.env` in accordance with what vite expects
+- [ ] try to add and test with
+  GQL https://mswjs.io/docs/api/graphql/query https://mswjs.io/docs/getting-started/mocks/graphql-api https://www.btw.so/open-source-alternatives/auth0-alternatives
 
 ## UX
 
-- [ ] Add Tailwind
+- [x] Add Tailwind
 - [ ] Create Composed Tailwind Classes
 - [ ] pull in basic tailwind for a better style
 - [ ] Pick Tailwind Theme
@@ -73,15 +80,15 @@ for each directory/file- write up what is different and the tasks i need to move
 
 ### Backlog
 
-- [ ] create slice
-- [ ] view list
-	- [ ] remove item
-	- [ ] edit item
-	- [ ] add single item
-	- [ ] promote item
-	- [ ] add bulk
-	- [ ] use [liqe](https://github.com/gajus/liqe) to sort/filter
-
+- [x] create slice
+- [x] view list
+	- [x] remove item
+	- [x] edit item
+	- [x] add single item
+	- [x] promote item
+	- [x] add bulk
+	- [x] use [liqe](https://github.com/gajus/liqe) to sort/filter
+- [ ] offline
 - [ ] add redux history
 - [ ] quick state editor https://www.npmjs.com/package/jsoneditor-react
 - [ ] add daily tasks
