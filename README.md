@@ -165,6 +165,7 @@ for each directory/file- write up what is different and the tasks i need to move
 - [ ] give [Use WebWorkers in Vite with comlink!](https://github.com/mathe42/vite-plugin-comlink) a try when I need a
   web worker
 - [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
+- [ ] [NLP](http://compromise.cool/)
 
 ---
 
