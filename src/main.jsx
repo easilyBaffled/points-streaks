@@ -75,7 +75,8 @@ window.points.timebox = ( str, useNow ) => {
     let endOfDay = ( d.setHours( 17 ), d.setMinutes( 0 ), d.setSeconds( 0 ), d );
     let timeInDay = Math.floor( ( endOfDay - now ) / 60000 );
 
-    str.replace( /(^.+:\s*)/gm, "" )
+    return str
+        .replace( /(^.+:\s*)/gm, "" )
         .split( "\n" )
         .filter( Boolean )
         .reduce(

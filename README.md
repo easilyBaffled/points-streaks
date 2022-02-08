@@ -24,28 +24,29 @@ How can I keep infrastructure the same across both projects?
 	- [ ] breadcrumbs nav
 	- [ ] share link
 
-## Infrastructure
+## Bulletproof Infrastructure
 
 for each directory/file- write up what is different and the tasks i need to move it over to my project
 
-* `/.github`
-* `/.husky`
-* `/cypress`
+- [ ] `/.github`
+- [x] `/.husky`
+- [ ] `/cypress`
 	- [x] integration vs e2e - `"integrationFolder": "cypress/e2e"`,
 	- [ ] what's `"fileServerFolder": "dist",`
 	- [ ] cypress specific eslint.js
 	- [ ] what does `testing-library` provide
-* `/public`
-	- [ ] copy files
-	- [ ] create replacement files
-	- [ ] document instructions to change them
-* `.postcssrc.json`
-* `.stylelintrc.json`
-* `index.html`
-* `package.json` - mostly scripts and `lint-staged`
-* `tailwind.config.js`
-* `vercel.json`
-* `vite.config.ts`
+- [x] `/public`
+	- [x] copy files
+	- [x] create replacement files
+	- [x] document instructions to change them
+- [x] `postcssrc.json`
+- [x] `.stylelintrc.json`
+- [x] `index.html`
+- [x] `package.json` - mostly scripts and `lint-staged`
+- [x] `tailwind.config.js`
+- [x] `vercel.json`
+- [x] `vite.config.ts`
+- [ ] coverage
 
 - [ ] add [GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
 - [ ] how to add lighthouse measurements to github
@@ -80,6 +81,10 @@ for each directory/file- write up what is different and the tasks i need to move
 
 ### Backlog
 
+- [ ]
+  pick [GitHub - yury-dymov/react-autocomplete-input: Autocomplete input field for React](https://github.com/yury-dymov/react-autocomplete-input)
+  or https://github.com/webscopeio/react-textarea-autocomplete
+  or [GitHub - signavio/react-mentions: @mention people in a textarea](https://github.com/signavio/react-mentions)
 - [x] create slice
 - [x] view list
 	- [x] remove item

@@ -8,7 +8,7 @@ function LinkRenderer( props ) {
             href={props.href}
             target="_blank"
             rel="noreferrer"
-            className="word-wrap"
+            className="word-wrap underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
         >
             {props.children}
         </a>
