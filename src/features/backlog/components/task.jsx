@@ -4,7 +4,13 @@ import { actions } from "../store";
 import { Name } from "@/components";
 import { promoteTask } from "@/state/actions/promoteTask";
 
-export const _BacklogTask = ({ deleteTask, promoteTask, ...task }) => (
+export const _BacklogTask = ({
+								 deleteTask, promoteTask, urgency,
+								 distance,
+								 tagsPosition,
+								 x,
+								 y, ...task
+							 }) => (
 	<div className="backlog-task border-b border-gray-300 p-3" {...task}>
 		<Name>{task.task}</Name>
 		<ThumbUpIcon
@@ -19,6 +25,14 @@ export const _BacklogTask = ({ deleteTask, promoteTask, ...task }) => (
 			onClick={deleteTask}
 		/>
 		<code>{task.tags.join(", ")}</code>
+		<code>{JSON.stringify({
+				urgency,
+				distance,
+				tagsPosition,
+				x,
+				y
+			}, null, 4
+		)}</code>
 	</div>
 );
 
