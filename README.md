@@ -32,9 +32,17 @@ for each directory/file- write up what is different and the tasks i need to move
 - [x] `/.husky`
 - [ ] `/cypress`
 	- [x] integration vs e2e - `"integrationFolder": "cypress/e2e"`,
-	- [ ] what's `"fileServerFolder": "dist",`
+	- [x] how to record test
+	- [ ] create tests
+	- [ ] add dashboard
+		- [ ] what constitutes a test result (that would get charged for) is it each `.spec` is it each `.it` is it
+		  succeful runs
+	- [ ] how does dashboard work with Github
+	- [ ] add visual regression
 	- [ ] cypress specific eslint.js
+	- [ ] what's `"fileServerFolder": "dist",`
 	- [ ] what does `testing-library` provide
+- [ ] coverage
 - [x] `/public`
 	- [x] copy files
 	- [x] create replacement files
@@ -46,7 +54,6 @@ for each directory/file- write up what is different and the tasks i need to move
 - [x] `tailwind.config.js`
 - [x] `vercel.json`
 - [x] `vite.config.ts`
-- [ ] coverage
 
 - [ ] add [GitHub - tailwindlabs/tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms)
 - [ ] how to add lighthouse measurements to github
@@ -56,6 +63,7 @@ for each directory/file- write up what is different and the tasks i need to move
 - [ ] use direnv or something to make proper `.env` in accordance with what vite expects
 - [ ] try to add and test with
   GQL https://mswjs.io/docs/api/graphql/query https://mswjs.io/docs/getting-started/mocks/graphql-api https://www.btw.so/open-source-alternatives/auth0-alternatives
+- [ ] add sentry
 
 ## UX
 
@@ -81,6 +89,7 @@ for each directory/file- write up what is different and the tasks i need to move
 
 ### Backlog
 
+- [ ] https://github.com/react-tags/react-tags
 - [ ]
   pick [GitHub - yury-dymov/react-autocomplete-input: Autocomplete input field for React](https://github.com/yury-dymov/react-autocomplete-input)
   or https://github.com/webscopeio/react-textarea-autocomplete
@@ -103,6 +112,18 @@ for each directory/file- write up what is different and the tasks i need to move
 - [ ] clear input after submit
 - [ ] redux history
 - [ ] wire in redux dev tools
+
+## Permissions
+
+- [ ] [Building RBAC in Node - DEV Community](https://dev.to/rschwabco/building-rbac-in-node-3hcb)
+- [ ] [@casl/ability - npm](https://www.npmjs.com/package/@casl/ability)
+- [ ] [accesscontrol - npm](https://www.npmjs.com/package/accesscontrol)
+- [ ] [acl - npm](https://www.npmjs.com/package/acl)
+- [ ] https://www.npmjs.com/package/easy-rbac
+- [ ] [jwt-rbac - npm](https://www.npmjs.com/package/jwt-rbac)
+- [ ] https://www.npmjs.com/package/rbac
+- [ ] [nestjs-rbac - npm](https://www.npmjs.com/package/nestjs-rbac)
+- [ ] [Role based access control in React-Redux apps - DEV Community](https://dev.to/tsuki42/role-based-access-control-in-react-redux-apps-2i53)
 
 ## CICD
 
@@ -171,6 +192,7 @@ for each directory/file- write up what is different and the tasks i need to move
   web worker
 - [ ] [Introduction to Remix](https://flaviocopes.com/remix/)
 - [ ] [NLP](http://compromise.cool/)
+- [ ] https://www.chromatic.com/?utm_source=ui_dev_bytes&utm_medium=sponsorship&utm_campaign=q1_2022&ck_subscriber_id=478727104
 
 ---
 
