@@ -51,7 +51,7 @@ export function parseAndSort(tasks) {
 			const urgency = mod(delta, age);
 
 			if (qualifier === "on" && dueDate !== zeroTime()) {
-				return Object.assign(task, {
+				return Object.assign({}, task, {
 					dueDate: new Intl.DateTimeFormat("en-US").format(dueDate),
 					delta: delta * 100,
 					age: age * 100,
@@ -59,7 +59,7 @@ export function parseAndSort(tasks) {
 				});
 			}
 
-			return Object.assign(task, {
+			return Object.assign({}, task, {
 				dueDate: new Intl.DateTimeFormat("en-US").format(dueDate),
 				delta,
 				age,
