@@ -21,7 +21,7 @@
     "@heroicons/react": "^1.0.5",
     "@reach/tabs": "0.16.4",
     "@reduxjs/toolkit": "1.7.1",
-    "chrono-node": "^2.3.7",
+    "chrono-node": "2.3.8",
     "clsx": "1.1.1",
     "eslint": "8.7.0",
     "eslint-config-prettier": "8.3.0",
