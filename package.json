@@ -58,7 +58,7 @@
     "autoprefixer": "^10.4.2",
     "babel-plugin-transform-import-meta": "2.1.0",
     "cypress": "9.2.1",
-    "esbuild": "0.14.11",
+    "esbuild": "0.25.0",
     "plop": "^3.0.5",
     "postcss": "^8.4.5",
     "react-error-overlay": "6.0.10",
